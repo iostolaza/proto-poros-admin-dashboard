@@ -1,7 +1,4 @@
-.flex {
-  display: flex;
-}
-main {
-  flex: 1;
-  padding: 1rem;
+
+:host {
+  display: block;
 }

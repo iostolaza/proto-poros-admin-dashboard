@@ -1,5 +1,4 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { Sidebar } from './sidebar';
 
 describe('Sidebar', () => {
@@ -21,3 +20,5 @@ describe('Sidebar', () => {
     expect(component).toBeTruthy();
   });
 });
+
+

@@ -51,105 +51,28 @@ You write maintainable, performant, and scalable code following the latest best 
 - Use the `providedIn: 'root'` option for singleton services
 - Use the `inject()` function instead of constructor injection
 
-We have render the dashboard! Its working and rendering. 
-The amplify sign in and authorization is working well. 
 
-I want to focus on the styling anc tailwind css. 
-I want it to have the colors from the study, 
-and the same color coordination as https://github.com/lannodev/angular-tailwind. 
+For the header, we are essentially removing the toggle sidebar. 
+We added the toggledropdown. 
+Updated header.ts
 
-https://at.lanno.dev/dashboard/nfts
+We have to confirm app.route.ts
+We need to edit from the previous script. We had auth guards. 
 
-I believe the https://github.com/lannodev/angular-tailwind/tree/main/src/app/modules/layout/components/navbar/profile-menu is the header part. 
-We need similar styling with the links and study. 
+Im a bit confused with the layout.service.ts 
+We removed the sidebar collapse part. 
+We want to have the sidebar collapse and expand. 
 
-https://github.com/lannodev/angular-tailwind/tree/main/src/app/modules/layout
+in settings, we have all these files. 
 
-Additionally I want to focus on the structure of the files.
-Example, header, sidenav, footer, main-section
-
-Header, will contain the title, user profile, with dropdown etc.
-
-Sidenav, will contain the navigation to the modules/features, funtionality;
-this includes, messages, user profile, settings, images, analytics, etc. 
-
-Footer, will contain the footer info.
-
-Main-section, will contain all the information that is selected from the side nav. 
-
-How should this be structured in my directory. 
-Im not sure how some folders fit in the picture or they are redundant. 
-franciscoostolaza@Mac proto-poros-admin-dashboard % ls
-amplify                         package-lock.json
-amplify_outputs.json            package.json
-angular.json                    postcss.config.js
-angularappinitworkflow.txt      public
-coloranalysis.md                README.md
-dashboardnote.txt               src
-directoryexample.txt            tailwind.config.js
-gptprompt.text                  tsconfig.app.json
-LICENSE                         tsconfig.json
-node_modules                    tsconfig.spec.json
+franciscoostolaza@Mac proto-poros-admin-dashboard % ls -R src/app/features/settings
+settings.html           settings.scss           settings.service.ts     settings.spec.ts        settings.ts
 franciscoostolaza@Mac proto-poros-admin-dashboard % 
 
-franciscoostolaza@Mac proto-poros-admin-dashboard % ls -R src/
-app             index.html      main.ts         styles.scss
+do we need service and spec.ts 
+what are thosse used for? we dont have them in most of the features. 
 
-src/app:
-app.config.ts   app.scss        core            layout.spec.ts  shared
-app.html        app.spec.ts     dashboard       layout.ts
-app.routes.ts   app.ts          features        layouts
+before we run npm install
+ng serve 
 
-src/app/core:
-guards          layout.spec.ts  layout.ts       services
-
-src/app/core/guards:
-auth.guards.ts
-
-src/app/core/services:
-layout.service.ts
-
-src/app/dashboard:
-top-bar
-Here we have  dashboard top-bar is this the header, or a top bar for a dashboard or elements in the main section?
-Please clarify this idea. if not lets remove it.
-src/app/dashboard/top-bar:
-top-bar.html    top-bar.scss    top-bar.spec.ts top-bar.ts
-
-src/app/features:
-auth            dashboard       settings
-
-src/app/features/auth:
-auth.html       auth.scss       auth.spec.ts    auth.ts         sign-in
-
-src/app/features/auth/sign-in:
-sign-in.html    sign-in.ts
-
-Here he have featurs dashboard, this is where the dashboards would go?
-src/app/features/dashboard:
-dashboard.html  dashboard.scss  dashboard.ts
-
-src/app/features/settings:
-settings.html           settings.service.ts     settings.ts
-settings.scss           settings.spec.ts
-
-src/app/layouts:
-header          main-layout     sidebar
-
-src/app/layouts/header:
-header.html     header.scss     header.ts
-
-src/app/layouts/main-layout:
-main-layout.html        main-layout.scss        main-layout.ts
-
-src/app/layouts/sidebar:
-sidebar.html    sidebar.scss    sidebar.spec.ts sidebar.ts
-
-src/app/shared:
-footer                  storage.service.ts
-
-src/app/shared/footer:
-footer.html     footer.scss     footer.spec.ts  footer.ts
-franciscoostolaza@Mac proto-poros-admin-dashboard % 
-
-Lets make sure we dont have redundant files. 
+we want to make sure we addres these questions and queries. 
