@@ -1,0 +1,15 @@
+git add .
+git commit -m "Pre directory redesign"
+git push origin main
+
+ls -R src/
+
+ls -R
+
+ls -R ap/
+
+ls -R src/app/features/auth/auth
+
+ls -R amplify/auth
+
+ls -R src/app/layouts

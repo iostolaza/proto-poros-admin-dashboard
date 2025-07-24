@@ -1,0 +1,241 @@
+type UserSettings @aws_iam @aws_cognito_user_pools {
+  theme: String
+  preferences: AWSJSON
+  profilePictureKey: String
+  id: ID!
+  createdAt: AWSDateTime!
+  updatedAt: AWSDateTime!
+  owner: String
+}
+
+input AmplifyAIConversationTurnErrorInput {
+  errorType: String!
+  message: String!
+}
+
+input ModelStringInput {
+  ne: String
+  eq: String
+  le: String
+  lt: String
+  ge: String
+  gt: String
+  contains: String
+  notContains: String
+  between: [String]
+  beginsWith: String
+  attributeExists: Boolean
+  attributeType: ModelAttributeTypes
+  size: ModelSizeInput
+}
+
+input ModelIntInput {
+  ne: Int
+  eq: Int
+  le: Int
+  lt: Int
+  ge: Int
+  gt: Int
+  between: [Int]
+  attributeExists: Boolean
+  attributeType: ModelAttributeTypes
+}
+
+input ModelFloatInput {
+  ne: Float
+  eq: Float
+  le: Float
+  lt: Float
+  ge: Float
+  gt: Float
+  between: [Float]
+  attributeExists: Boolean
+  attributeType: ModelAttributeTypes
+}
+
+input ModelBooleanInput {
+  ne: Boolean
+  eq: Boolean
+  attributeExists: Boolean
+  attributeType: ModelAttributeTypes
+}
+
+input ModelIDInput {
+  ne: ID
+  eq: ID
+  le: ID
+  lt: ID
+  ge: ID
+  gt: ID
+  contains: ID
+  notContains: ID
+  between: [ID]
+  beginsWith: ID
+  attributeExists: Boolean
+  attributeType: ModelAttributeTypes
+  size: ModelSizeInput
+}
+
+input ModelSubscriptionStringInput {
+  ne: String
+  eq: String
+  le: String
+  lt: String
+  ge: String
+  gt: String
+  contains: String
+  notContains: String
+  between: [String]
+  beginsWith: String
+  in: [String]
+  notIn: [String]
+}
+
+input ModelSubscriptionIntInput {
+  ne: Int
+  eq: Int
+  le: Int
+  lt: Int
+  ge: Int
+  gt: Int
+  between: [Int]
+  in: [Int]
+  notIn: [Int]
+}
+
+input ModelSubscriptionFloatInput {
+  ne: Float
+  eq: Float
+  le: Float
+  lt: Float
+  ge: Float
+  gt: Float
+  between: [Float]
+  in: [Float]
+  notIn: [Float]
+}
+
+input ModelSubscriptionBooleanInput {
+  ne: Boolean
+  eq: Boolean
+}
+
+input ModelSubscriptionIDInput {
+  ne: ID
+  eq: ID
+  le: ID
+  lt: ID
+  ge: ID
+  gt: ID
+  contains: ID
+  notContains: ID
+  between: [ID]
+  beginsWith: ID
+  in: [ID]
+  notIn: [ID]
+}
+
+enum ModelAttributeTypes {
+  binary
+  binarySet
+  bool
+  list
+  map
+  number
+  numberSet
+  string
+  stringSet
+  _null
+}
+
+input ModelSizeInput {
+  ne: Int
+  eq: Int
+  le: Int
+  lt: Int
+  ge: Int
+  gt: Int
+  between: [Int]
+}
+
+enum ModelSortDirection {
+  ASC
+  DESC
+}
+
+type ModelUserSettingsConnection @aws_iam @aws_cognito_user_pools {
+  items: [UserSettings]!
+  nextToken: String
+}
+
+input ModelUserSettingsFilterInput {
+  theme: ModelStringInput
+  preferences: ModelStringInput
+  profilePictureKey: ModelStringInput
+  id: ModelIDInput
+  createdAt: ModelStringInput
+  updatedAt: ModelStringInput
+  and: [ModelUserSettingsFilterInput]
+  or: [ModelUserSettingsFilterInput]
+  not: ModelUserSettingsFilterInput
+  owner: ModelStringInput
+}
+
+type Query {
+  getUserSettings(id: ID!): UserSettings @aws_iam @aws_cognito_user_pools
+  listUserSettings(filter: ModelUserSettingsFilterInput, limit: Int, nextToken: String): ModelUserSettingsConnection @aws_iam @aws_cognito_user_pools
+}
+
+input ModelUserSettingsConditionInput {
+  theme: ModelStringInput
+  preferences: ModelStringInput
+  profilePictureKey: ModelStringInput
+  and: [ModelUserSettingsConditionInput]
+  or: [ModelUserSettingsConditionInput]
+  not: ModelUserSettingsConditionInput
+  createdAt: ModelStringInput
+  updatedAt: ModelStringInput
+  owner: ModelStringInput
+}
+
+input CreateUserSettingsInput {
+  theme: String
+  preferences: AWSJSON
+  profilePictureKey: String
+  id: ID
+}
+
+input UpdateUserSettingsInput {
+  theme: String
+  preferences: AWSJSON
+  profilePictureKey: String
+  id: ID!
+}
+
+input DeleteUserSettingsInput {
+  id: ID!
+}
+
+type Mutation {
+  createUserSettings(input: CreateUserSettingsInput!, condition: ModelUserSettingsConditionInput): UserSettings @aws_iam @aws_cognito_user_pools
+  updateUserSettings(input: UpdateUserSettingsInput!, condition: ModelUserSettingsConditionInput): UserSettings @aws_iam @aws_cognito_user_pools
+  deleteUserSettings(input: DeleteUserSettingsInput!, condition: ModelUserSettingsConditionInput): UserSettings @aws_iam @aws_cognito_user_pools
+}
+
+input ModelSubscriptionUserSettingsFilterInput {
+  theme: ModelSubscriptionStringInput
+  preferences: ModelSubscriptionStringInput
+  profilePictureKey: ModelSubscriptionStringInput
+  id: ModelSubscriptionIDInput
+  createdAt: ModelSubscriptionStringInput
+  updatedAt: ModelSubscriptionStringInput
+  and: [ModelSubscriptionUserSettingsFilterInput]
+  or: [ModelSubscriptionUserSettingsFilterInput]
+  owner: ModelStringInput
+}
+
+type Subscription {
+  onCreateUserSettings(filter: ModelSubscriptionUserSettingsFilterInput, owner: String): UserSettings @aws_subscribe(mutations: ["createUserSettings"]) @aws_iam @aws_cognito_user_pools
+  onUpdateUserSettings(filter: ModelSubscriptionUserSettingsFilterInput, owner: String): UserSettings @aws_subscribe(mutations: ["updateUserSettings"]) @aws_iam @aws_cognito_user_pools
+  onDeleteUserSettings(filter: ModelSubscriptionUserSettingsFilterInput, owner: String): UserSettings @aws_subscribe(mutations: ["deleteUserSettings"]) @aws_iam @aws_cognito_user_pools
+}
