@@ -273,7 +273,7 @@
        {
         "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
        },
-       "/6300abf70c9335d54bfa178662bbea2a348ba2fd29334877a83b3693f30200b0.json"
+       "/168548052eabf4cf59eed2841c03095f3f5b786539e13192c5efa247ca9b17db.json"
       ]
      ]
     }
@@ -341,7 +341,7 @@
        {
         "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
        },
-       "/fb5d1527d8921a42eacacb1d40a2494755e48311c02f977663825a78b9aa74ba.json"
+       "/60488f2b59f1e063a9f677b7f35f3d48bd4226e933209d6ae4cadc05838b77c7.json"
       ]
      ]
     }
@@ -397,7 +397,7 @@
        {
         "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
        },
-       "/aa52ed4dcf085a5b43277ba3a4e55d4ef37b668f8a497ad180ce2245fdcaca27.json"
+       "/3bdcbc21096810f0c0e349aceae7d5a71d0aded68b6c30fe908a8797117c359e.json"
       ]
      ]
     }
@@ -413,7 +413,7 @@
   "CDKMetadata": {
    "Type": "AWS::CDK::Metadata",
    "Properties": {
-    "Analytics": "v2:deflate64:H4sIAAAAAAAA/zPSMzIw0zNQTCwv1k1OydbNyUzSqw4uSUzO1nFOy/MvLSkoLQGxwEK1Onn5Kal6WcX6ZUZGeobmeoaKWcWZmbpFpXklmbmpekEQGgBh4yMRVAAAAA=="
+    "Analytics": "v2:deflate64:H4sIAAAAAAAA/zPSMzIw1zNQTCwv1k1OydbNyUzSqw4uSUzO1nFOy/MvLSkoLQGxwEK1Onn5Kal6WcX6ZUYmekZAbVnFmZm6RaV5JZm5qXpBEBoAotxncFMAAAA="
    },
    "Metadata": {
     "aws:cdk:path": "amplify-protoporosadmindashboard-franciscoostolaza-sandbox-896fb18a58/CDKMetadata/Default"

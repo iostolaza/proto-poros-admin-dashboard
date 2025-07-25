@@ -1,7 +1,12 @@
-/* You can add global styles to this file, and also import other style files */
-// @import '@aws-amplify/ui-angular/styles.css';
 
-// @import '@aws-amplify/ui-angular/theme.css';
+/* Global styles and Tailwind imports */
+
+@import '@aws-amplify/ui-angular/styles.css';
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* You can add custom variables or global styles below */
+:root {
+  --proto-primary: #6366f1; /* indigo-500 */
+}

@@ -301,7 +301,7 @@
   "CDKMetadata": {
    "Type": "AWS::CDK::Metadata",
    "Properties": {
-    "Analytics": "v2:deflate64:H4sIAAAAAAAA/02LwQ6CMBBEv4V7WaEHPRtOXoyp8Wxqu+pCaRO6SEzTfzfEoJxm5s2MBFltoSr0FEtju9LRDdIRI6M9szad0FO8JhMenjhAukQcTiE40dz9zy+mcYSe19WfHCx6Jn4v53VWweGeWZtnj56zIN1DmuE8nDVnoTCGcTCYhQ8WoY2bl5RQ76Au2khUDqNn6hHUVz+6eAyR1wAAAA=="
+    "Analytics": "v2:deflate64:H4sIAAAAAAAA/02OzQrCMBCEn8V7spYgeJaevIhUPEtMVt02zUKTKhLy7qZItaeZ/Wb/FKhqC9VKv4I0tpOOrpAOGCLaU9SmEyW4JMN3T5EhnQMOR2Yn6pv/+dnUjtDHZfQne1sMxfc8vKwbdriL5dqjLzAL0j2kCU6Nk+YsGgw8Dgaz8GwR2rB+qg2o8nkbiOQwlm09QvPVD+4u4f7WAAAA"
    },
    "Metadata": {
     "aws:cdk:path": "amplify-protoporosadmindashboard-franciscoostolaza-sandbox-896fb18a58/auth/CDKMetadata/Default"

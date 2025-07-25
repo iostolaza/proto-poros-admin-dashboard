@@ -1,9 +1,9 @@
 {
   "auth": {
-    "user_pool_id": "us-west-1_ka2n0svaX",
+    "user_pool_id": "us-west-1_S2NE1LgIg",
     "aws_region": "us-west-1",
-    "user_pool_client_id": "6ttpakemb3ikctg24tldf3m3ar",
-    "identity_pool_id": "us-west-1:b3ad9743-1dd0-4c33-9e06-908f289ab9e9",
+    "user_pool_client_id": "l5e5phq9n8t6gutgrtm7kma86",
+    "identity_pool_id": "us-west-1:7fe62524-d58a-481e-b65a-32466eb23805",
     "mfa_methods": [],
     "standard_required_attributes": [
       "email"
@@ -26,7 +26,7 @@
     "unauthenticated_identities_enabled": true
   },
   "data": {
-    "url": "https://q7dwmzn425bafe6vxovly76tc4.appsync-api.us-west-1.amazonaws.com/graphql",
+    "url": "https://vnpqohzd2jfk3lbeck4x3czid4.appsync-api.us-west-1.amazonaws.com/graphql",
     "aws_region": "us-west-1",
     "default_authorization_type": "AMAZON_COGNITO_USER_POOLS",
     "authorization_types": [
@@ -123,11 +123,11 @@
   },
   "storage": {
     "aws_region": "us-west-1",
-    "bucket_name": "amplify-protoporosadminda-admindashboarddrivebucke-8sppc534zkdd",
+    "bucket_name": "amplify-protoporosadminda-admindashboarddrivebucke-8uizrpaghniz",
     "buckets": [
       {
         "name": "adminDashboardDrive",
-        "bucket_name": "amplify-protoporosadminda-admindashboarddrivebucke-8sppc534zkdd",
+        "bucket_name": "amplify-protoporosadminda-admindashboarddrivebucke-8uizrpaghniz",
         "aws_region": "us-west-1",
         "paths": {
           "private/${cognito-identity.amazonaws.com:sub}/*": {

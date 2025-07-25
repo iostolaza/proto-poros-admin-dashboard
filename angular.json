@@ -24,10 +24,14 @@
               {
                 "glob": "**/*",
                 "input": "public"
+              },
+              {
+                "glob": "**/*",
+                "input": "src/assets"
               }
             ],
             "styles": [
-              "node_modules/@aws-amplify/ui-angular/theme.css",
+              "node_modules/@aws-amplify/ui-angular/styles.css",
               "src/styles.scss"
             ]
           },
@@ -79,10 +83,14 @@
               {
                 "glob": "**/*",
                 "input": "public"
+              },
+              {
+                "glob": "**/*",
+                "input": "src/assets"
               }
             ],
             "styles": [
-              "node_modules/@aws-amplify/ui-angular/theme.css",
+              "node_modules/@aws-amplify/ui-angular/styles.css",
               "src/styles.scss"
             ]
           }

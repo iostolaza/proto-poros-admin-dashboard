@@ -1,13 +1,4 @@
 
-// export class Settings {
-//   layout = inject(LayoutService);
-//   isDarkMode = this.layout.isDarkMode;
-
-//   toggleDarkMode() {
-//     this.layout.toggleDarkMode();
-//   }
-// }
-
 import { Component, inject, ChangeDetectionStrategy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { LayoutService } from '../../core/services/layout.service';
