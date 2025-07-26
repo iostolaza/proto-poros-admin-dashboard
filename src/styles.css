@@ -1,0 +1,72 @@
+@import "tailwindcss";
+
+:root {
+  --proto-primary: #6366f1; /* Indigo-500 as main color */
+  --background-light: #f8fafc; /* gray-50 */
+  --background-dark: #1e293b; /* gray-800 */
+  --text-light: #0f172a; /* gray-950 */
+  --text-dark: #f1f5f9; /* gray-100 */
+  --muted-light: #94a3b8; /* gray-400 */
+  --muted-dark: #64748b; /* gray-500 */
+  --border-light: #e2e8f0; /* gray-200 */
+  --border-dark: #475569; /* gray-600 */
+}
+
+/* Sidebar collapsed label */
+.sidebar-label.hidden {
+  display: none;
+}
+
+/* Mobile menu open state */
+.mobile-menu-open {
+  transform: translateX(0);
+}
+
+/* Shadow and rounded utilities */
+.shadow {
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+}
+
+.rounded-md {
+  border-radius: 0.375rem;
+}
+
+.rounded-lg {
+  border-radius: 0.5rem;
+}
+
+/* Amplify UI override */
+[data-amplify-theme] {
+  --amplify-colors-brand-primary: var(--proto-primary);
+}
+
+/* Custom theme for indigo and grey shades */
+body {
+  background-color: var(--background-light);
+  color: var(--text-light);
+}
+
+.dark body {
+  background-color: var(--background-dark);
+  color: var(--text-dark);
+}
+
+.primary {
+  background-color: var(--proto-primary);
+}
+
+.muted {
+  color: var(--muted-light);
+}
+
+.dark .muted {
+  color: var(--muted-dark);
+}
+
+.border {
+  border-color: var(--border-light);
+}
+
+.dark .border {
+  border-color: var(--border-dark);
+}

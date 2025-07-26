@@ -1,5 +1,5 @@
 {
-  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "": "./node_modules/@angular/cli/lib/config/schema.json",
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
@@ -31,8 +31,12 @@
               }
             ],
             "styles": [
-              "node_modules/@aws-amplify/ui-angular/styles.css",
-              "src/styles.scss"
+              "node_modules/@aws-amplify/ui-angular/theme.css",
+              "src/styles.css"
+            ],
+            "polyfills": [
+              "zone.js",
+              "src/polyfills.ts"
             ]
           },
           "configurations": {
@@ -90,8 +94,12 @@
               }
             ],
             "styles": [
-              "node_modules/@aws-amplify/ui-angular/styles.css",
-              "src/styles.scss"
+              "node_modules/@aws-amplify/ui-angular/theme.css",
+              "src/styles.css"
+            ],
+            "polyfills": [
+              "zone.js",
+              "src/polyfills.ts"
             ]
           }
         }

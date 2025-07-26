@@ -1,0 +1,24 @@
+@for (menu of menuService.pagesMenu(); track menu.group) {
+  <div class="dropdown relative inline-block">
+    <!-- Button -->
+    <button
+      (click)="toggleMenu(menu)"
+      [ngClass]="menu.selected || menu.active ? 'bg-primary text-primary-foreground' : 'text-muted-foreground/50 hover:bg-card hover:text-muted-foreground'"
+      class="mr-2 inline-flex rounded-md px-3 py-2 text-sm font-medium">
+      <span>{{ menu.group }}</span>
+    </button>
+    <!-- Dropdown -->
+    @if (menu.items?.length > 0) {
+      <div class="dropdown-content absolute top-[100%] min-w-[200px] origin-top-left z-10 bg-card shadow rounded-md p-2">
+        @for (item of menu.items; track item.label) {
+          <a [routerLink]="item.route" class="block px-4 py-2 text-sm text-muted-foreground hover:bg-primary hover:text-primary-foreground rounded-md">
+            @if (item.icon) {
+              <span class="mr-2"><svg-icon [src]="item.icon" [svgClass]="'h-5 w-5'"></svg-icon></span>
+            }
+            {{ item.label }}
+          </a>
+        }
+      </div>
+    }
+  </div>
+}

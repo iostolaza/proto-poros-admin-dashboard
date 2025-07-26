@@ -1,0 +1,19 @@
+@if (menuService.showMobileMenu()) {
+  <div class="fixed inset-0 z-40 bg-background p-4 md:hidden">
+    <div class="flex justify-between items-center mb-4">
+      <h2 class="text-lg font-semibold text-foreground">Menu</h2>
+      <button (click)="menuService.showMobileMenu.set(false)" class="focus:outline-none">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+        </svg>
+      </button>
+    </div>
+    <div class="flex flex-col gap-2">
+      @for (menu of menuService.pagesMenu(); track menu.group) {
+        <a [routerLink]="menu.items[0]?.route || '/dashboard'" class="py-2 px-4 rounded hover:bg-primary hover:text-white">
+          {{ menu.group }}
+        </a>
+      }
+    </div>
+  </div>
+}
