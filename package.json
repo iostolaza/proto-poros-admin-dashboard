@@ -34,6 +34,7 @@
     "@tailwindcss/postcss": "^4.1.11",
     "angular-svg-icon": "^19.1.1",
     "aws-amplify": "^6.15.4",
+    "core-js": "^3.44.0",
     "dotenv": "^17.2.0",
     "rxjs": "^7.8.0",
     "tslib": "^2.3.0",
