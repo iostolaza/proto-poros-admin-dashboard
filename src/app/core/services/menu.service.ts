@@ -22,8 +22,8 @@ export interface SubMenuItem {
 export class MenuService {
   showMobileMenu = signal(false);
   pagesMenu = signal<MenuItem[]>([
-    { group: 'Dashboard', selected: false, active: true, items: [] },
-    { group: 'Profile', selected: false, active: false, items: [] }
+    { group: 'Dashboard', selected: false, active: true, items: [{ label: 'Dashboard', icon: 'assets/icons/home.svg', route: '/dashboard' }] },
+    { group: 'Profile', selected: false, active: false, items: [{ label: 'Profile', icon: 'assets/icons/user.svg', route: '/profile' }] }
   ]);
 
   constructor(private router: Router) {
@@ -46,8 +46,27 @@ export class MenuService {
     this.pagesMenu.update(menus => menus.map(m => m === menu ? { ...m, selected: !m.selected } : m));
   }
 
-  private isActive(route: string | undefined): boolean {
-    if (!route) return false;
+  toggleSidebar() {
+    // Placeholder for sidebar toggle logic
+    console.log('Sidebar toggled');
+  }
+
+  expand(items: SubMenuItem[]) {
+    // Placeholder for expanding menu items
+    items.forEach(item => {
+      item.active = this.isActive(item.route);
+      if (item.children) this.expand(item.children);
+    });
+  }
+
+  toggleSubMenu(submenu: SubMenuItem) {
+    // Placeholder for submenu toggle logic
+    if (submenu) {
+      submenu.active = !submenu.active;
+    }
+  }
+
+  private isActive(route: string): boolean {
     return this.router.isActive(this.router.createUrlTree([route]), {
       paths: 'subset',
       queryParams: 'subset',

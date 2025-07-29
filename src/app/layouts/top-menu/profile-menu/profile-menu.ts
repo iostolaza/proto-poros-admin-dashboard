@@ -37,7 +37,7 @@ export class ProfileMenu {
       title: 'Log out',
       icon: 'assets/icons/log-out.svg',
       link: '/auth',
-    }
+    },
   ];
 
   constructor(private router: Router) {}

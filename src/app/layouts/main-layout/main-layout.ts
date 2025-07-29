@@ -11,7 +11,7 @@ import { LayoutService } from '../../core/services/layout.service';
   standalone: true,
   imports: [CommonModule, RouterOutlet, TopMenu, Sidebar, Footer],
   templateUrl: './main-layout.html',
-  styleUrl: './main-layout.scss',
+  styleUrls: ['./main-layout.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class MainLayout {

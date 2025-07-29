@@ -1,20 +1,21 @@
-
-import { Component, inject, ChangeDetectionStrategy } from '@angular/core';
+import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { LayoutService } from '../../core/services/layout.service';
+import { ThemeService } from '../../core/services/theme.service';
 
 @Component({
   selector: 'app-settings',
   standalone: true,
   imports: [CommonModule],
   templateUrl: './settings.html',
-  styleUrl: './settings.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  styleUrls: ['./settings.scss'],
 })
 export class Settings {
-  layout = inject(LayoutService);
+  constructor(public themeService: ThemeService) {}
 
-  toggleDarkMode() {
-    this.layout.toggleDarkMode();
+  toggleThemeMode() {
+    this.themeService.theme.update(theme => {
+      const mode = theme.mode === 'light' ? 'dark' : 'light';
+      return { ...theme, mode };
+    });
   }
 }
