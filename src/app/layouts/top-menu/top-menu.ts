@@ -16,6 +16,6 @@ export class TopMenu {
   constructor(public menuService: MenuService) {}
 
   toggleMobileMenu() {
-    this.menuService.showMobileMenu.set(true);
+    this.menuService.toggleMobileMenu(); 
   }
 }

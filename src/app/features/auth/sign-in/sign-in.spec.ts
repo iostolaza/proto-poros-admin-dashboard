@@ -1,19 +1,17 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { Auth } from './auth';
+import { SignIn } from './sign-in';
 import { AmplifyAuthenticatorModule } from '@aws-amplify/ui-angular';
-import { RouterOutlet } from '@angular/router';
+import { RouterTestingModule } from '@angular/router/testing';
 
-describe('Auth', () => {
-  let component: Auth;
-  let fixture: ComponentFixture<Auth>;
+describe('SignIn', () => {
+  let component: SignIn;
+  let fixture: ComponentFixture<SignIn>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [Auth, AmplifyAuthenticatorModule, RouterOutlet]
-    })
-    .compileComponents();
-
-    fixture = TestBed.createComponent(Auth);
+      imports: [SignIn, AmplifyAuthenticatorModule, RouterTestingModule]
+    }).compileComponents();
+    fixture = TestBed.createComponent(SignIn);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

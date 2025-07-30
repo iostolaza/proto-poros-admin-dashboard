@@ -42,6 +42,10 @@ export class MenuService {
     });
   }
 
+  toggleMobileMenu() {
+    this.showMobileMenu.update(v => !v);
+  }
+
   toggleMenu(menu: MenuItem) {
     this.pagesMenu.update(menus => menus.map(m => m === menu ? { ...m, selected: !m.selected } : m));
   }

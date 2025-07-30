@@ -36,7 +36,7 @@ src/assets/profile:
 alexander-hipp.jpg      jimmy-fermin.jpg        jurica-koletic.jpg
 franciscoostolaza@Mac proto-poros-admin-dashboard % 
 
-
+ls -R src/
 for profile picture lets use jurica-koletic.jpg. 
 
 for .ico lets use  protos_p_pixel_blue75.ico   

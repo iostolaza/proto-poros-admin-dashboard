@@ -1,7 +1,6 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { AmplifyAuthenticatorModule } from '@aws-amplify/ui-angular';
 import { Router } from '@angular/router';
-import type { SignInOutput } from 'aws-amplify/auth';
 
 @Component({
   selector: 'app-sign-in',
@@ -9,12 +8,12 @@ import type { SignInOutput } from 'aws-amplify/auth';
   imports: [AmplifyAuthenticatorModule],
   templateUrl: './sign-in.html'
 })
-export class SignIn {
+export class SignIn implements OnInit {
   private router = inject(Router);
-  services = {
-    handleSignIn: async (input: any): Promise<SignInOutput> => {
-      await this.router.navigate(['/dashboard']);
-      return { isSignedIn: true, nextStep: { signInStep: 'DONE' } };
-    }
-  };
+
+  ngOnInit() {
+    import('aws-amplify/auth').then(({ getCurrentUser }) => {
+      getCurrentUser().then(() => this.router.navigate(['/dashboard'])).catch(() => {});
+    });
+  }
 }

@@ -1,11 +1,12 @@
 import { Routes } from '@angular/router';
 import { MainLayout } from './layouts/main-layout/main-layout';
 import { authGuard } from './core/guards/auth.guards';
+import { SignIn } from './features/auth/sign-in/sign-in';
 
 export const routes: Routes = [
   {
     path: 'auth',
-    loadComponent: () => import('./features/auth/sign-in/sign-in').then(m => m.SignIn),
+    component: SignIn,
   },
   {
     path: '',
