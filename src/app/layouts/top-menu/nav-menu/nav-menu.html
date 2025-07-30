@@ -3,12 +3,12 @@
      (mouseenter)="mouseEnter($event)"
      (mouseleave)="mouseLeave($event)">
   
-  <!-- Button (remove group if single item) -->
+  <!-- Button (use label if single item, otherwise group) -->
   <button
     (click)="toggleMenu(menu)"
     [ngClass]="menu.selected || menu.active ? 'bg-primary text-primary-foreground' : 'text-muted-foreground/50 hover:bg-card hover:text-muted-foreground'"
     class="mr-2 inline-flex rounded-md px-3 py-2 text-sm font-medium">
-    <span>{{ menu.items[0]?.label || menu.group }}</span>  # Use label if available
+    <span>{{ menu.items.length === 1 ? menu.items[0].label : menu.group }}</span>
   </button>
 
   <!-- Dropdown -->

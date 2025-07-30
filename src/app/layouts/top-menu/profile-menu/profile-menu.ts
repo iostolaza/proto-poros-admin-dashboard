@@ -4,11 +4,12 @@ import { Router, RouterLink } from '@angular/router';
 import { AngularSvgIconModule } from 'angular-svg-icon';
 import { animate, state, style, transition, trigger } from '@angular/animations';
 import { signOut } from 'aws-amplify/auth';
+import { ClickOutsideDirective } from '../../../shared/directives/click-outside.directive';
 
 @Component({
   selector: 'app-profile-menu',
   standalone: true,
-  imports: [CommonModule, RouterLink, AngularSvgIconModule],
+  imports: [CommonModule, RouterLink, AngularSvgIconModule, ClickOutsideDirective],
   templateUrl: './profile-menu.html',
   styleUrls: ['./profile-menu.scss'],
   animations: [
@@ -49,5 +50,10 @@ export class ProfileMenu {
   async logout() {
     await signOut();
     this.router.navigate(['/auth']);
+  }
+
+  // Update isOpen using set method for signal
+  onClickOutside() {
+    this.isOpen.set(false);
   }
 }
