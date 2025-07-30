@@ -11,8 +11,6 @@ bootstrapApplication(AppComponent, {
   providers: [
     provideRouter(routes),
     provideHttpClient(),
-    provideAngularSvgIcon({
-      iconPath: 'assets/icons/' 
-    })
+    provideAngularSvgIcon()
   ]
 }).catch(err => console.error(err));
