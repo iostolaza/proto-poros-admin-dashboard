@@ -1,20 +1,18 @@
-import { Component, signal } from '@angular/core';
+import { Component, signal, effect } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Router, RouterLink } from '@angular/router';
+import { Router } from '@angular/router';
 import { AngularSvgIconModule } from 'angular-svg-icon';
 import { animate, state, style, transition, trigger } from '@angular/animations';
 import { signOut } from 'aws-amplify/auth';
-import { ClickOutsideDirective } from '../../../shared/directives/click-outside.directive';
 
 @Component({
   selector: 'app-profile-menu',
   standalone: true,
-  imports: [CommonModule, RouterLink, AngularSvgIconModule, ClickOutsideDirective],
+  imports: [CommonModule, AngularSvgIconModule],
   templateUrl: './profile-menu.html',
-  styleUrls: ['./profile-menu.scss'],
   animations: [
     trigger('openClose', [
-      state('open', style({ opacity: 1, transform: 'translateY(0)', visibility: 'visible' })),
+      state('open', style({ opacity: '1 !important', transform: 'translateY(0)', visibility: 'visible' })),
       state('closed', style({ opacity: 0, transform: 'translateY(-20px)', visibility: 'hidden' })),
       transition('open => closed', animate('0.2s')),
       transition('closed => open', animate('0.2s')),
@@ -24,36 +22,26 @@ import { ClickOutsideDirective } from '../../../shared/directives/click-outside.
 export class ProfileMenu {
   isOpen = signal(false);
   profileMenu = [
-    {
-      title: 'Your Profile',
-      icon: 'assets/icons/user.svg',
-      link: '/profile',
-    },
-    {
-      title: 'Settings',
-      icon: 'assets/icons/settings.svg',
-      link: '/settings',
-    },
-    {
-      title: 'Log out',
-      icon: 'assets/icons/log-out.svg',
-      link: '/auth',
-    },
+    { title: 'Your Profile', icon: 'assets/icons/user.svg', link: '/profile' },
+    { title: 'Settings', icon: 'assets/icons/settings.svg', link: '/settings' },
+    { title: 'Log out', icon: 'assets/icons/log-out.svg', link: null }, 
   ];
 
-  constructor(private router: Router) {}
+  constructor(private router: Router) {
+    effect(() => console.log('isOpen changed:', this.isOpen()));
+  }
 
   toggleMenu() {
     this.isOpen.update(v => !v);
   }
 
-  async logout() {
-    await signOut();
-    this.router.navigate(['/auth']);
-  }
-
-  // Update isOpen using set method for signal
-  onClickOutside() {
+  async onMenuItemClick(item: { title: string; link: string | null }) {
+    if (item.title === 'Log out') {
+      await signOut({ global: true }); 
+      this.router.navigate(['/auth']).then(() => window.location.reload()); 
+    } else if (item.link) {
+      this.router.navigate([item.link]);
+    }
     this.isOpen.set(false);
   }
 }

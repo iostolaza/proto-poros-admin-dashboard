@@ -1,5 +1,5 @@
 import { AfterViewInit, Directive, ElementRef, EventEmitter, Inject, OnDestroy, Output, DOCUMENT } from '@angular/core';
-import { filter, fromEvent, Subscription } from 'rxjs';
+import { debounceTime, filter, fromEvent, Subscription } from 'rxjs';
 
 @Directive({
   selector: '[clickOutside]',
@@ -13,15 +13,16 @@ export class ClickOutsideDirective implements AfterViewInit, OnDestroy {
   constructor(private element: ElementRef, @Inject(DOCUMENT) private document: Document) {}
 
   ngAfterViewInit(): void {
-    this.documentClickSubscription = fromEvent(this.document, 'click')
-      .pipe(
-        filter((event) => {
-          return !this.isInside(event.target as HTMLElement);
-        }),
-      )
-      .subscribe(() => {
-        this.clickOutside.emit();
-      });
+    setTimeout(() => {
+      this.documentClickSubscription = fromEvent(this.document, 'click')
+        .pipe(
+          debounceTime(10),
+          filter((event) => !this.isInside(event.target as HTMLElement)),
+        )
+        .subscribe(() => {
+          this.clickOutside.emit();
+        });
+    }, 0);
   }
 
   ngOnDestroy(): void {

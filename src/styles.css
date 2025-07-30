@@ -1,3 +1,4 @@
+@import '@aws-amplify/ui-angular/theme.css';
 @import "tailwindcss";
 
 :root {
@@ -10,6 +11,8 @@
   --muted-dark: #64748b; /* gray-500 */
   --border-light: #e2e8f0; /* gray-200 */
   --border-dark: #475569; /* gray-600 */
+  --card-light: #ffffff; /* white for better contrast */
+  --card-dark: #2d3748; /* gray-700 */
 }
 
 /* Sidebar collapsed label */
@@ -25,6 +28,10 @@
 /* Shadow and rounded utilities */
 .shadow {
   box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+}
+
+.shadow-custom {
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); /* Stronger shadow for visibility */
 }
 
 .rounded-md {
@@ -69,4 +76,99 @@ body {
 
 .dark .border {
   border-color: var(--border-dark);
+}
+
+/* Ensure sr-only is hidden */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* Define missing custom classes for solid styles */
+.bg-background {
+  background-color: var(--background-light);
+}
+
+.dark .bg-background {
+  background-color: var(--background-dark);
+}
+
+.text-foreground {
+  color: var(--text-light);
+}
+
+.dark .text-foreground {
+  color: var(--text-dark);
+}
+
+.text-muted-foreground {
+  color: var(--muted-light);
+}
+
+.dark .text-muted-foreground {
+  color: var(--muted-dark);
+}
+
+.border-border {
+  border-color: var(--border-light);
+}
+
+.dark .border-border {
+  border-color: var(--border-dark);
+}
+
+.border-muted {
+  border-color: var(--muted-light);
+}
+
+.dark .border-muted {
+  border-color: var(--muted-dark);
+}
+
+.bg-card {
+  background-color: var(--card-light);
+}
+
+.dark .bg-card {
+  background-color: var(--card-dark);
+}
+
+.text-primary {
+  color: var(--proto-primary);
+}
+
+/* Hover utilities (custom, since not full Tailwind) */
+.hover\:bg-card:hover {
+  background-color: var(--card-light);
+}
+
+.dark .hover\:bg-card:hover {
+  background-color: var(--card-dark);
+}
+
+.hover\:text-primary:hover {
+  color: var(--proto-primary);
+}
+
+/* Dropdown-specific overrides for visibility/contrast */
+.dropdown {
+  background-color: var(--card-light) !important; /* Solid white for less lightness/transparency */
+  opacity: 1 !important; /* Force full opacity */
+  border-color: var(--border-light) !important; /* Solid border */
+  box-shadow: var(--shadow-custom); /* Use defined shadow */
+  --ring-color: var(--border-light); /* Visible ring color */
+  --ring-opacity: 50; /* Medium opacity for subtle ring */
+}
+
+.dark .dropdown {
+  background-color: var(--card-dark) !important;
+  border-color: var(--border-dark) !important;
+  --ring-color: var(--border-dark);
 }

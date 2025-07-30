@@ -21,10 +21,7 @@ export interface SubMenuItem {
 })
 export class MenuService {
   showMobileMenu = signal(false);
-  pagesMenu = signal<MenuItem[]>([
-    { group: 'Dashboard', selected: false, active: true, items: [{ label: 'Dashboard', icon: 'assets/icons/home.svg', route: '/dashboard' }] },
-    { group: 'Profile', selected: false, active: false, items: [{ label: 'Profile', icon: 'assets/icons/user.svg', route: '/profile' }] }
-  ]);
+  pagesMenu = signal<MenuItem[]>([]);
 
   constructor(private router: Router) {
     this.router.events.subscribe(event => {
