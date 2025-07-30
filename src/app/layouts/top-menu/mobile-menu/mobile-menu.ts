@@ -13,6 +13,6 @@ export class MobileMenu {
   constructor(public menuService: MenuService) {}
 
   toggleMobileMenu() {
-    this.menuService.showMobileMenu.set(false);
+    this.menuService.toggleMobileMenu();
   }
 }

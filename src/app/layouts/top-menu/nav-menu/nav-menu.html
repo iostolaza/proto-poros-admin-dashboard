@@ -3,16 +3,16 @@
      (mouseenter)="mouseEnter($event)"
      (mouseleave)="mouseLeave($event)">
   
-  <!-- Button -->
+  <!-- Button (remove group if single item) -->
   <button
     (click)="toggleMenu(menu)"
     [ngClass]="menu.selected || menu.active ? 'bg-primary text-primary-foreground' : 'text-muted-foreground/50 hover:bg-card hover:text-muted-foreground'"
     class="mr-2 inline-flex rounded-md px-3 py-2 text-sm font-medium">
-    <span>{{ menu.group }}</span>
+    <span>{{ menu.items[0]?.label || menu.group }}</span>  # Use label if available
   </button>
 
   <!-- Dropdown -->
-  <div *ngIf="menu.items?.length > 0" class="dropdown-content absolute top-[100%] min-w-[200px] origin-top-left z-10 bg-card shadow rounded-md p-2">
+  <div *ngIf="menu.items?.length > 1" class="dropdown-content absolute top-[100%] min-w-[200px] origin-top-left z-10 bg-card shadow rounded-md p-2">
     <a *ngFor="let item of menu.items; trackBy: trackByLabel" [routerLink]="item.route" class="px-4 py-2 text-sm text-muted-foreground hover:bg-primary hover:text-primary-foreground rounded-md flex items-center gap-2">
       <span *ngIf="item.icon" class="mr-2">
         <svg-icon [src]="item.icon" [svgClass]="'h-5 w-5'"></svg-icon>

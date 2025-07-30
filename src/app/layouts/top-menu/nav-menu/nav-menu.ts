@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule } from '@angular/common';  # Added for *ngIf
 import { RouterModule } from '@angular/router';
 import { AngularSvgIconModule } from 'angular-svg-icon';
 import { MenuService, MenuItem } from '../../../core/services/menu.service';
@@ -22,7 +22,7 @@ export class NavMenu {
 
   public mouseEnter(event: Event): void {
     const target = event.currentTarget as HTMLElement;
-    const element = target.querySelector('app-navbar-submenu')?.children[0];
+    const element = target.querySelector('div.dropdown-content');
     if (element) {
       this.hideMenuClass.forEach(c => element.classList.remove(c));
       this.showMenuClass.forEach(c => element.classList.add(c));
@@ -31,7 +31,7 @@ export class NavMenu {
 
   public mouseLeave(event: Event): void {
     const target = event.currentTarget as HTMLElement;
-    const element = target.querySelector('app-navbar-submenu')?.children[0];
+    const element = target.querySelector('div.dropdown-content');
     if (element) {
       this.showMenuClass.forEach(c => element.classList.remove(c));
       this.hideMenuClass.forEach(c => element.classList.add(c));
@@ -42,7 +42,7 @@ export class NavMenu {
     return item.group;
   }
 
-  trackByLabel(index: number, item: {label: string}): string {
+  trackByLabel(index: number, item: { label: string }): string {
     return item.label;
   }
 }
