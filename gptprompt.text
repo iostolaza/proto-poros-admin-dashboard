@@ -23,3 +23,5 @@ git push origin main
 
 
 cd /Users/franciscoostolaza/proto-poros-admin-dashboard
+
+ls -R src

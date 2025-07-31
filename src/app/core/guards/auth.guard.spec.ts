@@ -1,11 +1,12 @@
-// src/app/core/guards/auth.guard.spec.ts
 import { TestBed } from '@angular/core/testing';
-import { Router, UrlTree } from '@angular/router';
+import { Router, UrlTree, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
 import { authGuard, noAuthGuard } from './auth.guard';
 import { getCurrentUser } from 'aws-amplify/auth';
 
 describe('Auth Guards', () => {
   let router: Router;
+  const mockRoute = {} as ActivatedRouteSnapshot;
+  const mockState = {} as RouterStateSnapshot;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
@@ -20,13 +21,13 @@ describe('Auth Guards', () => {
   describe('authGuard', () => {
     it('should allow access if authenticated', async () => {
       spyOn(getCurrentUser as any, 'getCurrentUser').and.resolveTo({ userId: 'test' });
-      const result = await authGuard();
+      const result = await authGuard(mockRoute, mockState);
       expect(result).toBe(true);
     });
 
     it('should redirect if not authenticated', async () => {
       spyOn(getCurrentUser as any, 'getCurrentUser').and.rejectWith('No user');
-      const result = await authGuard();
+      const result = await authGuard(mockRoute, mockState);
       expect(router.createUrlTree).toHaveBeenCalledWith(['/auth']);
       expect(result instanceof UrlTree).toBe(true);
     });
@@ -35,13 +36,13 @@ describe('Auth Guards', () => {
   describe('noAuthGuard', () => {
     it('should allow access if not authenticated', async () => {
       spyOn(getCurrentUser as any, 'getCurrentUser').and.rejectWith('No user');
-      const result = await noAuthGuard();
+      const result = await noAuthGuard(mockRoute, mockState);
       expect(result).toBe(true);
     });
 
     it('should redirect if authenticated', async () => {
       spyOn(getCurrentUser as any, 'getCurrentUser').and.resolveTo({ userId: 'test' });
-      const result = await noAuthGuard();
+      const result = await noAuthGuard(mockRoute, mockState);
       expect(router.createUrlTree).toHaveBeenCalledWith(['/dashboard']);
       expect(result instanceof UrlTree).toBe(true);
     });

@@ -1,9 +1,12 @@
-import { CanActivateFn } from '@angular/router';
+import { CanActivateFn, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
 import { inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { getCurrentUser } from 'aws-amplify/auth';
 
-export const authGuard: CanActivateFn = async () => {
+export const authGuard: CanActivateFn = async (
+  route: ActivatedRouteSnapshot,
+  state: RouterStateSnapshot
+) => {
   const router = inject(Router);
   try {
     await getCurrentUser();
@@ -14,7 +17,10 @@ export const authGuard: CanActivateFn = async () => {
   }
 };
 
-export const noAuthGuard: CanActivateFn = async () => {
+export const noAuthGuard: CanActivateFn = async (
+  route: ActivatedRouteSnapshot,
+  state: RouterStateSnapshot
+) => {
   const router = inject(Router);
   try {
     await getCurrentUser();
