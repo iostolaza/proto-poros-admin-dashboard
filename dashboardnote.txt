@@ -133,3 +133,18 @@ rm -rf amplify/package-lock.json
 rm -rf node_modules .amplify amplify/node_modules amplify/.cache amplify/package-lock.json amplify_outputs.*
 
 
+
+Confirming All Connections Post-Fix
+
+Local Test: Run ng serve—app should load /auth for unauth users (authenticator forms). 
+
+Check browser console for Amplify.getConfig() output matching amplify_outputs.json.
+Sandbox Validation: Run npx ampx sandbox --logs—watch for successful synth/deploy (no errors). 
+Test auth: import { signUp } from 'aws-amplify/auth'; 
+await signUp({ username: 'test@email.com', password: 'Pass123!' }); 
+in console (Gen 2 Auth API).
+Deployment Success: After push/redeploy, 
+verify in Console: green build status, 
+app URL loads (e.g., https://main.d2s31a2let3c7r.amplifyapp.com). 
+Use AWS CLI for deeper check: aws amplify list-apps (shows app ID), 
+aws amplify get-app --app-id d2s31a2let3c7r (confirms backend env).
