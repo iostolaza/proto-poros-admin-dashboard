@@ -13,15 +13,10 @@ Use `cat << 'EOF' >  command to generate a complete script answers.
 
 Be detailed, note down every solution addressed, and provide a summary at the end. 
 
-We wrote the 8:44:34 AM File written: amplify_outputs.json
-We installed the npm install
-We pushed to github. 
+The dashboard deployed to git and amplify. 
+we get the blue page with loading on it. 
 
-git add .
-git commit -m "resolve CDK assembly error"
-git push origin main  
+The terminal is on a loop. 
 
 
-cd /Users/franciscoostolaza/proto-poros-admin-dashboard
-
-ls -R src
+Lets identify, what scripts we need to view or check before prodiving a reponse. 

@@ -1,5 +1,5 @@
 git add .
-git commit -m "Pre directory redesign"
+git commit -m "auth guard dependecies fix"
 git push origin main
 
 ls -R src/

@@ -10,9 +10,9 @@ export const authGuard: CanActivateFn = async (
   const router = inject(Router);
   try {
     await getCurrentUser();
-    return true; 
+    return true;
   } catch (error) {
-    console.error('Auth guard error:', error); 
+    console.error('Auth guard error:', error);
     return router.createUrlTree(['/auth']);
   }
 };

@@ -1,14 +1,11 @@
-<!-- src/app/features/auth/sign-in/sign-in.html -->
-<amplify-authenticator [loginMechanisms]="['email']">
+<div *ngIf="isLoading()" class="flex items-center justify-center h-screen bg-gray-100 dark:bg-gray-900 text-gray-800 dark:text-gray-200">
+  Authenticating...
+</div>
+<amplify-authenticator *ngIf="!isLoading()" [loginMechanisms]="['email']">
   <ng-template amplifySlot="authenticated" let-user="user" let-signOut="signOut">
     Welcome {{ user.attributes.email }}!
-    <button
-      (click)="signOut()"
-      class="px-4 py-2 bg-blue-500 dark:bg-blue-300 rounded hover:bg-blue-700 dark:hover:bg-blue-500 text-white"
-      aria-label="Sign out"
-    >
+    <button (click)="signOut()" class="px-4 py-2 bg-blue-500 dark:bg-blue-300 rounded hover:bg-blue-700 dark:hover:bg-blue-500 text-white" aria-label="Sign out">
       Sign Out
     </button>
   </ng-template>
 </amplify-authenticator>
-

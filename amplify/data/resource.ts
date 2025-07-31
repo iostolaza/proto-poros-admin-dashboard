@@ -4,7 +4,8 @@ const schema = a.schema({
   UserSettings: a.model({
     theme: a.string().default('light'),
     preferences: a.json(),
-    profilePictureKey: a.string()
+    profilePictureKey: a.string(),
+    owner: a.string().authorization(allow => [allow.owner().to(['read'])])
   }).authorization(allow => [allow.owner()])
 });
 

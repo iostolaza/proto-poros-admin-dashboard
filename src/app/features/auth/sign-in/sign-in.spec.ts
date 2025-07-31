@@ -1,10 +1,10 @@
-// src/app/features/auth/sign-in/sign-in.spec.ts
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { SignIn } from './sign-in';
 import { AmplifyAuthenticatorModule } from '@aws-amplify/ui-angular';
 import { RouterTestingModule } from '@angular/router/testing';
 import { getCurrentUser, fetchAuthSession } from 'aws-amplify/auth';
 import { Router } from '@angular/router';
+import { By } from '@angular/platform-browser';
 
 describe('SignIn', () => {
   let component: SignIn;
@@ -20,13 +20,24 @@ describe('SignIn', () => {
     component = fixture.componentInstance;
     router = TestBed.inject(Router);
 
-    spyOn(console, 'log'); 
+    spyOn(console, 'log');
 
     fixture.detectChanges();
   });
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should show loading initially then authenticator', async () => {
+    const loadingEl = fixture.debugElement.query(By.css('.flex.items-center'));
+    expect(loadingEl).toBeTruthy();  // Loading shows
+
+    await component.ngOnInit();
+    fixture.detectChanges();
+    expect(component.isLoading()).toBeFalse();
+    const authEl = fixture.debugElement.query(By.css('amplify-authenticator'));
+    expect(authEl).toBeTruthy();
   });
 
   it('should redirect to dashboard if authenticated', async () => {
