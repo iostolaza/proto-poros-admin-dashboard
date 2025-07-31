@@ -12,3 +12,14 @@ Use `cat << 'EOF' >  command to generate a complete script answers.
 - Use Amplify Gen2 code-first where applicable.
 
 Be detailed, note down every solution addressed, and provide a summary at the end. 
+
+We wrote the 8:44:34 AM File written: amplify_outputs.json
+We installed the npm install
+We pushed to github. 
+
+git add .
+git commit -m "resolve CDK assembly error"
+git push origin main  
+
+
+cd /Users/franciscoostolaza/proto-poros-admin-dashboard

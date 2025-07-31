@@ -1,4 +1,3 @@
-// src/app/core/guards/auth.guard.ts
 import { CanActivateFn } from '@angular/router';
 import { inject } from '@angular/core';
 import { Router } from '@angular/router';
@@ -10,7 +9,7 @@ export const authGuard: CanActivateFn = async () => {
     await getCurrentUser();
     return true; 
   } catch (error) {
-    console.warn('Auth guard: User not authenticated, redirecting to /auth', error);
+    console.error('Auth guard error:', error); 
     return router.createUrlTree(['/auth']);
   }
 };
@@ -19,9 +18,9 @@ export const noAuthGuard: CanActivateFn = async () => {
   const router = inject(Router);
   try {
     await getCurrentUser();
-    console.warn('NoAuth guard: User authenticated, redirecting to /dashboard');
     return router.createUrlTree(['/dashboard']);
   } catch (error) {
+    console.error('NoAuth guard error:', error);
     return true;
   }
 };
