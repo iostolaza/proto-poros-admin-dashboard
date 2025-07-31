@@ -1,3 +1,5 @@
+
+<!-- src/app/features/auth/auth.html -->
 <amplify-authenticator [loginMechanisms]="['email']">
   <ng-template amplifySlot="authenticated" let-user="user" let-signOut="signOut">
     <h1 class="text-2xl font-bold text-indigo-500 dark:text-indigo-300">Welcome {{ user.attributes.email }}!</h1>

@@ -1,3 +1,4 @@
+// src/app/features/auth/sign-in/sign-in.ts
 import { Component, inject, OnInit } from '@angular/core';
 import { AmplifyAuthenticatorModule } from '@aws-amplify/ui-angular';
 import { Router } from '@angular/router';

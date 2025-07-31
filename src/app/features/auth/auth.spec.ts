@@ -1,3 +1,4 @@
+// src/app/features/auth/auth.spec.ts
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { Auth } from './auth';
 import { AmplifyAuthenticatorModule } from '@aws-amplify/ui-angular';

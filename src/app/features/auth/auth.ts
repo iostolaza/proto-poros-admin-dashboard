@@ -1,3 +1,4 @@
+// src/app/features/auth/auth.ts
 import { Component } from '@angular/core';
 import { AmplifyAuthenticatorModule } from '@aws-amplify/ui-angular';
 

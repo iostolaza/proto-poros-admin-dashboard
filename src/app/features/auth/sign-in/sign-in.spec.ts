@@ -1,4 +1,4 @@
-
+// src/app/features/auth/sign-in/sign-in.spec.ts
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { SignIn } from './sign-in';
 import { AmplifyAuthenticatorModule } from '@aws-amplify/ui-angular';

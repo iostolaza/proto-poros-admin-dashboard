@@ -1,3 +1,4 @@
+// src/app/layouts/main-layout/main-layout.ts
 import { Component, inject, ChangeDetectionStrategy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
