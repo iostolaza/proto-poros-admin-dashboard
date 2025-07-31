@@ -2136,7 +2136,7 @@
   "CDKMetadata": {
    "Type": "AWS::CDK::Metadata",
    "Properties": {
-    "Analytics": "v2:deflate64:H4sIAAAAAAAA/1WQQW+DMAyFf8vuwatYpZ1X0I7bRHevTGJQCiQodlpViP++hE6ddnr+5Cf72SWUu1fYPeGVC22GYrQtLB/EQuYoqAdVde4LA04kFDJU3hkr1jvVEPsYNKkqsvjpDzv3qNPY02JuDidvWvjGdqQDMimLEyyNH+/upKvCeeab07DUm71uaxQ8Pkb+p/fodA6R0nS2jwG3RL+bxwuFVfHLCZlJGN6yJIZD1ANJDrBm72eUOYra2unY3rp+Vc4bgjM/X8o9lOkxZ7a2CNGJnQiau/4AenU4lDUBAAA="
+    "Analytics": "v2:deflate64:H4sIAAAAAAAA/1WQQW+DMAyFf8vuwatYD7uuoB23ie5emcSgFEhQ7LSqEP99CZ067fT8yU/2s0sod6+we8IrF9oMxWhbWD6IhcxRUA+q6twXBpxIKGSovDNWrHeqIfYxaFJVZPHTH3buUaexp8XcHE7etPCN7UgHZFIWJ1gaP97dSVeF88w3p2GpN3vd1ih4fIz8T+/R6RwipelsHwNuiX43jxcKq+KXEzKTMLxlSQyHqAeSHGDN3s8ocxS1tdOxvXX9qpw3BGd+vpR7KNNjzmxtEaITOxE0d/0BV3I2+TUBAAA="
    },
    "Metadata": {
     "aws:cdk:path": "amplify-protoporosadmindashboard-franciscoostolaza-sandbox-896fb18a58/data/amplifyData/UserSettings/CDKMetadata/Default"

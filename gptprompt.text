@@ -12,9 +12,3 @@ Use `cat << 'EOF' >  command to generate a complete script answers.
 - Use Amplify Gen2 code-first where applicable.
 
 Be detailed, note down every solution addressed, and provide a summary at the end. 
-
-We want to understand why the profile dropdown is not working. I will provide all the scripts. 
-Ask questions, or request possible missing scripts to provide a complete set of logic. 
-
-ls -R src
-ls -R src/assets

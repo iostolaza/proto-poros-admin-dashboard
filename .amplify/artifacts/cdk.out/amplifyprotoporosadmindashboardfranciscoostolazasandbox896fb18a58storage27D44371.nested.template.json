@@ -418,7 +418,7 @@
   "CDKMetadata": {
    "Type": "AWS::CDK::Metadata",
    "Properties": {
-    "Analytics": "v2:deflate64:H4sIAAAAAAAA/11Pyw7CIBD8Fu8UGzTxbHvWNO0HGITV0Ac0LNQYwr9L08YaTzOzM7PZZZTlJ5rv+AszIbusV3caroAOZOO46EgybgEPNBRedOBI+dArW6AyvRLvbbzoSBAHGhpnlX5W3PIBHNg59RWRKJ4iW39tRlJ6dGaoAY23Ambrl1/4OKalf6nKmklJsAVHIGdEcOn8Z8pFoo0E2uJ+YkfK0qstKpVZr50agNYLfgCJKVgdBwEAAA=="
+    "Analytics": "v2:deflate64:H4sIAAAAAAAA/11Pyw7CIBD8Fu8UG/Tg1fasadoPMAiroQ9oWKgxhH+Xpo01nmZmZ2azyyjLTzTf8RdmQnZZr+40XAEdyMZx0ZFk3AIeaCi86MCR8qFXtkBleiXe23jRkSAONDTOKv2suOUDOLBz6isiUTxFtv7ajKT06MxQAxpvBczWL7/wcUxL/1KVNZOSYAuOQM6I4NL5z5SLRBsJtMX9xI6UpVdbVCqzXjs1AK0X/ACTHQHRBwEAAA=="
    },
    "Metadata": {
     "aws:cdk:path": "amplify-protoporosadmindashboard-franciscoostolaza-sandbox-896fb18a58/storage/CDKMetadata/Default"
@@ -465,6 +465,9 @@
     "value": "nodejs22.x"
    },
    "ap-southeast-5": {
+    "value": "nodejs22.x"
+   },
+   "ap-southeast-6": {
     "value": "nodejs22.x"
    },
    "ap-southeast-7": {
