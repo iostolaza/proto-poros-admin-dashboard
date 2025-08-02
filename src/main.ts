@@ -1,25 +1,34 @@
+// main.ts
+/*
+Developer: Francisco Ostolaza 
+Date Created: August 02, 2025  
+Date Updated: August 02, 2025 
+Description:
+This file serves as the entry point for the Angular application.
+It includes necessary polyfills for browser compatibility,
+configures AWS Amplify for authentication and backend services using a JSON 
+configuration file, logs the configuration for debugging purposes, and 
+bootstraps the root AppComponent with the application's configuration. 
+This setup ensures the app initializes correctly with routing, HTTP client, animations, 
+and SVG icon support.
+
+*/ 
+
+// Imports
 import 'zone.js';
 import { bootstrapApplication } from '@angular/platform-browser';
-import { provideRouter } from '@angular/router';
-import { provideHttpClient } from '@angular/common/http';
-import { provideAngularSvgIcon } from 'angular-svg-icon';
-import { provideAnimations } from '@angular/platform-browser/animations';
-import { AppComponent } from './app/app';
-import { routes } from './app/app.routes';
+import { AppComponent } from './app/app.component';
+import { appConfig } from './app/app.config';
 import { Amplify } from 'aws-amplify';
 import amplifyOutputs from '../amplify_outputs.json';
 
-Amplify.configure(amplifyOutputs);
-// Remove console.log for production; use only for debug
-if (process.env.NODE_ENV !== 'production') {
-  console.log('Amplify Config:', Amplify.getConfig());
-}
+// Polyfills
+(window as any).global = window;
+(window as any).process = { env: { DEBUG: undefined } };
 
-bootstrapApplication(AppComponent, {
-  providers: [
-    provideRouter(routes),
-    provideHttpClient(),
-    provideAngularSvgIcon(),
-    provideAnimations()
-  ]
-}).catch(err => console.error(err));
+// Amplify Configuration
+Amplify.configure(amplifyOutputs);
+console.log('Amplify configured:', Amplify.getConfig()); // Debug: Check config
+
+// Bootstrap Application
+bootstrapApplication(AppComponent, appConfig).catch(err => console.error(err));

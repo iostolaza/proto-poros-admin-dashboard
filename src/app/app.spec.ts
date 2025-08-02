@@ -2,7 +2,7 @@ import { TestBed } from '@angular/core/testing';
 import { provideRouter } from '@angular/router';
 import { provideHttpClient } from '@angular/common/http';
 import { provideAngularSvgIcon } from 'angular-svg-icon';
-import { AppComponent } from './app'; 
+import { AppComponent } from './app.component';
 import { routes } from './app.routes';
 import { MainLayout } from './layouts/main-layout/main-layout';
 

@@ -9,3 +9,7 @@
     </button>
   </ng-template>
 </amplify-authenticator>
+<!-- Debug Fallback: If Amplify UI fails to load -->
+<div *ngIf="!isLoading()" class="text-center mt-4">
+  Sign-In Page Loaded - If no form visible, check console for Amplify errors or AWS Cognito setup.
+</div>

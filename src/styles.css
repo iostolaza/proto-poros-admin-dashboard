@@ -1,4 +1,6 @@
-@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 :root {
   --proto-primary: #6366f1; /* Indigo-500 as main color */
@@ -44,6 +46,10 @@
 /* Amplify UI override */
 [data-amplify-theme] {
   --amplify-colors-brand-primary: var(--proto-primary);
+  --amplify-colors-background-primary: var(--background-light); /* Ensure background */
+  --amplify-colors-background-secondary: var(--card-light); /* Card backgrounds */
+  --amplify-colors-font-primary: var(--text-light); /* Text colors */
+  --amplify-colors-border-primary: var(--border-light); /* Borders */
 }
 
 /* Custom theme for indigo and grey shades */
