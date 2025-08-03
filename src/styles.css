@@ -1,6 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@import "tailwindcss";
 
 :root {
   --proto-primary: #6366f1; /* Indigo-500 as main color */
