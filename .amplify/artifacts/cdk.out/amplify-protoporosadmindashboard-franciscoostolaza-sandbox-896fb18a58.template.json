@@ -29,8 +29,7 @@
     "oauthRedirectSignIn",
     "oauthRedirectSignOut",
     "oauthResponseType",
-    "oauthClientId",
-    "groups"
+    "oauthClientId"
    ]
   },
   "AWS::Amplify::GraphQL": {
@@ -55,28 +54,13 @@
    }
   },
   "userPoolId": {
-   "Value": {
-    "Fn::GetAtt": [
-     "auth179371D7",
-     "Outputs.amplifyprotoporosadmindashboardfranciscoostolazasandbox896fb18a58authamplifyAuthUserPoolB403B78BRef"
-    ]
-   }
+   "Value": "us-west-1_t6heXEI90"
   },
   "webClientId": {
-   "Value": {
-    "Fn::GetAtt": [
-     "auth179371D7",
-     "Outputs.amplifyprotoporosadmindashboardfranciscoostolazasandbox896fb18a58authamplifyAuthUserPoolAppClient2355F27ARef"
-    ]
-   }
+   "Value": "3i1trv18gcoinlut61i79vcrjs"
   },
   "identityPoolId": {
-   "Value": {
-    "Fn::GetAtt": [
-     "auth179371D7",
-     "Outputs.amplifyprotoporosadmindashboardfranciscoostolazasandbox896fb18a58authamplifyAuthIdentityPoolDEA55AABRef"
-    ]
-   }
+   "Value": "us-west-1:b07617d8-b87a-4563-b210-43b442d5e355"
   },
   "authRegion": {
    "Value": {
@@ -84,57 +68,124 @@
    }
   },
   "allowUnauthenticatedIdentities": {
-   "Value": "true"
+   "Value": {
+    "Fn::GetAtt": [
+     "auth179371D7",
+     "Outputs.amplifyprotoporosadmindashboardfranciscoostolazasandbox896fb18a58authAmplifyRefAuthCustomResource07FF6DE7allowUnauthenticatedIdentities"
+    ]
+   }
   },
   "signupAttributes": {
-   "Value": "[\"email\"]"
+   "Value": {
+    "Fn::GetAtt": [
+     "auth179371D7",
+     "Outputs.amplifyprotoporosadmindashboardfranciscoostolazasandbox896fb18a58authAmplifyRefAuthCustomResource07FF6DE7signupAttributes"
+    ]
+   }
   },
   "usernameAttributes": {
-   "Value": "[\"email\"]"
+   "Value": {
+    "Fn::GetAtt": [
+     "auth179371D7",
+     "Outputs.amplifyprotoporosadmindashboardfranciscoostolazasandbox896fb18a58authAmplifyRefAuthCustomResource07FF6DE7usernameAttributes"
+    ]
+   }
   },
   "verificationMechanisms": {
-   "Value": "[\"email\"]"
+   "Value": {
+    "Fn::GetAtt": [
+     "auth179371D7",
+     "Outputs.amplifyprotoporosadmindashboardfranciscoostolazasandbox896fb18a58authAmplifyRefAuthCustomResource07FF6DE7verificationMechanisms"
+    ]
+   }
   },
   "passwordPolicyMinLength": {
-   "Value": "8"
+   "Value": {
+    "Fn::GetAtt": [
+     "auth179371D7",
+     "Outputs.amplifyprotoporosadmindashboardfranciscoostolazasandbox896fb18a58authAmplifyRefAuthCustomResource07FF6DE7passwordPolicyMinLength"
+    ]
+   }
   },
   "passwordPolicyRequirements": {
-   "Value": "[\"REQUIRES_NUMBERS\",\"REQUIRES_LOWERCASE\",\"REQUIRES_UPPERCASE\",\"REQUIRES_SYMBOLS\"]"
+   "Value": {
+    "Fn::GetAtt": [
+     "auth179371D7",
+     "Outputs.amplifyprotoporosadmindashboardfranciscoostolazasandbox896fb18a58authAmplifyRefAuthCustomResource07FF6DE7passwordPolicyRequirements"
+    ]
+   }
   },
   "mfaConfiguration": {
-   "Value": "OFF"
+   "Value": {
+    "Fn::GetAtt": [
+     "auth179371D7",
+     "Outputs.amplifyprotoporosadmindashboardfranciscoostolazasandbox896fb18a58authAmplifyRefAuthCustomResource07FF6DE7mfaConfiguration"
+    ]
+   }
   },
   "mfaTypes": {
-   "Value": "[]"
+   "Value": {
+    "Fn::GetAtt": [
+     "auth179371D7",
+     "Outputs.amplifyprotoporosadmindashboardfranciscoostolazasandbox896fb18a58authAmplifyRefAuthCustomResource07FF6DE7mfaTypes"
+    ]
+   }
   },
   "socialProviders": {
-   "Value": ""
+   "Value": {
+    "Fn::GetAtt": [
+     "auth179371D7",
+     "Outputs.amplifyprotoporosadmindashboardfranciscoostolazasandbox896fb18a58authAmplifyRefAuthCustomResource07FF6DE7socialProviders"
+    ]
+   }
   },
   "oauthCognitoDomain": {
-   "Value": ""
+   "Value": {
+    "Fn::GetAtt": [
+     "auth179371D7",
+     "Outputs.amplifyprotoporosadmindashboardfranciscoostolazasandbox896fb18a58authAmplifyRefAuthCustomResource07FF6DE7oauthCognitoDomain"
+    ]
+   }
   },
   "oauthScope": {
-   "Value": "[\"profile\",\"phone\",\"email\",\"openid\",\"aws.cognito.signin.user.admin\"]"
+   "Value": {
+    "Fn::GetAtt": [
+     "auth179371D7",
+     "Outputs.amplifyprotoporosadmindashboardfranciscoostolazasandbox896fb18a58authAmplifyRefAuthCustomResource07FF6DE7oauthScope"
+    ]
+   }
   },
   "oauthRedirectSignIn": {
-   "Value": "https://example.com"
+   "Value": {
+    "Fn::GetAtt": [
+     "auth179371D7",
+     "Outputs.amplifyprotoporosadmindashboardfranciscoostolazasandbox896fb18a58authAmplifyRefAuthCustomResource07FF6DE7oauthRedirectSignIn"
+    ]
+   }
   },
   "oauthRedirectSignOut": {
-   "Value": ""
+   "Value": {
+    "Fn::GetAtt": [
+     "auth179371D7",
+     "Outputs.amplifyprotoporosadmindashboardfranciscoostolazasandbox896fb18a58authAmplifyRefAuthCustomResource07FF6DE7oauthRedirectSignOut"
+    ]
+   }
   },
   "oauthResponseType": {
-   "Value": "code"
+   "Value": {
+    "Fn::GetAtt": [
+     "auth179371D7",
+     "Outputs.amplifyprotoporosadmindashboardfranciscoostolazasandbox896fb18a58authAmplifyRefAuthCustomResource07FF6DE7oauthResponseType"
+    ]
+   }
   },
   "oauthClientId": {
    "Value": {
     "Fn::GetAtt": [
      "auth179371D7",
-     "Outputs.amplifyprotoporosadmindashboardfranciscoostolazasandbox896fb18a58authamplifyAuthUserPoolAppClient2355F27ARef"
+     "Outputs.amplifyprotoporosadmindashboardfranciscoostolazasandbox896fb18a58authAmplifyRefAuthCustomResource07FF6DE7oauthClientId"
     ]
    }
-  },
-  "groups": {
-   "Value": "[]"
   },
   "awsAppsyncApiId": {
    "Value": {
@@ -231,7 +282,7 @@
        {
         "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
        },
-       "/570a4164aad76ffefb995fdab3e28152b8a5c66b8f504639ecd6607a44e8c37e.json"
+       "/90df4d328e38267ab5e0ca1832b56481bf75f00c42121a4d987092f0fcb5bfdc.json"
       ]
      ]
     }
@@ -247,32 +298,6 @@
   "data7552DF31": {
    "Type": "AWS::CloudFormation::Stack",
    "Properties": {
-    "Parameters": {
-     "referencetoamplifyprotoporosadmindashboardfranciscoostolazasandbox896fb18a58authNestedStackauthNestedStackResourceAA17ACB7Outputsamplifyprotoporosadmindashboardfranciscoostolazasandbox896fb18a58authamplifyAuthUserPoolB403B78BRef": {
-      "Fn::GetAtt": [
-       "auth179371D7",
-       "Outputs.amplifyprotoporosadmindashboardfranciscoostolazasandbox896fb18a58authamplifyAuthUserPoolB403B78BRef"
-      ]
-     },
-     "referencetoamplifyprotoporosadmindashboardfranciscoostolazasandbox896fb18a58authNestedStackauthNestedStackResourceAA17ACB7Outputsamplifyprotoporosadmindashboardfranciscoostolazasandbox896fb18a58authamplifyAuthauthenticatedUserRoleB2FD4430Ref": {
-      "Fn::GetAtt": [
-       "auth179371D7",
-       "Outputs.amplifyprotoporosadmindashboardfranciscoostolazasandbox896fb18a58authamplifyAuthauthenticatedUserRoleB2FD4430Ref"
-      ]
-     },
-     "referencetoamplifyprotoporosadmindashboardfranciscoostolazasandbox896fb18a58authNestedStackauthNestedStackResourceAA17ACB7Outputsamplifyprotoporosadmindashboardfranciscoostolazasandbox896fb18a58authamplifyAuthunauthenticatedUserRoleC38EA23CRef": {
-      "Fn::GetAtt": [
-       "auth179371D7",
-       "Outputs.amplifyprotoporosadmindashboardfranciscoostolazasandbox896fb18a58authamplifyAuthunauthenticatedUserRoleC38EA23CRef"
-      ]
-     },
-     "referencetoamplifyprotoporosadmindashboardfranciscoostolazasandbox896fb18a58authNestedStackauthNestedStackResourceAA17ACB7Outputsamplifyprotoporosadmindashboardfranciscoostolazasandbox896fb18a58authamplifyAuthIdentityPoolDEA55AABRef": {
-      "Fn::GetAtt": [
-       "auth179371D7",
-       "Outputs.amplifyprotoporosadmindashboardfranciscoostolazasandbox896fb18a58authamplifyAuthIdentityPoolDEA55AABRef"
-      ]
-     }
-    },
     "Tags": [
      {
       "Key": "amplify:deployment-type",
@@ -299,7 +324,7 @@
        {
         "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
        },
-       "/a10d77fed3145ae8ed1407db23a1d567d27c8e21fcb99ab60fe6cb89090c8e4e.json"
+       "/b75d626b6b9fdac6f6bdc97f81508165d0abbd915c296494c8633ae041dceb2e.json"
       ]
      ]
     }
@@ -315,7 +340,7 @@
   "CDKMetadata": {
    "Type": "AWS::CDK::Metadata",
    "Properties": {
-    "Analytics": "v2:deflate64:H4sIAAAAAAAA/zPSMzIw0TNQTCwv1k1OydbNyUzSqw4uSUzO1nFOy/MvLSkoLQGxwEK1Onn5Kal6WcX6ZUYmekZAbVnFmZm6RaV5JZm5qXpBEBoAUUVsrFMAAAA="
+    "Analytics": "v2:deflate64:H4sIAAAAAAAA/zPSMzKw0DNQTCwv1k1OydbNyUzSqw4uSUzO1nFOy/MvLSkoLQGxwEK1Onn5Kal6WcX6ZUYmekZAbVnFmZm6RaV5JZm5qXpBEBoAHy6galMAAAA="
    },
    "Metadata": {
     "aws:cdk:path": "amplify-protoporosadmindashboard-franciscoostolaza-sandbox-896fb18a58/CDKMetadata/Default"

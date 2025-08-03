@@ -11,9 +11,7 @@
        "AwsRegion": {
         "Ref": "AWS::Region"
        },
-       "UserPoolId": {
-        "Ref": "referencetoamplifyprotoporosadmindashboardfranciscoostolazasandbox896fb18a58authNestedStackauthNestedStackResourceAA17ACB7Outputsamplifyprotoporosadmindashboardfranciscoostolazasandbox896fb18a58authamplifyAuthUserPoolB403B78BRef"
-       }
+       "UserPoolId": "us-west-1_t6heXEI90"
       }
      }
     ],
@@ -119,7 +117,7 @@
        {
         "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
        },
-       "/fd3e21a3f19cea48e0fc09431613d5af16ac8e574465083effb4c6457e40de3a.json"
+       "/bcbcbc1c6066c7092c8626f11a62fb9755969fc3c15734f70315aa6e94e9c7af.json"
       ]
      ]
     }
@@ -168,15 +166,6 @@
        "amplifyDataGraphQLAPINONEDS684BF699",
        "Name"
       ]
-     },
-     "referencetoamplifyprotoporosadmindashboardfranciscoostolazasandbox896fb18a58authNestedStackauthNestedStackResourceAA17ACB7Outputsamplifyprotoporosadmindashboardfranciscoostolazasandbox896fb18a58authamplifyAuthauthenticatedUserRoleB2FD4430Ref": {
-      "Ref": "referencetoamplifyprotoporosadmindashboardfranciscoostolazasandbox896fb18a58authNestedStackauthNestedStackResourceAA17ACB7Outputsamplifyprotoporosadmindashboardfranciscoostolazasandbox896fb18a58authamplifyAuthauthenticatedUserRoleB2FD4430Ref"
-     },
-     "referencetoamplifyprotoporosadmindashboardfranciscoostolazasandbox896fb18a58authNestedStackauthNestedStackResourceAA17ACB7Outputsamplifyprotoporosadmindashboardfranciscoostolazasandbox896fb18a58authamplifyAuthunauthenticatedUserRoleC38EA23CRef": {
-      "Ref": "referencetoamplifyprotoporosadmindashboardfranciscoostolazasandbox896fb18a58authNestedStackauthNestedStackResourceAA17ACB7Outputsamplifyprotoporosadmindashboardfranciscoostolazasandbox896fb18a58authamplifyAuthunauthenticatedUserRoleC38EA23CRef"
-     },
-     "referencetoamplifyprotoporosadmindashboardfranciscoostolazasandbox896fb18a58authNestedStackauthNestedStackResourceAA17ACB7Outputsamplifyprotoporosadmindashboardfranciscoostolazasandbox896fb18a58authamplifyAuthIdentityPoolDEA55AABRef": {
-      "Ref": "referencetoamplifyprotoporosadmindashboardfranciscoostolazasandbox896fb18a58authNestedStackauthNestedStackResourceAA17ACB7Outputsamplifyprotoporosadmindashboardfranciscoostolazasandbox896fb18a58authamplifyAuthIdentityPoolDEA55AABRef"
      }
     },
     "Tags": [
@@ -209,7 +198,7 @@
        {
         "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
        },
-       "/a110e5f5412a4316eb80daa9de8cbef8fa6ca6ca0c2f95e395b4f980416e0401.json"
+       "/2ba5c6bf8e58d3800c63ff07fe066e42d376163a6a4781b796e3f69e625d0d07.json"
       ]
      ]
     }
@@ -376,9 +365,7 @@
      "Version": "2012-10-17"
     },
     "Roles": [
-     {
-      "Ref": "referencetoamplifyprotoporosadmindashboardfranciscoostolazasandbox896fb18a58authNestedStackauthNestedStackResourceAA17ACB7Outputsamplifyprotoporosadmindashboardfranciscoostolazasandbox896fb18a58authamplifyAuthauthenticatedUserRoleB2FD4430Ref"
-     }
+     "protos-dashboard-login-users"
     ]
    },
    "UpdateReplacePolicy": "Delete",
@@ -538,9 +525,7 @@
      "Version": "2012-10-17"
     },
     "Roles": [
-     {
-      "Ref": "referencetoamplifyprotoporosadmindashboardfranciscoostolazasandbox896fb18a58authNestedStackauthNestedStackResourceAA17ACB7Outputsamplifyprotoporosadmindashboardfranciscoostolazasandbox896fb18a58authamplifyAuthunauthenticatedUserRoleC38EA23CRef"
-     }
+     "protos-dashboard-login-users-unauth"
     ]
    },
    "UpdateReplacePolicy": "Delete",
@@ -1329,7 +1314,7 @@
   "CDKMetadata": {
    "Type": "AWS::CDK::Metadata",
    "Properties": {
-    "Analytics": "v2:deflate64:H4sIAAAAAAAA/1VSXXPCIBD8LX1H6qT+AT+mfVHHmpm+Zk5yVZQA5YhOhsl/L4SqzdPtLstyHBS8mM749AVuNBH1ZaLkgYctkse69CAubI9kWieQRUcVwFrqtODhw4E9/ai5lQsgZMtvPSif66j8Y6U4YQNsazSuwEOZo+L6k/VMQsPDBjQcsd4ZJUWXHGNhb9Swb6hPU0Y9ozceFq24oE/qH8rlaR7xTFLzaXcVarTKdA1qz/PS6iEwIEJPfJ5KzxQ0hxp4iIlr6NB9oSNpNCulPir0Rr+3WvikPEC03nE8jeJ1S++ifQcOGvTohrvcSd8nmse/bMmb5vEIaQJ3nPuoVOqhiq8jlOTzGy2VHNpiQ7sx5RgPGuXn6Vo76KP8nTNXWaPLY9GmRn6m12sx40X8I2eScuJa7WWDfJ/rL/pewylAAgAA"
+    "Analytics": "v2:deflate64:H4sIAAAAAAAA/1VSy27CMBD8lt6Ni9IeeuWhcqGIEqnXaLG3YHDs1OuAoij/Xj8KNKedGY/H67ULXkzf+PQJrjQR8jzRas/7DZJHWXoQZ7ZDsq0TyIKj6qFpqDOC9ysHzfFHzxo1B0K2+DZJ+VwH5R8rxRFrYBtrcAkeyhwV1h9sYApq3n+AgQPKrdVKdNExFnZWp32pPkwZDYxeeD9vxRl9VP9QLg/ziGcSm4+7q15io21Xo/E8Ly3vAgMi9MRnsQxMQ72XwPuQuIYO3Rc6UtawUpmDRm/Ne2uEj8odBOsNh9MoXLf0Lti34KBGjy7d5UaGIdI8/kVL3tb3R4gTuOHcR6VjD1V4HaEVn11poVVqi6V2Q8ohHDTKz9NtmqSP8rfOXpREl8dirER+oudL8cqL8EdOpNTEtcarGvku11923getQAIAAA=="
    },
    "Metadata": {
     "aws:cdk:path": "amplify-protoporosadmindashboard-franciscoostolaza-sandbox-896fb18a58/data/CDKMetadata/Default"
@@ -1374,18 +1359,6 @@
     "false"
    ],
    "Description": "Enable server side encryption powered by KMS."
-  },
-  "referencetoamplifyprotoporosadmindashboardfranciscoostolazasandbox896fb18a58authNestedStackauthNestedStackResourceAA17ACB7Outputsamplifyprotoporosadmindashboardfranciscoostolazasandbox896fb18a58authamplifyAuthUserPoolB403B78BRef": {
-   "Type": "String"
-  },
-  "referencetoamplifyprotoporosadmindashboardfranciscoostolazasandbox896fb18a58authNestedStackauthNestedStackResourceAA17ACB7Outputsamplifyprotoporosadmindashboardfranciscoostolazasandbox896fb18a58authamplifyAuthauthenticatedUserRoleB2FD4430Ref": {
-   "Type": "String"
-  },
-  "referencetoamplifyprotoporosadmindashboardfranciscoostolazasandbox896fb18a58authNestedStackauthNestedStackResourceAA17ACB7Outputsamplifyprotoporosadmindashboardfranciscoostolazasandbox896fb18a58authamplifyAuthunauthenticatedUserRoleC38EA23CRef": {
-   "Type": "String"
-  },
-  "referencetoamplifyprotoporosadmindashboardfranciscoostolazasandbox896fb18a58authNestedStackauthNestedStackResourceAA17ACB7Outputsamplifyprotoporosadmindashboardfranciscoostolazasandbox896fb18a58authamplifyAuthIdentityPoolDEA55AABRef": {
-   "Type": "String"
   }
  },
  "Mappings": {
@@ -1427,6 +1400,9 @@
     "value": "nodejs22.x"
    },
    "ap-southeast-5": {
+    "value": "nodejs22.x"
+   },
+   "ap-southeast-6": {
     "value": "nodejs22.x"
    },
    "ap-southeast-7": {

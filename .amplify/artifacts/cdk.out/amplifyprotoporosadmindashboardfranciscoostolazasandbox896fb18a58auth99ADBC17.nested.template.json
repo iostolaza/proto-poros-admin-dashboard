@@ -1,188 +1,39 @@
 {
- "Description": "{\"createdOn\":\"Mac\",\"createdBy\":\"AmplifySandbox\",\"createdWith\":\"1.8.1\",\"stackType\":\"auth-Cognito\",\"metadata\":{}}",
+ "Description": "{\"createdOn\":\"Mac\",\"createdBy\":\"AmplifySandbox\",\"createdWith\":\"1.7.1\",\"stackType\":\"auth-Cognito\",\"metadata\":{}}",
  "Resources": {
-  "amplifyAuthUserPool4BA7F805": {
-   "Type": "AWS::Cognito::UserPool",
-   "Properties": {
-    "AccountRecoverySetting": {
-     "RecoveryMechanisms": [
-      {
-       "Name": "verified_email",
-       "Priority": 1
-      }
-     ]
-    },
-    "AdminCreateUserConfig": {
-     "AllowAdminCreateUserOnly": false
-    },
-    "AutoVerifiedAttributes": [
-     "email"
-    ],
-    "EmailVerificationMessage": "The verification code to your new account is {####}",
-    "EmailVerificationSubject": "Verify your new account",
-    "Policies": {
-     "PasswordPolicy": {
-      "MinimumLength": 8,
-      "RequireLowercase": true,
-      "RequireNumbers": true,
-      "RequireSymbols": true,
-      "RequireUppercase": true
-     }
-    },
-    "Schema": [
-     {
-      "Mutable": true,
-      "Name": "email",
-      "Required": true
-     }
-    ],
-    "SmsVerificationMessage": "The verification code to your new account is {####}",
-    "UserAttributeUpdateSettings": {
-     "AttributesRequireVerificationBeforeUpdate": [
-      "email"
-     ]
-    },
-    "UserPoolTags": {
-     "amplify:deployment-type": "sandbox",
-     "amplify:friendly-name": "amplifyAuth",
-     "created-by": "amplify"
-    },
-    "UsernameAttributes": [
-     "email"
-    ],
-    "UsernameConfiguration": {
-     "CaseSensitive": false
-    },
-    "VerificationMessageTemplate": {
-     "DefaultEmailOption": "CONFIRM_WITH_CODE",
-     "EmailMessage": "The verification code to your new account is {####}",
-     "EmailSubject": "Verify your new account",
-     "SmsMessage": "The verification code to your new account is {####}"
-    }
-   },
-   "UpdateReplacePolicy": "Delete",
-   "DeletionPolicy": "Delete",
-   "Metadata": {
-    "aws:cdk:path": "amplify-protoporosadmindashboard-franciscoostolaza-sandbox-896fb18a58/auth/amplifyAuth/UserPool/Resource"
-   }
-  },
-  "amplifyAuthUserPoolAppClient2626C6F8": {
-   "Type": "AWS::Cognito::UserPoolClient",
-   "Properties": {
-    "AllowedOAuthFlows": [
-     "code"
-    ],
-    "AllowedOAuthFlowsUserPoolClient": true,
-    "AllowedOAuthScopes": [
-     "profile",
-     "phone",
-     "email",
-     "openid",
-     "aws.cognito.signin.user.admin"
-    ],
-    "CallbackURLs": [
-     "https://example.com"
-    ],
-    "ExplicitAuthFlows": [
-     "ALLOW_CUSTOM_AUTH",
-     "ALLOW_USER_SRP_AUTH",
-     "ALLOW_REFRESH_TOKEN_AUTH"
-    ],
-    "PreventUserExistenceErrors": "ENABLED",
-    "SupportedIdentityProviders": [
-     "COGNITO"
-    ],
-    "UserPoolId": {
-     "Ref": "amplifyAuthUserPool4BA7F805"
-    }
-   },
-   "UpdateReplacePolicy": "Delete",
-   "DeletionPolicy": "Delete",
-   "Metadata": {
-    "aws:cdk:path": "amplify-protoporosadmindashboard-franciscoostolaza-sandbox-896fb18a58/auth/amplifyAuth/UserPoolAppClient/Resource"
-   }
-  },
-  "amplifyAuthIdentityPool3FDE84CC": {
-   "Type": "AWS::Cognito::IdentityPool",
-   "Properties": {
-    "AllowUnauthenticatedIdentities": true,
-    "CognitoIdentityProviders": [
-     {
-      "ClientId": {
-       "Ref": "amplifyAuthUserPoolAppClient2626C6F8"
-      },
-      "ProviderName": {
-       "Fn::Join": [
-        "",
-        [
-         "cognito-idp.",
-         {
-          "Ref": "AWS::Region"
-         },
-         ".amazonaws.com/",
-         {
-          "Ref": "amplifyAuthUserPool4BA7F805"
-         }
-        ]
-       ]
-      }
-     }
-    ],
-    "IdentityPoolTags": [
-     {
-      "Key": "amplify:deployment-type",
-      "Value": "sandbox"
-     },
-     {
-      "Key": "amplify:friendly-name",
-      "Value": "amplifyAuth"
-     },
-     {
-      "Key": "created-by",
-      "Value": "amplify"
-     }
-    ],
-    "SupportedLoginProviders": {}
-   },
-   "UpdateReplacePolicy": "Delete",
-   "DeletionPolicy": "Delete",
-   "Metadata": {
-    "aws:cdk:path": "amplify-protoporosadmindashboard-franciscoostolaza-sandbox-896fb18a58/auth/amplifyAuth/IdentityPool"
-   }
-  },
-  "amplifyAuthauthenticatedUserRoleD8DA3689": {
+  "AmplifyRefAuthCustomResourceProviderLambdaServiceRoleF0B14CF2": {
    "Type": "AWS::IAM::Role",
    "Properties": {
     "AssumeRolePolicyDocument": {
      "Statement": [
       {
-       "Action": "sts:AssumeRoleWithWebIdentity",
-       "Condition": {
-        "StringEquals": {
-         "cognito-identity.amazonaws.com:aud": {
-          "Ref": "amplifyAuthIdentityPool3FDE84CC"
-         }
-        },
-        "ForAnyValue:StringLike": {
-         "cognito-identity.amazonaws.com:amr": "authenticated"
-        }
-       },
+       "Action": "sts:AssumeRole",
        "Effect": "Allow",
        "Principal": {
-        "Federated": "cognito-identity.amazonaws.com"
+        "Service": "lambda.amazonaws.com"
        }
       }
      ],
      "Version": "2012-10-17"
     },
+    "ManagedPolicyArns": [
+     {
+      "Fn::Join": [
+       "",
+       [
+        "arn:",
+        {
+         "Ref": "AWS::Partition"
+        },
+        ":iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
+       ]
+      ]
+     }
+    ],
     "Tags": [
      {
       "Key": "amplify:deployment-type",
       "Value": "sandbox"
-     },
-     {
-      "Key": "amplify:friendly-name",
-      "Value": "amplifyAuth"
      },
      {
       "Key": "created-by",
@@ -193,120 +44,463 @@
    "UpdateReplacePolicy": "Delete",
    "DeletionPolicy": "Delete",
    "Metadata": {
-    "aws:cdk:path": "amplify-protoporosadmindashboard-franciscoostolaza-sandbox-896fb18a58/auth/amplifyAuth/authenticatedUserRole/Resource"
+    "aws:cdk:path": "amplify-protoporosadmindashboard-franciscoostolaza-sandbox-896fb18a58/auth/AmplifyRefAuthCustomResourceProviderLambda/ServiceRole/Resource"
    }
   },
-  "amplifyAuthunauthenticatedUserRole2B524D9E": {
-   "Type": "AWS::IAM::Role",
+  "AmplifyRefAuthCustomResourceProviderLambdaServiceRoleDefaultPolicy0ACD038C": {
+   "Type": "AWS::IAM::Policy",
    "Properties": {
-    "AssumeRolePolicyDocument": {
+    "PolicyDocument": {
      "Statement": [
       {
-       "Action": "sts:AssumeRoleWithWebIdentity",
-       "Condition": {
-        "StringEquals": {
-         "cognito-identity.amazonaws.com:aud": {
-          "Ref": "amplifyAuthIdentityPool3FDE84CC"
-         }
-        },
-        "ForAnyValue:StringLike": {
-         "cognito-identity.amazonaws.com:amr": "unauthenticated"
-        }
-       },
+       "Action": [
+        "cognito-idp:DescribeUserPool",
+        "cognito-idp:GetUserPoolMfaConfig",
+        "cognito-idp:ListIdentityProviders",
+        "cognito-idp:ListGroups",
+        "cognito-idp:DescribeUserPoolClient"
+       ],
        "Effect": "Allow",
-       "Principal": {
-        "Federated": "cognito-identity.amazonaws.com"
+       "Resource": {
+        "Fn::Join": [
+         "",
+         [
+          "arn:",
+          {
+           "Ref": "AWS::Partition"
+          },
+          ":cognito-idp:",
+          {
+           "Ref": "AWS::Region"
+          },
+          ":",
+          {
+           "Ref": "AWS::AccountId"
+          },
+          ":userpool/us-west-1_t6heXEI90"
+         ]
+        ]
+       }
+      },
+      {
+       "Action": [
+        "cognito-identity:DescribeIdentityPool",
+        "cognito-identity:GetIdentityPoolRoles"
+       ],
+       "Effect": "Allow",
+       "Resource": {
+        "Fn::Join": [
+         "",
+         [
+          "arn:aws:cognito-identity:",
+          {
+           "Ref": "AWS::Region"
+          },
+          ":",
+          {
+           "Ref": "AWS::AccountId"
+          },
+          ":identitypool/us-west-1:b07617d8-b87a-4563-b210-43b442d5e355"
+         ]
+        ]
        }
       }
      ],
      "Version": "2012-10-17"
     },
-    "Tags": [
+    "PolicyName": "AmplifyRefAuthCustomResourceProviderLambdaServiceRoleDefaultPolicy0ACD038C",
+    "Roles": [
      {
-      "Key": "amplify:deployment-type",
-      "Value": "sandbox"
-     },
-     {
-      "Key": "amplify:friendly-name",
-      "Value": "amplifyAuth"
-     },
-     {
-      "Key": "created-by",
-      "Value": "amplify"
+      "Ref": "AmplifyRefAuthCustomResourceProviderLambdaServiceRoleF0B14CF2"
      }
     ]
    },
    "UpdateReplacePolicy": "Delete",
    "DeletionPolicy": "Delete",
    "Metadata": {
-    "aws:cdk:path": "amplify-protoporosadmindashboard-franciscoostolaza-sandbox-896fb18a58/auth/amplifyAuth/unauthenticatedUserRole/Resource"
+    "aws:cdk:path": "amplify-protoporosadmindashboard-franciscoostolaza-sandbox-896fb18a58/auth/AmplifyRefAuthCustomResourceProviderLambda/ServiceRole/DefaultPolicy/Resource"
    }
   },
-  "amplifyAuthIdentityPoolRoleAttachment045F17C8": {
-   "Type": "AWS::Cognito::IdentityPoolRoleAttachment",
+  "AmplifyRefAuthCustomResourceProviderLambda524C6354": {
+   "Type": "AWS::Lambda::Function",
    "Properties": {
-    "IdentityPoolId": {
-     "Ref": "amplifyAuthIdentityPool3FDE84CC"
-    },
-    "RoleMappings": {
-     "UserPoolWebClientRoleMapping": {
-      "AmbiguousRoleResolution": "AuthenticatedRole",
-      "IdentityProvider": {
-       "Fn::Join": [
-        "",
-        [
-         "cognito-idp.",
-         {
-          "Ref": "AWS::Region"
-         },
-         ".amazonaws.com/",
-         {
-          "Ref": "amplifyAuthUserPool4BA7F805"
-         },
-         ":",
-         {
-          "Ref": "amplifyAuthUserPoolAppClient2626C6F8"
-         }
-        ]
-       ]
-      },
-      "Type": "Token"
-     }
-    },
-    "Roles": {
-     "unauthenticated": {
-      "Fn::GetAtt": [
-       "amplifyAuthunauthenticatedUserRole2B524D9E",
-       "Arn"
-      ]
+    "Code": {
+     "S3Bucket": {
+      "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
      },
-     "authenticated": {
-      "Fn::GetAtt": [
-       "amplifyAuthauthenticatedUserRoleD8DA3689",
-       "Arn"
-      ]
+     "S3Key": "be9fe6030435a37476c5284ef727dd6d1a8118e3e2b9b898636148440d3aba31.zip"
+    },
+    "Handler": "index.handler",
+    "Role": {
+     "Fn::GetAtt": [
+      "AmplifyRefAuthCustomResourceProviderLambdaServiceRoleF0B14CF2",
+      "Arn"
+     ]
+    },
+    "Runtime": "nodejs20.x",
+    "Tags": [
+     {
+      "Key": "amplify:deployment-type",
+      "Value": "sandbox"
+     },
+     {
+      "Key": "created-by",
+      "Value": "amplify"
      }
-    }
+    ],
+    "Timeout": 10
    },
    "DependsOn": [
-    "amplifyAuthIdentityPool3FDE84CC",
-    "amplifyAuthUserPoolAppClient2626C6F8"
+    "AmplifyRefAuthCustomResourceProviderLambdaServiceRoleDefaultPolicy0ACD038C",
+    "AmplifyRefAuthCustomResourceProviderLambdaServiceRoleF0B14CF2"
    ],
    "UpdateReplacePolicy": "Delete",
    "DeletionPolicy": "Delete",
    "Metadata": {
-    "aws:cdk:path": "amplify-protoporosadmindashboard-franciscoostolaza-sandbox-896fb18a58/auth/amplifyAuth/IdentityPoolRoleAttachment"
+    "aws:cdk:path": "amplify-protoporosadmindashboard-franciscoostolaza-sandbox-896fb18a58/auth/AmplifyRefAuthCustomResourceProviderLambda/Resource",
+    "aws:asset:path": "asset.be9fe6030435a37476c5284ef727dd6d1a8118e3e2b9b898636148440d3aba31",
+    "aws:asset:is-bundled": true,
+    "aws:asset:property": "Code"
+   }
+  },
+  "AmplifyRefAuthCustomResourceProviderframeworkonEventServiceRole6A9EEB6C": {
+   "Type": "AWS::IAM::Role",
+   "Properties": {
+    "AssumeRolePolicyDocument": {
+     "Statement": [
+      {
+       "Action": "sts:AssumeRole",
+       "Effect": "Allow",
+       "Principal": {
+        "Service": "lambda.amazonaws.com"
+       }
+      }
+     ],
+     "Version": "2012-10-17"
+    },
+    "ManagedPolicyArns": [
+     {
+      "Fn::Join": [
+       "",
+       [
+        "arn:",
+        {
+         "Ref": "AWS::Partition"
+        },
+        ":iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
+       ]
+      ]
+     }
+    ],
+    "Tags": [
+     {
+      "Key": "amplify:deployment-type",
+      "Value": "sandbox"
+     },
+     {
+      "Key": "created-by",
+      "Value": "amplify"
+     }
+    ]
+   },
+   "UpdateReplacePolicy": "Delete",
+   "DeletionPolicy": "Delete",
+   "Metadata": {
+    "aws:cdk:path": "amplify-protoporosadmindashboard-franciscoostolaza-sandbox-896fb18a58/auth/AmplifyRefAuthCustomResourceProvider/framework-onEvent/ServiceRole/Resource"
+   }
+  },
+  "AmplifyRefAuthCustomResourceProviderframeworkonEventServiceRoleDefaultPolicy1B3E5DA5": {
+   "Type": "AWS::IAM::Policy",
+   "Properties": {
+    "PolicyDocument": {
+     "Statement": [
+      {
+       "Action": "lambda:InvokeFunction",
+       "Effect": "Allow",
+       "Resource": [
+        {
+         "Fn::GetAtt": [
+          "AmplifyRefAuthCustomResourceProviderLambda524C6354",
+          "Arn"
+         ]
+        },
+        {
+         "Fn::Join": [
+          "",
+          [
+           {
+            "Fn::GetAtt": [
+             "AmplifyRefAuthCustomResourceProviderLambda524C6354",
+             "Arn"
+            ]
+           },
+           ":*"
+          ]
+         ]
+        }
+       ]
+      },
+      {
+       "Action": "lambda:GetFunction",
+       "Effect": "Allow",
+       "Resource": {
+        "Fn::GetAtt": [
+         "AmplifyRefAuthCustomResourceProviderLambda524C6354",
+         "Arn"
+        ]
+       }
+      }
+     ],
+     "Version": "2012-10-17"
+    },
+    "PolicyName": "AmplifyRefAuthCustomResourceProviderframeworkonEventServiceRoleDefaultPolicy1B3E5DA5",
+    "Roles": [
+     {
+      "Ref": "AmplifyRefAuthCustomResourceProviderframeworkonEventServiceRole6A9EEB6C"
+     }
+    ]
+   },
+   "UpdateReplacePolicy": "Delete",
+   "DeletionPolicy": "Delete",
+   "Metadata": {
+    "aws:cdk:path": "amplify-protoporosadmindashboard-franciscoostolaza-sandbox-896fb18a58/auth/AmplifyRefAuthCustomResourceProvider/framework-onEvent/ServiceRole/DefaultPolicy/Resource"
+   }
+  },
+  "AmplifyRefAuthCustomResourceProviderframeworkonEvent889C39F4": {
+   "Type": "AWS::Lambda::Function",
+   "Properties": {
+    "Code": {
+     "S3Bucket": {
+      "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
+     },
+     "S3Key": "bdc104ed9cab1b5b6421713c8155f0b753380595356f710400609664d3635eca.zip"
+    },
+    "Description": "AWS CDK resource provider framework - onEvent (amplify-protoporosadmindashboard-franciscoostolaza-sandbox-896fb18a58/auth/AmplifyRefAuthCustomResourceProvider)",
+    "Environment": {
+     "Variables": {
+      "USER_ON_EVENT_FUNCTION_ARN": {
+       "Fn::GetAtt": [
+        "AmplifyRefAuthCustomResourceProviderLambda524C6354",
+        "Arn"
+       ]
+      }
+     }
+    },
+    "Handler": "framework.onEvent",
+    "LoggingConfig": {
+     "ApplicationLogLevel": "FATAL",
+     "LogFormat": "JSON"
+    },
+    "Role": {
+     "Fn::GetAtt": [
+      "AmplifyRefAuthCustomResourceProviderframeworkonEventServiceRole6A9EEB6C",
+      "Arn"
+     ]
+    },
+    "Runtime": {
+     "Fn::FindInMap": [
+      "LatestNodeRuntimeMap",
+      {
+       "Ref": "AWS::Region"
+      },
+      "value"
+     ]
+    },
+    "Tags": [
+     {
+      "Key": "amplify:deployment-type",
+      "Value": "sandbox"
+     },
+     {
+      "Key": "created-by",
+      "Value": "amplify"
+     }
+    ],
+    "Timeout": 900
+   },
+   "DependsOn": [
+    "AmplifyRefAuthCustomResourceProviderframeworkonEventServiceRoleDefaultPolicy1B3E5DA5",
+    "AmplifyRefAuthCustomResourceProviderframeworkonEventServiceRole6A9EEB6C"
+   ],
+   "UpdateReplacePolicy": "Delete",
+   "DeletionPolicy": "Delete",
+   "Metadata": {
+    "aws:cdk:path": "amplify-protoporosadmindashboard-franciscoostolaza-sandbox-896fb18a58/auth/AmplifyRefAuthCustomResourceProvider/framework-onEvent/Resource",
+    "aws:asset:path": "asset.bdc104ed9cab1b5b6421713c8155f0b753380595356f710400609664d3635eca",
+    "aws:asset:is-bundled": false,
+    "aws:asset:property": "Code"
+   }
+  },
+  "AmplifyRefAuthCustomResource": {
+   "Type": "Custom::AmplifyRefAuth",
+   "Properties": {
+    "ServiceToken": {
+     "Fn::GetAtt": [
+      "AmplifyRefAuthCustomResourceProviderframeworkonEvent889C39F4",
+      "Arn"
+     ]
+    },
+    "userPoolId": "us-west-1_t6heXEI90",
+    "identityPoolId": "us-west-1:b07617d8-b87a-4563-b210-43b442d5e355",
+    "userPoolClientId": "3i1trv18gcoinlut61i79vcrjs",
+    "authRoleArn": "arn:aws:iam::381491980392:role/service-role/protos-dashboard-login-users",
+    "unauthRoleArn": "arn:aws:iam::381491980392:role/service-role/protos-dashboard-login-users-unauth",
+    "groups": {},
+    "region": {
+     "Ref": "AWS::Region"
+    }
+   },
+   "UpdateReplacePolicy": "Delete",
+   "DeletionPolicy": "Delete",
+   "Metadata": {
+    "aws:cdk:path": "amplify-protoporosadmindashboard-franciscoostolaza-sandbox-896fb18a58/auth/AmplifyRefAuthCustomResource/Default"
    }
   },
   "CDKMetadata": {
    "Type": "AWS::CDK::Metadata",
    "Properties": {
-    "Analytics": "v2:deflate64:H4sIAAAAAAAA/02OTQrCMBCFz+I+HUvoBaQrNyIR11KTUadNM9CkioTc3QSpdvXefG/+JMi6gXrTvXylzVBZukI8oA9oTqHTg8jBJWq+OwoM8exxOjJb0d7czy+mtYQurKM/2ZtsKLyX4XWt2OIu5GuPMcMkqBshFlgai6YkFHqeJ41JODYIvd8+ZQMyf957omqa87YRQX31AzeWFLXWAAAA"
+    "Analytics": "v2:deflate64:H4sIAAAAAAAA/z1Qy47CMAz8Fu6uQWUPewUkblSofEAVEoPcR4LihNWq6r+TtMBpxtKMPeMSy80vblbqTwptuqLnK44VSSBzCUp3UJO46DVBUjRjr4arUY11hlrBaoZjtDqws8BqwLF2PcHhZmc8u571fx4XNoFsGyVCQXCXIc24j7qjsFdCsKzHMRm+Wz9kmmC2pFh3tnfQUYIbGv/OJ3j27smGfD53Uo9HFh1m0bdDzvXmE+QS2Mr6Wf5gmV7QCnPhow08ENYLvgASdk+pHwEAAA=="
    },
    "Metadata": {
     "aws:cdk:path": "amplify-protoporosadmindashboard-franciscoostolaza-sandbox-896fb18a58/auth/CDKMetadata/Default"
    },
    "Condition": "CDKMetadataAvailable"
+  }
+ },
+ "Mappings": {
+  "LatestNodeRuntimeMap": {
+   "af-south-1": {
+    "value": "nodejs22.x"
+   },
+   "ap-east-1": {
+    "value": "nodejs22.x"
+   },
+   "ap-east-2": {
+    "value": "nodejs22.x"
+   },
+   "ap-northeast-1": {
+    "value": "nodejs22.x"
+   },
+   "ap-northeast-2": {
+    "value": "nodejs22.x"
+   },
+   "ap-northeast-3": {
+    "value": "nodejs22.x"
+   },
+   "ap-south-1": {
+    "value": "nodejs22.x"
+   },
+   "ap-south-2": {
+    "value": "nodejs22.x"
+   },
+   "ap-southeast-1": {
+    "value": "nodejs22.x"
+   },
+   "ap-southeast-2": {
+    "value": "nodejs22.x"
+   },
+   "ap-southeast-3": {
+    "value": "nodejs22.x"
+   },
+   "ap-southeast-4": {
+    "value": "nodejs22.x"
+   },
+   "ap-southeast-5": {
+    "value": "nodejs22.x"
+   },
+   "ap-southeast-6": {
+    "value": "nodejs22.x"
+   },
+   "ap-southeast-7": {
+    "value": "nodejs22.x"
+   },
+   "ca-central-1": {
+    "value": "nodejs22.x"
+   },
+   "ca-west-1": {
+    "value": "nodejs22.x"
+   },
+   "cn-north-1": {
+    "value": "nodejs22.x"
+   },
+   "cn-northwest-1": {
+    "value": "nodejs22.x"
+   },
+   "eu-central-1": {
+    "value": "nodejs22.x"
+   },
+   "eu-central-2": {
+    "value": "nodejs22.x"
+   },
+   "eu-isoe-west-1": {
+    "value": "nodejs18.x"
+   },
+   "eu-north-1": {
+    "value": "nodejs22.x"
+   },
+   "eu-south-1": {
+    "value": "nodejs22.x"
+   },
+   "eu-south-2": {
+    "value": "nodejs22.x"
+   },
+   "eu-west-1": {
+    "value": "nodejs22.x"
+   },
+   "eu-west-2": {
+    "value": "nodejs22.x"
+   },
+   "eu-west-3": {
+    "value": "nodejs22.x"
+   },
+   "eusc-de-east-1": {
+    "value": "nodejs22.x"
+   },
+   "il-central-1": {
+    "value": "nodejs22.x"
+   },
+   "me-central-1": {
+    "value": "nodejs22.x"
+   },
+   "me-south-1": {
+    "value": "nodejs22.x"
+   },
+   "mx-central-1": {
+    "value": "nodejs22.x"
+   },
+   "sa-east-1": {
+    "value": "nodejs22.x"
+   },
+   "us-east-1": {
+    "value": "nodejs22.x"
+   },
+   "us-east-2": {
+    "value": "nodejs22.x"
+   },
+   "us-gov-east-1": {
+    "value": "nodejs22.x"
+   },
+   "us-gov-west-1": {
+    "value": "nodejs22.x"
+   },
+   "us-iso-east-1": {
+    "value": "nodejs18.x"
+   },
+   "us-iso-west-1": {
+    "value": "nodejs18.x"
+   },
+   "us-isob-east-1": {
+    "value": "nodejs18.x"
+   },
+   "us-isob-west-1": {
+    "value": "nodejs18.x"
+   },
+   "us-west-1": {
+    "value": "nodejs22.x"
+   },
+   "us-west-2": {
+    "value": "nodejs22.x"
+   }
   }
  },
  "Conditions": {
@@ -576,29 +770,124 @@
   }
  },
  "Outputs": {
-  "amplifyprotoporosadmindashboardfranciscoostolazasandbox896fb18a58authamplifyAuthUserPoolB403B78BRef": {
+  "amplifyprotoporosadmindashboardfranciscoostolazasandbox896fb18a58authAmplifyRefAuthCustomResource07FF6DE7allowUnauthenticatedIdentities": {
    "Value": {
-    "Ref": "amplifyAuthUserPool4BA7F805"
+    "Fn::GetAtt": [
+     "AmplifyRefAuthCustomResource",
+     "allowUnauthenticatedIdentities"
+    ]
    }
   },
-  "amplifyprotoporosadmindashboardfranciscoostolazasandbox896fb18a58authamplifyAuthUserPoolAppClient2355F27ARef": {
+  "amplifyprotoporosadmindashboardfranciscoostolazasandbox896fb18a58authAmplifyRefAuthCustomResource07FF6DE7signupAttributes": {
    "Value": {
-    "Ref": "amplifyAuthUserPoolAppClient2626C6F8"
+    "Fn::GetAtt": [
+     "AmplifyRefAuthCustomResource",
+     "signupAttributes"
+    ]
    }
   },
-  "amplifyprotoporosadmindashboardfranciscoostolazasandbox896fb18a58authamplifyAuthIdentityPoolDEA55AABRef": {
+  "amplifyprotoporosadmindashboardfranciscoostolazasandbox896fb18a58authAmplifyRefAuthCustomResource07FF6DE7usernameAttributes": {
    "Value": {
-    "Ref": "amplifyAuthIdentityPool3FDE84CC"
+    "Fn::GetAtt": [
+     "AmplifyRefAuthCustomResource",
+     "usernameAttributes"
+    ]
    }
   },
-  "amplifyprotoporosadmindashboardfranciscoostolazasandbox896fb18a58authamplifyAuthauthenticatedUserRoleB2FD4430Ref": {
+  "amplifyprotoporosadmindashboardfranciscoostolazasandbox896fb18a58authAmplifyRefAuthCustomResource07FF6DE7verificationMechanisms": {
    "Value": {
-    "Ref": "amplifyAuthauthenticatedUserRoleD8DA3689"
+    "Fn::GetAtt": [
+     "AmplifyRefAuthCustomResource",
+     "verificationMechanisms"
+    ]
    }
   },
-  "amplifyprotoporosadmindashboardfranciscoostolazasandbox896fb18a58authamplifyAuthunauthenticatedUserRoleC38EA23CRef": {
+  "amplifyprotoporosadmindashboardfranciscoostolazasandbox896fb18a58authAmplifyRefAuthCustomResource07FF6DE7passwordPolicyMinLength": {
    "Value": {
-    "Ref": "amplifyAuthunauthenticatedUserRole2B524D9E"
+    "Fn::GetAtt": [
+     "AmplifyRefAuthCustomResource",
+     "passwordPolicyMinLength"
+    ]
+   }
+  },
+  "amplifyprotoporosadmindashboardfranciscoostolazasandbox896fb18a58authAmplifyRefAuthCustomResource07FF6DE7passwordPolicyRequirements": {
+   "Value": {
+    "Fn::GetAtt": [
+     "AmplifyRefAuthCustomResource",
+     "passwordPolicyRequirements"
+    ]
+   }
+  },
+  "amplifyprotoporosadmindashboardfranciscoostolazasandbox896fb18a58authAmplifyRefAuthCustomResource07FF6DE7mfaConfiguration": {
+   "Value": {
+    "Fn::GetAtt": [
+     "AmplifyRefAuthCustomResource",
+     "mfaConfiguration"
+    ]
+   }
+  },
+  "amplifyprotoporosadmindashboardfranciscoostolazasandbox896fb18a58authAmplifyRefAuthCustomResource07FF6DE7mfaTypes": {
+   "Value": {
+    "Fn::GetAtt": [
+     "AmplifyRefAuthCustomResource",
+     "mfaTypes"
+    ]
+   }
+  },
+  "amplifyprotoporosadmindashboardfranciscoostolazasandbox896fb18a58authAmplifyRefAuthCustomResource07FF6DE7socialProviders": {
+   "Value": {
+    "Fn::GetAtt": [
+     "AmplifyRefAuthCustomResource",
+     "socialProviders"
+    ]
+   }
+  },
+  "amplifyprotoporosadmindashboardfranciscoostolazasandbox896fb18a58authAmplifyRefAuthCustomResource07FF6DE7oauthCognitoDomain": {
+   "Value": {
+    "Fn::GetAtt": [
+     "AmplifyRefAuthCustomResource",
+     "oauthCognitoDomain"
+    ]
+   }
+  },
+  "amplifyprotoporosadmindashboardfranciscoostolazasandbox896fb18a58authAmplifyRefAuthCustomResource07FF6DE7oauthScope": {
+   "Value": {
+    "Fn::GetAtt": [
+     "AmplifyRefAuthCustomResource",
+     "oauthScope"
+    ]
+   }
+  },
+  "amplifyprotoporosadmindashboardfranciscoostolazasandbox896fb18a58authAmplifyRefAuthCustomResource07FF6DE7oauthRedirectSignIn": {
+   "Value": {
+    "Fn::GetAtt": [
+     "AmplifyRefAuthCustomResource",
+     "oauthRedirectSignIn"
+    ]
+   }
+  },
+  "amplifyprotoporosadmindashboardfranciscoostolazasandbox896fb18a58authAmplifyRefAuthCustomResource07FF6DE7oauthRedirectSignOut": {
+   "Value": {
+    "Fn::GetAtt": [
+     "AmplifyRefAuthCustomResource",
+     "oauthRedirectSignOut"
+    ]
+   }
+  },
+  "amplifyprotoporosadmindashboardfranciscoostolazasandbox896fb18a58authAmplifyRefAuthCustomResource07FF6DE7oauthResponseType": {
+   "Value": {
+    "Fn::GetAtt": [
+     "AmplifyRefAuthCustomResource",
+     "oauthResponseType"
+    ]
+   }
+  },
+  "amplifyprotoporosadmindashboardfranciscoostolazasandbox896fb18a58authAmplifyRefAuthCustomResource07FF6DE7oauthClientId": {
+   "Value": {
+    "Fn::GetAtt": [
+     "AmplifyRefAuthCustomResource",
+     "oauthClientId"
+    ]
    }
   }
  }
