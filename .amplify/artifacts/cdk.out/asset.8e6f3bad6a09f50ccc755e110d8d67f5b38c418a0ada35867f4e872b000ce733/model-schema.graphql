@@ -1,6 +1,0 @@
-type UserSettings @model @auth(rules: [{allow: owner, ownerField: "owner"}])
-{
-  theme: String @default(value: "light")
-  preferences: AWSJSON
-  profilePictureKey: String
-}

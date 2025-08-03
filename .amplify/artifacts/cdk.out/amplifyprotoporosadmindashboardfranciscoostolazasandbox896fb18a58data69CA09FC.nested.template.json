@@ -6,10 +6,18 @@
    "Properties": {
     "AdditionalAuthenticationProviders": [
      {
-      "AuthenticationType": "AWS_IAM"
+      "AuthenticationType": "AMAZON_COGNITO_USER_POOLS",
+      "UserPoolConfig": {
+       "AwsRegion": {
+        "Ref": "AWS::Region"
+       },
+       "UserPoolId": {
+        "Ref": "referencetoamplifyprotoporosadmindashboardfranciscoostolazasandbox896fb18a58authNestedStackauthNestedStackResourceAA17ACB7Outputsamplifyprotoporosadmindashboardfranciscoostolazasandbox896fb18a58authamplifyAuthUserPoolB403B78BRef"
+       }
+      }
      }
     ],
-    "AuthenticationType": "AMAZON_COGNITO_USER_POOLS",
+    "AuthenticationType": "AWS_IAM",
     "Name": "amplifyData",
     "Tags": [
      {
@@ -24,16 +32,7 @@
       "Key": "created-by",
       "Value": "amplify"
      }
-    ],
-    "UserPoolConfig": {
-     "AwsRegion": {
-      "Ref": "AWS::Region"
-     },
-     "DefaultAction": "ALLOW",
-     "UserPoolId": {
-      "Ref": "referencetoamplifyprotoporosadmindashboardfranciscoostolazasandbox896fb18a58authNestedStackauthNestedStackResourceAA17ACB7Outputsamplifyprotoporosadmindashboardfranciscoostolazasandbox896fb18a58authamplifyAuthUserPoolB403B78BRef"
-     }
-    }
+    ]
    },
    "UpdateReplacePolicy": "Delete",
    "DeletionPolicy": "Delete",
@@ -51,7 +50,7 @@
      ]
     },
     "DefinitionS3Location": {
-     "Fn::Sub": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/69cd9aed2e785f26017b28a1648adbd05f5865861be3186372fdc4d0b368acb8.graphql"
+     "Fn::Sub": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/5d06176bcc3e592a227be94f877d286eb82f30e2066d478a8eeb091baf786836.graphql"
     }
    },
    "UpdateReplacePolicy": "Delete",
@@ -120,7 +119,7 @@
        {
         "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
        },
-       "/bcbcbc1c6066c7092c8626f11a62fb9755969fc3c15734f70315aa6e94e9c7af.json"
+       "/fd3e21a3f19cea48e0fc09431613d5af16ac8e574465083effb4c6457e40de3a.json"
       ]
      ]
     }
@@ -133,7 +132,7 @@
     "aws:asset:property": "TemplateURL"
    }
   },
-  "amplifyDataUserSettingsNestedStackUserSettingsNestedStackResource288C9BA3": {
+  "amplifyDataTodoNestedStackTodoNestedStackResource551CEA56": {
    "Type": "AWS::CloudFormation::Stack",
    "Properties": {
     "Parameters": {
@@ -210,7 +209,7 @@
        {
         "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
        },
-       "/6eae8b15573cb14cf334f37cdcb796c45e6b034a22ebde7bb0d966362079316b.json"
+       "/a110e5f5412a4316eb80daa9de8cbef8fa6ca6ca0c2f95e395b4f980416e0401.json"
       ]
      ]
     }
@@ -221,9 +220,333 @@
    "UpdateReplacePolicy": "Delete",
    "DeletionPolicy": "Delete",
    "Metadata": {
-    "aws:cdk:path": "amplify-protoporosadmindashboard-franciscoostolaza-sandbox-896fb18a58/data/amplifyData/UserSettings.NestedStack/UserSettings.NestedStackResource",
-    "aws:asset:path": "amplifyprotoporosadmindashboardfranciscoostolazasandbox896fb18a58dataamplifyDataUserSettings95D05FFD.nested.template.json",
+    "aws:cdk:path": "amplify-protoporosadmindashboard-franciscoostolaza-sandbox-896fb18a58/data/amplifyData/Todo.NestedStack/Todo.NestedStackResource",
+    "aws:asset:path": "amplifyprotoporosadmindashboardfranciscoostolazasandbox896fb18a58dataamplifyDataTodoB459EC11.nested.template.json",
     "aws:asset:property": "TemplateURL"
+   }
+  },
+  "amplifyDataAuthRolePolicy01567A5654": {
+   "Type": "AWS::IAM::ManagedPolicy",
+   "Properties": {
+    "Description": "",
+    "Path": "/",
+    "PolicyDocument": {
+     "Statement": [
+      {
+       "Action": "appsync:GraphQL",
+       "Effect": "Allow",
+       "Resource": [
+        {
+         "Fn::Sub": [
+          "arn:${AWS::Partition}:appsync:${AWS::Region}:${AWS::AccountId}:apis/${apiId}/types/${typeName}/*",
+          {
+           "apiId": {
+            "Fn::GetAtt": [
+             "amplifyDataGraphQLAPI42A6FA33",
+             "ApiId"
+            ]
+           },
+           "typeName": "Todo"
+          }
+         ]
+        },
+        {
+         "Fn::Sub": [
+          "arn:${AWS::Partition}:appsync:${AWS::Region}:${AWS::AccountId}:apis/${apiId}/types/${typeName}/fields/${fieldName}",
+          {
+           "apiId": {
+            "Fn::GetAtt": [
+             "amplifyDataGraphQLAPI42A6FA33",
+             "ApiId"
+            ]
+           },
+           "typeName": "Query",
+           "fieldName": "getTodo"
+          }
+         ]
+        },
+        {
+         "Fn::Sub": [
+          "arn:${AWS::Partition}:appsync:${AWS::Region}:${AWS::AccountId}:apis/${apiId}/types/${typeName}/fields/${fieldName}",
+          {
+           "apiId": {
+            "Fn::GetAtt": [
+             "amplifyDataGraphQLAPI42A6FA33",
+             "ApiId"
+            ]
+           },
+           "typeName": "Query",
+           "fieldName": "listTodos"
+          }
+         ]
+        },
+        {
+         "Fn::Sub": [
+          "arn:${AWS::Partition}:appsync:${AWS::Region}:${AWS::AccountId}:apis/${apiId}/types/${typeName}/fields/${fieldName}",
+          {
+           "apiId": {
+            "Fn::GetAtt": [
+             "amplifyDataGraphQLAPI42A6FA33",
+             "ApiId"
+            ]
+           },
+           "typeName": "Mutation",
+           "fieldName": "createTodo"
+          }
+         ]
+        },
+        {
+         "Fn::Sub": [
+          "arn:${AWS::Partition}:appsync:${AWS::Region}:${AWS::AccountId}:apis/${apiId}/types/${typeName}/fields/${fieldName}",
+          {
+           "apiId": {
+            "Fn::GetAtt": [
+             "amplifyDataGraphQLAPI42A6FA33",
+             "ApiId"
+            ]
+           },
+           "typeName": "Mutation",
+           "fieldName": "updateTodo"
+          }
+         ]
+        },
+        {
+         "Fn::Sub": [
+          "arn:${AWS::Partition}:appsync:${AWS::Region}:${AWS::AccountId}:apis/${apiId}/types/${typeName}/fields/${fieldName}",
+          {
+           "apiId": {
+            "Fn::GetAtt": [
+             "amplifyDataGraphQLAPI42A6FA33",
+             "ApiId"
+            ]
+           },
+           "typeName": "Mutation",
+           "fieldName": "deleteTodo"
+          }
+         ]
+        },
+        {
+         "Fn::Sub": [
+          "arn:${AWS::Partition}:appsync:${AWS::Region}:${AWS::AccountId}:apis/${apiId}/types/${typeName}/fields/${fieldName}",
+          {
+           "apiId": {
+            "Fn::GetAtt": [
+             "amplifyDataGraphQLAPI42A6FA33",
+             "ApiId"
+            ]
+           },
+           "typeName": "Subscription",
+           "fieldName": "onCreateTodo"
+          }
+         ]
+        },
+        {
+         "Fn::Sub": [
+          "arn:${AWS::Partition}:appsync:${AWS::Region}:${AWS::AccountId}:apis/${apiId}/types/${typeName}/fields/${fieldName}",
+          {
+           "apiId": {
+            "Fn::GetAtt": [
+             "amplifyDataGraphQLAPI42A6FA33",
+             "ApiId"
+            ]
+           },
+           "typeName": "Subscription",
+           "fieldName": "onUpdateTodo"
+          }
+         ]
+        },
+        {
+         "Fn::Sub": [
+          "arn:${AWS::Partition}:appsync:${AWS::Region}:${AWS::AccountId}:apis/${apiId}/types/${typeName}/fields/${fieldName}",
+          {
+           "apiId": {
+            "Fn::GetAtt": [
+             "amplifyDataGraphQLAPI42A6FA33",
+             "ApiId"
+            ]
+           },
+           "typeName": "Subscription",
+           "fieldName": "onDeleteTodo"
+          }
+         ]
+        }
+       ]
+      }
+     ],
+     "Version": "2012-10-17"
+    },
+    "Roles": [
+     {
+      "Ref": "referencetoamplifyprotoporosadmindashboardfranciscoostolazasandbox896fb18a58authNestedStackauthNestedStackResourceAA17ACB7Outputsamplifyprotoporosadmindashboardfranciscoostolazasandbox896fb18a58authamplifyAuthauthenticatedUserRoleB2FD4430Ref"
+     }
+    ]
+   },
+   "UpdateReplacePolicy": "Delete",
+   "DeletionPolicy": "Delete",
+   "Metadata": {
+    "aws:cdk:path": "amplify-protoporosadmindashboard-franciscoostolaza-sandbox-896fb18a58/data/amplifyData/AuthRolePolicy01/Resource"
+   }
+  },
+  "amplifyDataUnauthRolePolicy01355B9DCF": {
+   "Type": "AWS::IAM::ManagedPolicy",
+   "Properties": {
+    "Description": "",
+    "Path": "/",
+    "PolicyDocument": {
+     "Statement": [
+      {
+       "Action": "appsync:GraphQL",
+       "Effect": "Allow",
+       "Resource": [
+        {
+         "Fn::Sub": [
+          "arn:${AWS::Partition}:appsync:${AWS::Region}:${AWS::AccountId}:apis/${apiId}/types/${typeName}/*",
+          {
+           "apiId": {
+            "Fn::GetAtt": [
+             "amplifyDataGraphQLAPI42A6FA33",
+             "ApiId"
+            ]
+           },
+           "typeName": "Todo"
+          }
+         ]
+        },
+        {
+         "Fn::Sub": [
+          "arn:${AWS::Partition}:appsync:${AWS::Region}:${AWS::AccountId}:apis/${apiId}/types/${typeName}/fields/${fieldName}",
+          {
+           "apiId": {
+            "Fn::GetAtt": [
+             "amplifyDataGraphQLAPI42A6FA33",
+             "ApiId"
+            ]
+           },
+           "typeName": "Query",
+           "fieldName": "getTodo"
+          }
+         ]
+        },
+        {
+         "Fn::Sub": [
+          "arn:${AWS::Partition}:appsync:${AWS::Region}:${AWS::AccountId}:apis/${apiId}/types/${typeName}/fields/${fieldName}",
+          {
+           "apiId": {
+            "Fn::GetAtt": [
+             "amplifyDataGraphQLAPI42A6FA33",
+             "ApiId"
+            ]
+           },
+           "typeName": "Query",
+           "fieldName": "listTodos"
+          }
+         ]
+        },
+        {
+         "Fn::Sub": [
+          "arn:${AWS::Partition}:appsync:${AWS::Region}:${AWS::AccountId}:apis/${apiId}/types/${typeName}/fields/${fieldName}",
+          {
+           "apiId": {
+            "Fn::GetAtt": [
+             "amplifyDataGraphQLAPI42A6FA33",
+             "ApiId"
+            ]
+           },
+           "typeName": "Mutation",
+           "fieldName": "createTodo"
+          }
+         ]
+        },
+        {
+         "Fn::Sub": [
+          "arn:${AWS::Partition}:appsync:${AWS::Region}:${AWS::AccountId}:apis/${apiId}/types/${typeName}/fields/${fieldName}",
+          {
+           "apiId": {
+            "Fn::GetAtt": [
+             "amplifyDataGraphQLAPI42A6FA33",
+             "ApiId"
+            ]
+           },
+           "typeName": "Mutation",
+           "fieldName": "updateTodo"
+          }
+         ]
+        },
+        {
+         "Fn::Sub": [
+          "arn:${AWS::Partition}:appsync:${AWS::Region}:${AWS::AccountId}:apis/${apiId}/types/${typeName}/fields/${fieldName}",
+          {
+           "apiId": {
+            "Fn::GetAtt": [
+             "amplifyDataGraphQLAPI42A6FA33",
+             "ApiId"
+            ]
+           },
+           "typeName": "Mutation",
+           "fieldName": "deleteTodo"
+          }
+         ]
+        },
+        {
+         "Fn::Sub": [
+          "arn:${AWS::Partition}:appsync:${AWS::Region}:${AWS::AccountId}:apis/${apiId}/types/${typeName}/fields/${fieldName}",
+          {
+           "apiId": {
+            "Fn::GetAtt": [
+             "amplifyDataGraphQLAPI42A6FA33",
+             "ApiId"
+            ]
+           },
+           "typeName": "Subscription",
+           "fieldName": "onCreateTodo"
+          }
+         ]
+        },
+        {
+         "Fn::Sub": [
+          "arn:${AWS::Partition}:appsync:${AWS::Region}:${AWS::AccountId}:apis/${apiId}/types/${typeName}/fields/${fieldName}",
+          {
+           "apiId": {
+            "Fn::GetAtt": [
+             "amplifyDataGraphQLAPI42A6FA33",
+             "ApiId"
+            ]
+           },
+           "typeName": "Subscription",
+           "fieldName": "onUpdateTodo"
+          }
+         ]
+        },
+        {
+         "Fn::Sub": [
+          "arn:${AWS::Partition}:appsync:${AWS::Region}:${AWS::AccountId}:apis/${apiId}/types/${typeName}/fields/${fieldName}",
+          {
+           "apiId": {
+            "Fn::GetAtt": [
+             "amplifyDataGraphQLAPI42A6FA33",
+             "ApiId"
+            ]
+           },
+           "typeName": "Subscription",
+           "fieldName": "onDeleteTodo"
+          }
+         ]
+        }
+       ]
+      }
+     ],
+     "Version": "2012-10-17"
+    },
+    "Roles": [
+     {
+      "Ref": "referencetoamplifyprotoporosadmindashboardfranciscoostolazasandbox896fb18a58authNestedStackauthNestedStackResourceAA17ACB7Outputsamplifyprotoporosadmindashboardfranciscoostolazasandbox896fb18a58authamplifyAuthunauthenticatedUserRoleC38EA23CRef"
+     }
+    ]
+   },
+   "UpdateReplacePolicy": "Delete",
+   "DeletionPolicy": "Delete",
+   "Metadata": {
+    "aws:cdk:path": "amplify-protoporosadmindashboard-franciscoostolaza-sandbox-896fb18a58/data/amplifyData/UnauthRolePolicy01/Resource"
    }
   },
   "amplifyDataAmplifyCodegenAssetsAmplifyCodegenAssetsBucket9CCB4ACA": {
@@ -399,7 +722,7 @@
      }
     ],
     "SourceObjectKeys": [
-     "8e6f3bad6a09f50ccc755e110d8d67f5b38c418a0ada35867f4e872b000ce733.zip"
+     "76b9cb787843795ad95966b867f6ef348480676166e6ac8fd4d53cef654a6b16.zip"
     ],
     "SourceMarkers": [
      {}
@@ -911,7 +1234,7 @@
      }
     ],
     "SourceObjectKeys": [
-     "a37ff3a02c74b65c2bbef83deef539bb0d433e1b9058ad0878b648c73648fd38.zip"
+     "8aeb4ca549a33370c42666525e2c318f84f0d26a7f54c6a8ecc60ce32b83123f.zip"
     ],
     "SourceMarkers": [
      {}
@@ -1006,7 +1329,7 @@
   "CDKMetadata": {
    "Type": "AWS::CDK::Metadata",
    "Properties": {
-    "Analytics": "v2:deflate64:H4sIAAAAAAAA/1VSy27CMBD8lt6Ni9IeeuWh9kIRJVKv0eJswcSP1OuAIiv/XjvmUU47M7sZj9cpeDF949MnONNE1M1EyR0PaySPdelBNGyLZDsnkMWJKkDbUm8EDx8O2sOvmrVyDoRs8WNG5WsVlX+sFAfUwNbW4BI8lNkq9u9sYPTCw7wTDfrUuaBcNlZJ0d/lC88knZy+rkKNrbK9RuN5bi1vAgMi9MRnqQxMgd7VwEN0XEGP7hsdSWtYKc1eobfmvTPCJ+UG4ugVD0yC5mFr1XiJsd4jZhQTUZwpvYuWG3Cg0aMb+1cyDInm/S468lbftpxcrzhnrVTKWcX1CyX57EwLJcfobLxSdNnHgx78E/mMTzXqD/4bZ0+yRpdXZ2yN/EjPp+KVF/EnOJKUE9cZLzXyba5/RUurmiECAAA="
+    "Analytics": "v2:deflate64:H4sIAAAAAAAA/1VSXXPCIBD8LX1H6qT+AT+mfVHHmpm+Zk5yVZQA5YhOhsl/L4SqzdPtLstyHBS8mM749AVuNBH1ZaLkgYctkse69CAubI9kWieQRUcVwFrqtODhw4E9/ai5lQsgZMtvPSif66j8Y6U4YQNsazSuwEOZo+L6k/VMQsPDBjQcsd4ZJUWXHGNhb9Swb6hPU0Y9ozceFq24oE/qH8rlaR7xTFLzaXcVarTKdA1qz/PS6iEwIEJPfJ5KzxQ0hxp4iIlr6NB9oSNpNCulPir0Rr+3WvikPEC03nE8jeJ1S++ifQcOGvTohrvcSd8nmse/bMmb5vEIaQJ3nPuoVOqhiq8jlOTzGy2VHNpiQ7sx5RgPGuXn6Vo76KP8nTNXWaPLY9GmRn6m12sx40X8I2eScuJa7WWDfJ/rL/pewylAAgAA"
    },
    "Metadata": {
     "aws:cdk:path": "amplify-protoporosadmindashboard-franciscoostolaza-sandbox-896fb18a58/data/CDKMetadata/Default"
@@ -1104,9 +1427,6 @@
     "value": "nodejs22.x"
    },
    "ap-southeast-5": {
-    "value": "nodejs22.x"
-   },
-   "ap-southeast-6": {
     "value": "nodejs22.x"
    },
    "ap-southeast-7": {

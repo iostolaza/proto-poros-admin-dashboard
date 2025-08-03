@@ -43,14 +43,6 @@
     "amplifyApiModelSchemaS3Uri",
     "awsAppsyncAdditionalAuthenticationTypes"
    ]
-  },
-  "AWS::Amplify::Storage": {
-   "version": "1",
-   "stackOutputs": [
-    "buckets",
-    "storageRegion",
-    "bucketName"
-   ]
   }
  },
  "Outputs": {
@@ -161,7 +153,7 @@
    }
   },
   "awsAppsyncAuthenticationType": {
-   "Value": "AMAZON_COGNITO_USER_POOLS"
+   "Value": "AWS_IAM"
   },
   "awsAppsyncRegion": {
    "Value": {
@@ -206,41 +198,7 @@
    }
   },
   "awsAppsyncAdditionalAuthenticationTypes": {
-   "Value": "AWS_IAM"
-  },
-  "storageRegion": {
-   "Value": {
-    "Ref": "AWS::Region"
-   }
-  },
-  "bucketName": {
-   "Value": {
-    "Fn::GetAtt": [
-     "storage0EC3F24A",
-     "Outputs.amplifyprotoporosadmindashboardfranciscoostolazasandbox896fb18a58storageadminDashboardDriveBucket93BD446DRef"
-    ]
-   }
-  },
-  "buckets": {
-   "Value": {
-    "Fn::Join": [
-     "",
-     [
-      "[\"{\\\"name\\\":\\\"adminDashboardDrive\\\",\\\"bucketName\\\":\\\"",
-      {
-       "Fn::GetAtt": [
-        "storage0EC3F24A",
-        "Outputs.amplifyprotoporosadmindashboardfranciscoostolazasandbox896fb18a58storageadminDashboardDriveBucket93BD446DRef"
-       ]
-      },
-      "\\\",\\\"storageRegion\\\":\\\"",
-      {
-       "Ref": "AWS::Region"
-      },
-      "\\\",\\\"paths\\\":{\\\"private/${cognito-identity.amazonaws.com:sub}/*\\\":{\\\"entityidentity\\\":[\\\"get\\\",\\\"list\\\",\\\"write\\\",\\\"delete\\\"]},\\\"public/*\\\":{\\\"guest\\\":[\\\"get\\\",\\\"list\\\"]}}}\"]"
-     ]
-    ]
-   }
+   "Value": "AMAZON_COGNITO_USER_POOLS"
   }
  },
  "Resources": {
@@ -273,7 +231,7 @@
        {
         "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
        },
-       "/8b393128df0d5d09ca510cd5359d274b42f46ccf07b88504c7b72194eebfa414.json"
+       "/570a4164aad76ffefb995fdab3e28152b8a5c66b8f504639ecd6607a44e8c37e.json"
       ]
      ]
     }
@@ -341,7 +299,7 @@
        {
         "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
        },
-       "/325b20e8849262da7d9dd891593169b88da65ec9f1ad98500b2303066ec18971.json"
+       "/a10d77fed3145ae8ed1407db23a1d567d27c8e21fcb99ab60fe6cb89090c8e4e.json"
       ]
      ]
     }
@@ -354,66 +312,10 @@
     "aws:asset:property": "TemplateURL"
    }
   },
-  "storage0EC3F24A": {
-   "Type": "AWS::CloudFormation::Stack",
-   "Properties": {
-    "Parameters": {
-     "referencetoamplifyprotoporosadmindashboardfranciscoostolazasandbox896fb18a58authNestedStackauthNestedStackResourceAA17ACB7Outputsamplifyprotoporosadmindashboardfranciscoostolazasandbox896fb18a58authamplifyAuthauthenticatedUserRoleB2FD4430Ref": {
-      "Fn::GetAtt": [
-       "auth179371D7",
-       "Outputs.amplifyprotoporosadmindashboardfranciscoostolazasandbox896fb18a58authamplifyAuthauthenticatedUserRoleB2FD4430Ref"
-      ]
-     },
-     "referencetoamplifyprotoporosadmindashboardfranciscoostolazasandbox896fb18a58authNestedStackauthNestedStackResourceAA17ACB7Outputsamplifyprotoporosadmindashboardfranciscoostolazasandbox896fb18a58authamplifyAuthunauthenticatedUserRoleC38EA23CRef": {
-      "Fn::GetAtt": [
-       "auth179371D7",
-       "Outputs.amplifyprotoporosadmindashboardfranciscoostolazasandbox896fb18a58authamplifyAuthunauthenticatedUserRoleC38EA23CRef"
-      ]
-     }
-    },
-    "Tags": [
-     {
-      "Key": "amplify:deployment-type",
-      "Value": "sandbox"
-     },
-     {
-      "Key": "created-by",
-      "Value": "amplify"
-     }
-    ],
-    "TemplateURL": {
-     "Fn::Join": [
-      "",
-      [
-       "https://s3.",
-       {
-        "Ref": "AWS::Region"
-       },
-       ".",
-       {
-        "Ref": "AWS::URLSuffix"
-       },
-       "/",
-       {
-        "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
-       },
-       "/cf614dd1a35f39dc721d6ce94c140564935046bf6d64bab0397bdde67bade0c3.json"
-      ]
-     ]
-    }
-   },
-   "UpdateReplacePolicy": "Delete",
-   "DeletionPolicy": "Delete",
-   "Metadata": {
-    "aws:cdk:path": "amplify-protoporosadmindashboard-franciscoostolaza-sandbox-896fb18a58/storage.NestedStack/storage.NestedStackResource",
-    "aws:asset:path": "amplifyprotoporosadmindashboardfranciscoostolazasandbox896fb18a58storage27D44371.nested.template.json",
-    "aws:asset:property": "TemplateURL"
-   }
-  },
   "CDKMetadata": {
    "Type": "AWS::CDK::Metadata",
    "Properties": {
-    "Analytics": "v2:deflate64:H4sIAAAAAAAA/zPSMzKw0DNQTCwv1k1OydbNyUzSqw4uSUzO1nFOy/MvLSkoLQGxwEK1Onn5Kal6WcX6ZUYmekZAbVnFmZm6RaV5JZm5qXpBEBoAHy6galMAAAA="
+    "Analytics": "v2:deflate64:H4sIAAAAAAAA/zPSMzIw0TNQTCwv1k1OydbNyUzSqw4uSUzO1nFOy/MvLSkoLQGxwEK1Onn5Kal6WcX6ZUYmekZAbVnFmZm6RaV5JZm5qXpBEBoAUUVsrFMAAAA="
    },
    "Metadata": {
     "aws:cdk:path": "amplify-protoporosadmindashboard-franciscoostolaza-sandbox-896fb18a58/CDKMetadata/Default"

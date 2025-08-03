@@ -45,3 +45,8 @@ Thumbs.db
 amplify_outputs.json
 dashboardnote.txt
 
+
+# amplify
+.amplify
+amplify_outputs*
+amplifyconfiguration*
