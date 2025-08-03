@@ -1,7 +1,11 @@
-export default {
-  content: ['./src/**/*.{html,ts}'],  // Scans Angular templates/components
+module.exports = {
+  content: [
+    "./src/**/*.{html,ts}",
+    "./node_modules/@aws-amplify/ui-angular/**/*.js" 
+  ],
   theme: {
-    extend: {},  // Custom extensions
+    extend: {},
   },
-  plugins: [],  // Add if needed
+  plugins: [],
+  darkMode: 'class', 
 };

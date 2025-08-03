@@ -33,9 +33,14 @@
     "@angular/compiler-cli": "^20.1.4",
     "@aws-amplify/backend": "^1.16.1",
     "@aws-amplify/backend-cli": "^1.8.0",
+    "@aws-sdk/types": "^3.734.0",
     "@tailwindcss/postcss": "^4.1.11",
+    "@types/aws-lambda": "^8.10.152",
+    "@types/cors": "^2.8.19",
     "@types/jasmine": "~5.1.8",
+    "@types/lodash": "^4.17.20",
     "@types/node": "^24.1.0",
+    "ampx": "^0.2.2",
     "autoprefixer": "^10.4.21",
     "aws-cdk-lib": "^2.208.0",
     "constructs": "^10.4.2",
@@ -50,5 +55,10 @@
     "tailwindcss": "^4.1.11",
     "tsx": "^4.20.3",
     "typescript": "^5.8.3"
+  },
+  "overrides": {
+    "@aws-amplify/plugin-types": {
+      "@aws-sdk/types": "^3.734.0"
+    }
   }
 }
