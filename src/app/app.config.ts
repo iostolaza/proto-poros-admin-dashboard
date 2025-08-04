@@ -25,3 +25,4 @@ export const appConfig: ApplicationConfig = {
     importProvidersFrom(NgIdleKeepaliveModule.forRoot()) // Provides Idle, Keepalive for standalone
   ]
 };
+

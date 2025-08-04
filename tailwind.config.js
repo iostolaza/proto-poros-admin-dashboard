@@ -1,11 +1,6 @@
+/** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: [
-    "./src/**/*.{html,ts}",
-    "./node_modules/@aws-amplify/ui-angular/**/*.js" 
-  ],
-  theme: {
-    extend: {},
-  },
+  content: ['./src/**/*.{html,ts}'],
+  theme: { extend: {} },
   plugins: [],
-  darkMode: 'class', 
 };
