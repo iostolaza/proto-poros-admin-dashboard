@@ -2,11 +2,11 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 @Component({
-  selector: 'app-profile',
+  selector: 'app-messages',
   standalone: true,
   imports: [CommonModule],
-  templateUrl: './profile.html',
-  styleUrl: './profile.scss',
+  templateUrl: './messages.component.html',
+  styleUrl: './messages.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class Profile {}
+export class Messages {}

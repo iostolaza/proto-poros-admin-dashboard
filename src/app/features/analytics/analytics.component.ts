@@ -2,11 +2,11 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 @Component({
-  selector: 'app-schedule',
+  selector: 'app-analytics',
   standalone: true,
   imports: [CommonModule],
-  templateUrl: './schedule.html',
-  styleUrl: './schedule.scss',
+  templateUrl: './analytics.component.html',
+  styleUrl: './analytics.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class Schedule {}
+export class Analytics {}

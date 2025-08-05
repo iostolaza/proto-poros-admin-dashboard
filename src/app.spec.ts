@@ -2,10 +2,9 @@
 import { TestBed } from '@angular/core/testing';
 import { provideRouter } from '@angular/router';
 import { provideHttpClient } from '@angular/common/http';
-import { provideAngularSvgIcon } from 'angular-svg-icon';
 import { AppComponent } from './app.component';
 import { routes } from './app.routes';
-import { MainLayoutComponent } from './app/layouts/main-layout/main-layout.component';  // Corrected path
+import { MainLayoutComponent } from './app/layouts/main-layout/main-layout.component';  
 
 describe('AppComponent', () => {
   beforeEach(async () => {
@@ -14,7 +13,6 @@ describe('AppComponent', () => {
       providers: [
         provideRouter(routes),
         provideHttpClient(),
-        provideAngularSvgIcon()
       ]
     }).compileComponents();
   });

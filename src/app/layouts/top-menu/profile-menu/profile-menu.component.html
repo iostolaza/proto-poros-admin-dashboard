@@ -1,14 +1,15 @@
-<!-- src/app/layouts/top-menu/profile-menu/profile-menu.component.html: Profile dropdown menu with button and animated content -->
+
+<!-- src/app/layouts/top-menu/profile-menu/profile-menu.component.html: Updated with route clicks -->
+
 <button (click)="toggleMenu()" class="bg-card relative flex rounded-full text-sm" type="button">
-  <img ngSrc="assets/profile/profile-female.jpg" width="36" height="36" alt="Profile Image" />
+  <img ngSrc="/assets/profile/profile-female.jpg" width="36" height="36" alt="Profile Image" /> 
 </button>
-<!-- Dropdown with ngIf for proper hide/show and animations on enter/leave -->
 <div *ngIf="isOpen"
   class="dropdown bg-background shadow-custom border-muted absolute z-20 mt-2 w-60 origin-top-right transform rounded-md border border-dashed py-4 ring-1 transition focus:outline-none ltr:right-0 rtl:left-0"
   [@openClose]>
   <div class="flex items-center px-4 pb-4">
     <div class="w-10 shrink-0">
-      <img ngSrc="assets/profile/profile-female.jpg" width="36" height="36" alt="Profile Image" />
+      <img ngSrc="/assets/profile/profile-female.jpg" width="36" height="36" alt="Profile Image" />
     </div>
     <div class="text-foreground overflow-hidden px-2 text-sm font-semibold">
       Proto Admin

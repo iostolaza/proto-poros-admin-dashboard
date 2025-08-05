@@ -1,3 +1,4 @@
+// src/app/core/services/menu.service.ts: Simplified menu service (removed redundancies like showMobileMenu, toggleSidebar)
 import { Injectable, signal } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
 
@@ -20,7 +21,6 @@ export interface SubMenuItem {
   providedIn: 'root'
 })
 export class MenuService {
-  showMobileMenu = signal(false);
   pagesMenu = signal<MenuItem[]>([]);
 
   constructor(private router: Router) {
@@ -39,21 +39,11 @@ export class MenuService {
     });
   }
 
-  toggleMobileMenu() {
-    this.showMobileMenu.update(v => !v);
-  }
-
   toggleMenu(menu: MenuItem) {
     this.pagesMenu.update(menus => menus.map(m => m === menu ? { ...m, selected: !m.selected } : m));
   }
 
-  toggleSidebar() {
-    // Placeholder for sidebar toggle logic
-    console.log('Sidebar toggled');
-  }
-
   expand(items: SubMenuItem[]) {
-    // Placeholder for expanding menu items
     items.forEach(item => {
       item.active = this.isActive(item.route);
       if (item.children) this.expand(item.children);
@@ -61,7 +51,6 @@ export class MenuService {
   }
 
   toggleSubMenu(submenu: SubMenuItem) {
-    // Placeholder for submenu toggle logic
     if (submenu) {
       submenu.active = !submenu.active;
     }

@@ -2,11 +2,11 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 @Component({
-  selector: 'app-messages',
+  selector: 'app-schedule',
   standalone: true,
   imports: [CommonModule],
-  templateUrl: './messages.html',
-  styleUrl: './messages.scss',
+  templateUrl: './schedule.component.html',
+  styleUrl: './schedule.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class Messages {}
+export class Schedule {}

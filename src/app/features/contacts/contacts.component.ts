@@ -5,8 +5,8 @@ import { CommonModule } from '@angular/common';
   selector: 'app-contacts',
   standalone: true,
   imports: [CommonModule],
-  templateUrl: './contacts.html',
-  styleUrl: './contacts.scss',
+  templateUrl: './contacts.component.html',
+  styleUrl: './contacts.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class Contacts {}

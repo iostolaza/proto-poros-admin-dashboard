@@ -5,8 +5,8 @@ import { CommonModule } from '@angular/common';
   selector: 'app-timesheet',
   standalone: true,
   imports: [CommonModule],
-  templateUrl: './timesheet.html',
-  styleUrl: './timesheet.scss',
+  templateUrl: './timesheet.component.html',
+  styleUrl: './timesheet.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class Timesheet {}
