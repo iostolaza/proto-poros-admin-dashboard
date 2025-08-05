@@ -1,14 +1,13 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
-import { AngularSvgIconModule } from 'angular-svg-icon';
 import { MenuService } from '../../../core/services/menu.service';
 
 @Component({
   selector: 'app-nav-menu',
   standalone: true,
-  imports: [CommonModule, RouterModule, AngularSvgIconModule],
-  templateUrl: './nav-menu.html'
+  imports: [CommonModule, RouterModule],
+  templateUrl: './nav-menu.component.html'
 })
 export class NavMenu {
   constructor(public menuService: MenuService) {

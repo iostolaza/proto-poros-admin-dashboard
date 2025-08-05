@@ -1,18 +1,17 @@
 import { Component, inject, ChangeDetectionStrategy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterLink, RouterLinkActive } from '@angular/router';
-import { AngularSvgIconModule } from 'angular-svg-icon';
 import { LayoutService } from '../../core/services/layout.service';
 
 @Component({
   selector: 'app-sidebar',
   standalone: true,
-  imports: [CommonModule, RouterLink, RouterLinkActive, AngularSvgIconModule],
-  templateUrl: './sidebar.html',
-  styleUrl: './sidebar.scss',
+  imports: [CommonModule, RouterLink, RouterLinkActive],
+  templateUrl: './sidebar.component.html',
+  styleUrl: './sidebar.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class Sidebar {
+export class SidebarComponent {
   layout = inject(LayoutService);
   navLinks = [
     { path: '/dashboard', label: 'Dashboard', icon: 'assets/icons/home.svg' },

@@ -1,15 +1,19 @@
+// tsconfig.app.json (updated to exclude specs for ng serve)
 {
   "extends": "./tsconfig.json",
   "compilerOptions": {
-    "composite": true,
     "outDir": "./out-tsc/app",
     "types": []
   },
   "files": [
-    "src/main.ts"
+    "src/main.ts",
+    "src/polyfills.ts"
   ],
   "include": [
     "src/**/*.d.ts",
-    "src/polyfills.ts"  // Add this for compilation
+    "src/**/*.ts"
+  ],
+  "exclude": [
+    "**/*.spec.ts"  // Added: Prevents spec compilation in ng serve
   ]
 }

@@ -1,5 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { SignIn } from './sign-in';
+import { SignInComponent } from './sign-in.component';
 import { AmplifyAuthenticatorModule } from '@aws-amplify/ui-angular';
 import { RouterTestingModule } from '@angular/router/testing';
 import { getCurrentUser, fetchAuthSession } from 'aws-amplify/auth';
@@ -7,16 +7,16 @@ import { Router } from '@angular/router';
 import { By } from '@angular/platform-browser';
 
 describe('SignIn', () => {
-  let component: SignIn;
-  let fixture: ComponentFixture<SignIn>;
+  let component: SignInComponent;
+  let fixture: ComponentFixture<SignInComponent>;
   let router: Router;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [SignIn, AmplifyAuthenticatorModule, RouterTestingModule]
+      imports: [SignInComponent, AmplifyAuthenticatorModule, RouterTestingModule]
     }).compileComponents();
 
-    fixture = TestBed.createComponent(SignIn);
+    fixture = TestBed.createComponent(SignInComponent);
     component = fixture.componentInstance;
     router = TestBed.inject(Router);
 

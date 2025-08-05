@@ -1,15 +1,14 @@
 import { Component, signal, effect } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
-import { AngularSvgIconModule } from 'angular-svg-icon';
 import { animate, state, style, transition, trigger } from '@angular/animations';
 import { signOut } from 'aws-amplify/auth';
 
 @Component({
   selector: 'app-profile-menu',
   standalone: true,
-  imports: [CommonModule, AngularSvgIconModule],
-  templateUrl: './profile-menu.html',
+  imports: [CommonModule],
+  templateUrl: './profile-menu.component.html',
   animations: [
     trigger('openClose', [
       state('open', style({ opacity: '1 !important', transform: 'translateY(0)', visibility: 'visible' })),

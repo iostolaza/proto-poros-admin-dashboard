@@ -1,10 +1,12 @@
+// tsconfig.spec.json (updated for Jasmine types)
 {
   "extends": "./tsconfig.json",
   "compilerOptions": {
     "composite": true,
+    "declaration": true,
     "outDir": "./out-tsc/spec",
     "types": [
-      "jasmine",
+      "jasmine",  // Added: Types for Jasmine globals (describe, it, expect, etc.)
       "node"
     ]
   },
