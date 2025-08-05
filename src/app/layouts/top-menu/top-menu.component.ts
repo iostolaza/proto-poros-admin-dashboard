@@ -12,7 +12,4 @@ import { MenuService } from '../../core/services/menu.service';
 export class TopMenuComponent {
   constructor(public menuService: MenuService) {}
 
-  toggleMobileMenu() {
-    this.menuService.toggleMobileMenu(); 
-  }
 }

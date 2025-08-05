@@ -1,3 +1,4 @@
+// src/app/core/services/layout.service.ts: Consolidated service for layout and dark mode (merged from ThemeService)
 import { Injectable, signal, effect } from '@angular/core';
 
 @Injectable({
