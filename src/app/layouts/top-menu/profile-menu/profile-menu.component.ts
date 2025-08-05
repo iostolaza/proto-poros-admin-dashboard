@@ -1,46 +1,42 @@
-import { Component, signal, effect } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { Router } from '@angular/router';
-import { animate, state, style, transition, trigger } from '@angular/animations';
-import { signOut } from 'aws-amplify/auth';
+// src/app/layouts/top-menu/profile-menu/profile-menu.component.ts: Component for profile dropdown with animations and toggle logic
+import { Component } from '@angular/core';
+import { trigger, transition, style, animate } from '@angular/animations';  // Updated to use enter/leave for better hide/show
+import { CommonModule } from '@angular/common';  // Import CommonModule for *ngIf
 
 @Component({
   selector: 'app-profile-menu',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule],  // Add CommonModule to imports for structural directives like *ngIf
   templateUrl: './profile-menu.component.html',
+  styleUrls: ['./profile-menu.component.scss'],
   animations: [
     trigger('openClose', [
-      state('open', style({ opacity: '1 !important', transform: 'translateY(0)', visibility: 'visible' })),
-      state('closed', style({ opacity: 0, transform: 'translateY(-20px)', visibility: 'hidden' })),
-      transition('open => closed', animate('0.2s')),
-      transition('closed => open', animate('0.2s')),
+      transition(':enter', [
+        style({ opacity: 0, transform: 'scale(0.95)' }),
+        animate('0.3s ease-out', style({ opacity: 1, transform: 'scale(1)' })),
+      ]),
+      transition(':leave', [
+        animate('0.3s ease-in', style({ opacity: 0, transform: 'scale(0.95)' })),
+      ]),
     ]),
-  ],
+  ]
 })
-export class ProfileMenu {
-  isOpen = signal(false);
+export class ProfileMenuComponent {
+  isOpen = false;
+
   profileMenu = [
-    { title: 'Your Profile', icon: 'assets/icons/user.svg', link: '/profile' },
-    { title: 'Settings', icon: 'assets/icons/settings.svg', link: '/settings' },
-    { title: 'Log out', icon: 'assets/icons/log-out.svg', link: null }, 
+    { title: 'Profile' },
+    { title: 'Settings' },
+    { title: 'Logout' }
   ];
 
-  constructor(private router: Router) {
-    effect(() => console.log('isOpen changed:', this.isOpen()));
-  }
-
   toggleMenu() {
-    this.isOpen.update(v => !v);
+    this.isOpen = !this.isOpen;
   }
 
-  async onMenuItemClick(item: { title: string; link: string | null }) {
-    if (item.title === 'Log out') {
-      await signOut({ global: true }); 
-      this.router.navigate(['/auth']).then(() => window.location.reload()); 
-    } else if (item.link) {
-      this.router.navigate([item.link]);
-    }
-    this.isOpen.set(false);
+  onMenuItemClick(item: { title: string }) {
+    console.log('Clicked:', item.title);
+    // Add logic for each item, e.g., navigation or sign out
+    this.isOpen = false;
   }
 }

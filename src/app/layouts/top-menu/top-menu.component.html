@@ -1,5 +1,5 @@
-<!-- src/app/layouts/top-menu/top-menu.html: Top navigation bar with mobile button, logo, desktop menu, profile (icons removed) -->
-<div class="bg-background relative">
+<!-- src/app/layouts/top-menu/top-menu.component.html: Top navigation bar with mobile button, logo, profile (icons removed) -->
+<div class="bg-card relative">
   <div class="mx-auto px-5">
     <div class="flex items-center justify-between py-3.5 md:justify-start">
       <!-- Title at top left -->
@@ -24,10 +24,6 @@
           Logo <!-- Placeholder for logo icon -->
         </a>
         <b class="text-foreground hidden text-sm font-bold sm:block">Proto-Admin</b>
-      </div>
-      <!-- Desktop Nav Menu (Dropdowns) -->
-      <div class="hidden space-x-10 sm:order-3 md:flex">
-        <app-nav-menu></app-nav-menu>
       </div>
       <!-- Profile Menu -->
       <div class="items-center justify-end sm:order-4 md:flex md:flex-1 lg:w-0">

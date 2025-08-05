@@ -3,27 +3,39 @@
 
 @layer base {
   :root {
-    --background-light: #f7fafc; /* gray-50 */
-    --background-dark: #1a202c; /* gray-900 */
-    --text-light: #2d3748; /* gray-800 */
-    --text-dark: #e2e8f0; /* gray-200 */
-    --proto-primary: #3182ce; /* blue-500 */
-    --muted-light: #a0aec0; /* gray-400 */
-    --muted-dark: #64748b; /* gray-500 */
-    --border-light: #e2e8f0; /* gray-200 */
-    --border-dark: #475569; /* gray-600 */
-    --card-light: #ffffff; /* white for better contrast */
-    --card-dark: #2d3748; /* gray-700 */
+    --background: #E5E7EB; /* gray-200, light grey for main sections (corrected typo) */
+    --foreground: #1e3a8a; /* blue-900, dark blue for text */
+    --card: #94A3B8; /* slate-400, for headers, nav, cards, footer */
+    --card-foreground: #1e3a8a; /* blue-900 */
+    --primary: #3b82f6; /* blue-500, vibrant blue accent */
+    --primary-foreground: #ffffff; /* white */
+    --muted: #bfdbfe; /* blue-200 */
+    --muted-foreground: #60a5fa; /* blue-400 */
+    --destructive: #f97316; /* orange-500 (complement to blue) */
+    --destructive-foreground: #172554; /* blue-950 */
+    --border: #93c5fd; /* blue-300 */
+    --hover-bg: #DBEAFE; /* blue-100 for hover in light mode */
+  }
+  .dark {
+    --background: #64748B; /* slate-500, dark grey for main sections (adjusted to slate-500 for better contrast) */
+    --foreground: #dbeafe; /* blue-100, light blue for text */
+    --card: #1f2937; /* gray-900, for headers, nav, cards, footer */
+    --card-foreground: #dbeafe; /* blue-100 */
+    --primary: #3b82f6; /* blue-500, vibrant blue accent */
+    --primary-foreground: #172554; /* blue-950 */
+    --muted: #2563eb; /* blue-600 */
+    --muted-foreground: #93c5fd; /* blue-300 */
+    --destructive: #f97316; /* orange-500 */
+    --destructive-foreground: #ffffff; /* white */
+    --border: #1d4ed8; /* blue-700 */
+    --hover-bg: #1E40AF; /* blue-800 for hover in dark mode */
   }
   html {
     font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
   }
   body {
     margin: 0;
-    background-color: var(--background-light);
-  }
-  .dark body {
-    background-color: var(--background-dark);
+    background-color: var(--background);
   }
 }
 
@@ -54,66 +66,40 @@
   }
   /* Custom backgrounds/colors */
   .bg-background {
-    background-color: var(--background-light);
-  }
-  .dark .bg-background {
-    background-color: var(--background-dark);
+    background-color: var(--background);
   }
   .text-foreground {
-    color: var(--text-light);
-  }
-  .dark .text-foreground {
-    color: var(--text-dark);
+    color: var(--foreground);
   }
   .text-muted-foreground {
-    color: var(--muted-light);
-  }
-  .dark .text-muted-foreground {
-    color: var(--muted-dark);
+    color: var(--muted-foreground);
   }
   .border-border {
-    border-color: var(--border-light);
-  }
-  .dark .border-border {
-    border-color: var(--border-dark);
+    border-color: var(--border);
   }
   .border-muted {
-    border-color: var(--muted-light);
-  }
-  .dark .border-muted {
-    border-color: var(--muted-dark);
+    border-color: var(--muted);
   }
   .bg-card {
-    background-color: var(--card-light);
-  }
-  .dark .bg-card {
-    background-color: var(--card-dark);
+    background-color: var(--card);
   }
   .text-primary {
-    color: var(--proto-primary);
+    color: var(--primary);
   }
-  /* Hover utilities */
-  .hover\:bg-card:hover {
-    background-color: var(--card-light);
-  }
-  .dark .hover\:bg-card:hover {
-    background-color: var(--card-dark);
+  /* Hover utilities - updated to use new --hover-bg var for custom hover colors */
+  .hover\:bg-hover:hover {
+    background-color: var(--hover-bg);
   }
   .hover\:text-primary:hover {
-    color: var(--proto-primary);
+    color: var(--primary);
   }
   /* Dropdown overrides */
   .dropdown {
-    background-color: var(--card-light) !important; /* Solid white for less lightness/transparency */
+    background-color: var(--card) !important; /* Solid for less lightness/transparency */
     opacity: 1 !important; /* Force full opacity */
-    border-color: var(--border-light) !important; /* Solid border */
+    border-color: var(--border) !important; /* Solid border */
     box-shadow: var(--shadow-custom); /* Use defined shadow */
-    --ring-color: var(--border-light); /* Visible ring color */
+    --ring-color: var(--border); /* Visible ring color */
     --ring-opacity: 50; /* Medium opacity for subtle ring */
-  }
-  .dark .dropdown {
-    background-color: var(--card-dark) !important;
-    border-color: var(--border-dark) !important;
-    --ring-color: var(--border-dark);
   }
 }
