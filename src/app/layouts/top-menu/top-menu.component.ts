@@ -1,4 +1,3 @@
-// src/app/layouts/top-menu/top-menu.component.ts: Removed toggleMobileMenu method
 import { Component } from '@angular/core';
 import { ProfileMenuComponent } from './profile-menu/profile-menu.component';
 import { MenuService } from '../../core/services/menu.service';
@@ -12,4 +11,8 @@ import { MenuService } from '../../core/services/menu.service';
 })
 export class TopMenuComponent {
   constructor(public menuService: MenuService) {}
+
+  toggleMobileMenu() {
+    this.menuService.toggleMobileMenu(); 
+  }
 }

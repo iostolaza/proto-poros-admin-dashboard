@@ -2,11 +2,11 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 @Component({
-  selector: 'app-profile',
+  selector: 'app-analytics',
   standalone: true,
   imports: [CommonModule],
-  templateUrl: './profile.component.html',
-  styleUrl: './profile.component.scss',
+  templateUrl: './analytics.html',
+  styleUrl: './analytics.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class Profile {}
+export class Analytics {}

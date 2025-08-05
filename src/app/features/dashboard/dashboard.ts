@@ -1,22 +1,21 @@
-// src/app/features/home/home.component.ts: Renamed class/export to Home
 import { Component, inject, OnInit, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import { getCurrentUser, signOut, fetchUserAttributes } from 'aws-amplify/auth';
 
 @Component({
-  selector: 'app-home',
+  selector: 'app-dashboard',
   standalone: true,
   imports: [CommonModule],
-  templateUrl: './home.component.html',
+  templateUrl: './dashboard.html',
 })
-export class Home implements OnInit {
+export class Dashboard implements OnInit {
   private router = inject(Router);
   userEmail = signal<string>('');
   profileImage = signal<string>('assets/profile/profile-female.jpg');
   metrics = signal<{ name: string; value: string }[]>([
     { name: 'Users', value: '1,200' },
-    { name: 'Revenue', value: ',000' },
+    { name: 'Revenue', value: '$45,000' },
     { name: 'Orders', value: '320' },
     { name: 'Growth', value: '15%' }
   ]);

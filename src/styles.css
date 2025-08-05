@@ -102,4 +102,23 @@
     --ring-color: var(--border); /* Visible ring color */
     --ring-opacity: 50; /* Medium opacity for subtle ring */
   }
+  /* Amplify overrides with !important for specificity */
+  .amplify-authenticator {
+    @apply bg-card rounded-lg shadow-md border border-border p-6 !important;
+  }
+  .amplify-tab {
+    @apply text-primary border-b-2 border-primary !important;
+  }
+  .amplify-input {
+    @apply bg-muted text-foreground border-border rounded-md p-2 !important;
+  }
+  .amplify-button {
+    @apply bg-primary text-primary-foreground rounded-md p-2 hover:bg-hover !important;
+  }
+  .amplify-label {
+    @apply text-muted-foreground !important;
+  }
+  .amplify-alert {
+    @apply text-destructive bg-destructive/10 border-destructive !important;
+  }
 }

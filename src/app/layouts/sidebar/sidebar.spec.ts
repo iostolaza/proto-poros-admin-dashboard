@@ -1,5 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { SidebarComponent } from './sidebar.component';
+import { Sidebar } from './sidebar';
 
 describe('Sidebar', () => {
   let component: Sidebar;

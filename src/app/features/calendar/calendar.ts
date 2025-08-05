@@ -5,8 +5,8 @@ import { CommonModule } from '@angular/common';
   selector: 'app-calendar',
   standalone: true,
   imports: [CommonModule],
-  templateUrl: './calendar.component.html',
-  styleUrl: './calendar.component.scss',
+  templateUrl: './calendar.html',
+  styleUrl: './calendar.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class Calendar {}

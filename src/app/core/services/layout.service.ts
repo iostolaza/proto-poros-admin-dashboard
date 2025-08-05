@@ -1,4 +1,3 @@
-// src/app/core/services/layout.service.ts: Consolidated service for layout, dark mode, and mobile menu (merged from theme.service.ts)
 import { Injectable, signal, effect } from '@angular/core';
 
 @Injectable({
