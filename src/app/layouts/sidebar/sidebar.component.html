@@ -2,38 +2,30 @@
 <!-- Tailwind transitions; hidden mobile. -->
 <!-- References: lannodev repo https://github.com/lannodev/angular-tailwind/blob/main/src/app/modules/layout/components/sidebar/sidebar.component.html -->
 
-<nav
-  [ngClass]="menuService.showSideBar ? 'w-[210px]' : 'w-[70px]'"
-  class="bg-background hidden h-full flex-col justify-between pt-3 transition-all duration-300 md:flex fixed"
->
+<nav [ngClass]="menuService.showSideBar ? 'w-[210px]' : 'w-[70px]'"
+  class="bg-card hidden h-full flex-col justify-between pt-3 transition-all duration-300 md:flex fixed">
+
   <div class="overflow-hidden">
+
     <!-- Logo and Toggle -->
-    <div
-      [ngClass]="menuService.showSideBar ? 'justify-between' : 'justify-center'"
-      class="mx-4 mb-2 flex h-9 items-center"
-    >
-      <div class="flex items-center" *ngIf="menuService.showSideBar">
-        <a
-          (click)="toggleSidebar()"
-          class="bg-primary flex cursor-pointer items-center justify-center rounded-sm p-2 focus:outline-none"
-        >
-          <svg-icon src="/assets/icons/logo.svg"></svg-icon>
-        </a>
-      </div>
-      <button
-        (click)="toggleSidebar()"
-        class="text-muted-foreground/50 hover:text-muted-foreground flex items-center justify-center rounded-md p-2 transition-all duration-200 focus:outline-none"
-        [ngClass]="{ 'rotate-180': !menuService.showSideBar }"
-      >
-        <svg-icon src="/assets/icons/lucide/chevrons-left.svg" [svgClass]="'h-5 w-5'"></svg-icon>
-      </button>
+    <div [ngClass]="menuService.showSideBar ? 'justify-between' : 'justify-center'" class="mx-4 mb-2 flex h-9 items-center">
+      
+          <div class="flex items-center" *ngIf="menuService.showSideBar">
+            <a (click)="toggleSidebar()" class="bg-primary flex cursor-pointer items-center justify-center rounded-sm p-2 focus:outline-none">
+              <svg-icon src="/assets/icons/logo.svg"></svg-icon>
+            </a>
+          </div>
+      
+          <button (click)="toggleSidebar()" class="text-muted-foreground/50 hover:text-muted-foreground flex items-center justify-center rounded-md p-2 transition-all duration-200 focus:outline-none"
+                  [ngClass]="{ 'rotate-180': !menuService.showSideBar }">
+            <svg-icon src="/assets/icons/lucide/chevrons-left.svg" [svgClass]="'h-5 w-5'"></svg-icon>
+          </button>
     </div>
+
     <!-- Menu Items -->
-    <div
-      class="scrollbar-thumb--sm scrollbar-track-rounded scrollbar-thin scrollbar-track-transparent scrollbar-thumb-card h-full overflow-auto px-4"
-    >
+    <div class="scrollbar-thumb--sm scrollbar-track-rounded scrollbar-thin scrollbar-track-transparent scrollbar-thumb-card h-full overflow-auto px-4">
       <app-sidebar-menu></app-sidebar-menu>
     </div>
+
   </div>
-  <!-- No version footer -->
 </nav>

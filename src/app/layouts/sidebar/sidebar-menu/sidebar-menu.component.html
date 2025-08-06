@@ -3,7 +3,9 @@
 
 <div *ngFor="let menu of menuService.pagesMenu">
   <div *ngIf="menuService.showSideBar" class="mx-1 flex items-center justify-between py-3">
-    <small class="text-muted-foreground/50 text-xs font-semibold">
+
+    <!-- we want this text to be white -->
+    <small class="text-foreground text-xs font-semibold">
       {{ menu.group }}
     </small>
   </div>
