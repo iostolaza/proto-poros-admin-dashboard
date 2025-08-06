@@ -15,24 +15,31 @@
           [ngTemplateOutlet]="sub.children ? childMenu : parentMenu"
           [ngTemplateOutletContext]="{ sub: sub }"
         ></ng-container>
+
         <ng-template #parentMenu let-sub="sub">
           <a
+            *ngIf="sub.route !== '/logout'"
             [routerLink]="sub.route"
             routerLinkActive="text-primary"
-            [routerLinkActiveOptions]="{ exact: true }"
-            class="hover:bg-card inline-block w-full rounded-lg px-4 py-2 text-xs"
+            class="text-muted-foreground hover:text-primary flex h-9 cursor-pointer items-center justify-start rounded-sm truncate text-xs font-semibold tracking-wide"
+            [ngClass]="{ hidden: !menuService.showSideBar }"
           >
             {{ sub.label }}
           </a>
-          <span
-            *ngIf="menuService.isActive(sub.route)"
-            class="size-1.5 bg-primary absolute flex translate-y-3.5 items-center rounded-full ltr:-translate-x-[11.5px] rtl:translate-x-[11.5px]"
-          ></span>
-        </ng-template>
-        <ng-template #childMenu let-sub="sub">
-          <a class="inline-block w-full cursor-pointer px-4 py-2 text-xs">
+          <button
+            *ngIf="sub.route === '/logout'"
+            (click)="menuService.logout()"
+            class="text-muted-foreground hover:text-primary flex h-9 cursor-pointer items-center justify-start rounded-sm truncate text-xs font-semibold tracking-wide"
+            [ngClass]="{ hidden: !menuService.showSideBar }"
+          >
             {{ sub.label }}
-          </a>
+          </button>
+        </ng-template>
+
+        <ng-template #childMenu let-sub="sub">
+          <span class="inline-block w-full cursor-pointer px-4 py-2 text-xs">
+            {{ sub.label }}
+          </span>
           <button
             [ngClass]="{ hidden: !menuService.showSideBar }"
             class="text-foreground/50 flex cursor-pointer items-center justify-end px-2 transition-all duration-500"

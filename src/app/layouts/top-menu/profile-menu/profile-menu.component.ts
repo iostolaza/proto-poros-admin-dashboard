@@ -1,42 +1,55 @@
-// src/app/layouts/top-menu/profile-menu/profile-menu.component.ts: Component for profile dropdown with animations and toggle logic
-import { Component } from '@angular/core';
-import { trigger, transition, style, animate } from '@angular/animations';  // Updated to use enter/leave for better hide/show
-import { CommonModule } from '@angular/common';  // Import CommonModule for *ngIf
+// Profile menu component with dropdown, matching typical dashboard patterns.
+// Standalone, OnPush, uses signals for state.
+// References:
+// - Angular docs: https://angular.dev/guide/signals (v20.1.0)
+// - Angular animations: https://angular.dev/guide/animations/reusable (v20.1.0)
+// - Fixed NG998103 by importing CommonModule (includes NgIf: https://angular.dev/api/common/CommonModule)
+// - Tailwind CSS for styling (v4.x: https://tailwindcss.com/docs)
+// - Angular change detection: https://angular.dev/guide/components/change-detection (v20.1.0)
+
+import { Component, signal, ChangeDetectionStrategy } from '@angular/core';
+import { CommonModule, NgOptimizedImage } from '@angular/common';
+import { Router } from '@angular/router';
+import { inject } from '@angular/core';
+import { animate, state, style, transition, trigger } from '@angular/animations';
+import { MenuService } from '../../../core/services/menu.service';  // For logout if needed
 
 @Component({
   selector: 'app-profile-menu',
   standalone: true,
-  imports: [CommonModule],  // Add CommonModule to imports for structural directives like *ngIf
+  imports: [CommonModule, NgOptimizedImage],
   templateUrl: './profile-menu.component.html',
-  styleUrls: ['./profile-menu.component.scss'],
   animations: [
     trigger('openClose', [
-      transition(':enter', [
-        style({ opacity: 0, transform: 'scale(0.95)' }),
-        animate('0.3s ease-out', style({ opacity: 1, transform: 'scale(1)' })),
-      ]),
-      transition(':leave', [
-        animate('0.3s ease-in', style({ opacity: 0, transform: 'scale(0.95)' })),
-      ]),
+      state('open', style({ opacity: 1, transform: 'scaleY(1)' })),
+      state('closed', style({ opacity: 0, transform: 'scaleY(0)' })),
+      transition('open => closed', [animate('0.2s')]),
+      transition('closed => open', [animate('0.2s')]),
     ]),
-  ]
+  ],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ProfileMenuComponent {
-  isOpen = false;
+  private router = inject(Router);
+  private menuService = inject(MenuService);
 
-  profileMenu = [
-    { title: 'Profile' },
-    { title: 'Settings' },
-    { title: 'Logout' }
-  ];
+  isOpen = signal(false);
+  profileMenu = signal([
+    { title: 'Profile', route: '/main-layout/profile' },
+    { title: 'Settings', route: '/main-layout/settings' },
+    { title: 'Logout', action: 'logout' },
+  ]);
 
   toggleMenu() {
-    this.isOpen = !this.isOpen;
+    this.isOpen.update((v) => !v);
   }
 
-  onMenuItemClick(item: { title: string }) {
-    console.log('Clicked:', item.title);
-    // Add logic for each item, e.g., navigation or sign out
-    this.isOpen = false;
+  onMenuItemClick(item: { title: string; route?: string; action?: string }) {
+    if (item.route) {
+      this.router.navigate([item.route]);
+    } else if (item.action === 'logout') {
+      this.menuService.logout();
+    }
+    this.isOpen.set(false);
   }
 }

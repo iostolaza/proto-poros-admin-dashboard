@@ -3,12 +3,14 @@
 // References:
 // - lannodev repo: https://github.com/lannodev/angular-tailwind/blob/main/src/app/modules/layout/services/menu.service.ts
 // - Angular docs: https://angular.dev/guide/signals (v20.1.0)
+// Full service with logout
 
-import { Injectable, OnDestroy, signal } from '@angular/core';
+import { Injectable, OnDestroy, signal, computed } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
-import { Subscription } from 'rxjs';
+import { Subscription, from } from 'rxjs';
 import { Menu } from '../constants/menu';
 import { MenuItem, SubMenuItem } from '../models/menu.model';
+import { signOut } from 'aws-amplify/auth';
 
 @Injectable({
   providedIn: 'root',
@@ -43,7 +45,7 @@ export class MenuService implements OnDestroy {
 
   get showSideBar() { return this._showSidebar(); }
   get showMobileMenu() { return this._showMobileMenu(); }
-  get pagesMenu() { return this._pagesMenu(); }
+  get pagesMenu() { return computed(() => this._pagesMenu()); }
 
   set showSideBar(value: boolean) {
     this._showSidebar.set(value);
@@ -73,8 +75,9 @@ export class MenuService implements OnDestroy {
   private expand(items: Array<SubMenuItem>, parentActive: boolean) {
     items.forEach((item) => {
       const active = this.isActive(item.route);
-      item.expanded = active || parentActive;
-      if (item.children) this.expand(item.children, active || parentActive);
+      item.active = active;
+      item.expanded = active; // Self only
+      if (item.children) this.expand(item.children, active);
     });
   }
 
@@ -100,6 +103,13 @@ export class MenuService implements OnDestroy {
       queryParams: 'subset',
       fragment: 'ignored',
       matrixParams: 'ignored',
+    });
+  }
+
+  public logout() {
+    from(signOut({ global: true })).subscribe({
+      next: () => this.router.navigate(['/sign-in']),
+      error: (err) => console.error('Logout error', err)
     });
   }
 

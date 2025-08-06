@@ -4,13 +4,13 @@
 @layer base {
   :root {
     --background: #E5E7EB; /* gray-200, light grey for main sections (corrected typo) */
-    --foreground: #1e3a8a; /* blue-900, dark blue for text */
+    --foreground: #111827;  /* blue-900, dark blue for text */
     --card: #94A3B8; /* slate-400, for headers, nav, cards, footer */
     --card-foreground: #1e3a8a; /* blue-900 */
     --primary: #3b82f6; /* blue-500, vibrant blue accent */
     --primary-foreground: #ffffff; /* white */
     --muted: #bfdbfe; /* blue-200 */
-    --muted-foreground: #60a5fa; /* blue-400 */
+    --muted-foreground:#1e3a8a; /* blue-400 */
     --destructive: #f97316; /* orange-500 (complement to blue) */
     --destructive-foreground: #172554; /* blue-950 */
     --border: #93c5fd; /* blue-300 */
@@ -103,17 +103,23 @@
     --ring-color: var(--border); /* Visible ring color */
     --ring-opacity: 50; /* Medium opacity for subtle ring */
   }
-  /* Amplify overrides with standard CSS (no @apply for !important) */
+
+/* Amplify overrides with standard CSS (no @apply for !important) */
   .amplify-authenticator {
     background-color: var(--card) !important;
     border-radius: 0.5rem !important;
     box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1) !important;
     border: 1px solid var(--border) !important;
     padding: 1.5rem !important;
+    max-width: 32rem !important;  /* Matches .max-w-lg above */
+    width: 100% !important;
+    margin: 0 auto !important;
   }
   .amplify-tab {
     color: var(--primary) !important;
     border-bottom: 2px solid var(--primary) !important;
+    background-color: var(--muted) !important;
+    padding: 0.5rem 1rem !important;
   }
   .amplify-input {
     background-color: var(--muted) !important;
@@ -121,12 +127,15 @@
     border: 1px solid var(--border) !important;
     border-radius: 0.375rem !important;
     padding: 0.5rem !important;
+    width: 100% !important;
   }
   .amplify-button {
     background-color: var(--primary) !important;
     color: var(--primary-foreground) !important;
     border-radius: 0.375rem !important;
     padding: 0.5rem !important;
+    width: 100% !important;  /* Full width to match Forgot button */
+    /* margin-top: .5rem !important;   */
   }
   .amplify-button:hover {
     background-color: var(--hover-bg) !important;
@@ -139,4 +148,22 @@
     background-color: rgba(var(--destructive), 0.1) !important;
     border: 1px solid var(--destructive) !important;
   }
+  .amplify-button[data-variation="link"] {
+    display: block !important;            /* Ensures full width */
+    /* max-width: 400px !important;   */
+    width: 87% !important;              
+    margin-left: 2rem !important;          /* Space above button */
+    background-color: var(--primary) !important;
+    color: var(--primary-foreground) !important;
+    border-radius: 0.375rem !important;
+    padding: 0.5rem !important;
+    font-weight: 500 !important;
+    font-size: 1rem !important;
+    box-sizing: border-box !important;
+    text-align: center !important;
+  }
+  .amplify-button[data-variation="link"]:hover {
+    background-color: var(--hover-bg) !important;
+  }
+
 }

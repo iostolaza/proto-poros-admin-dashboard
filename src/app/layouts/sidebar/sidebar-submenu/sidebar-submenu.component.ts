@@ -3,6 +3,7 @@
 // References:
 // - lannodev repo: https://github.com/lannodev/angular-tailwind/blob/main/src/app/modules/layout/components/sidebar/sidebar-submenu.component.ts
 // - Angular docs: https://angular.dev/extended-diagnostics/NG8103 (NG8103 fix, v20.1.0)
+// - Fixed TS2739 by using non-null assertion ! for required input (Angular best practices: https://angular.dev/guide/components/inputs#required-inputs)
 
 import { CommonModule, NgClass, NgFor, NgTemplateOutlet } from '@angular/common';
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
@@ -19,7 +20,7 @@ import { MenuService } from '../../../core/services/menu.service';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SidebarSubmenuComponent {
-  @Input() public submenu: SubMenuItem = {};
+  @Input() public submenu!: SubMenuItem;
 
   constructor(public menuService: MenuService) {}
 

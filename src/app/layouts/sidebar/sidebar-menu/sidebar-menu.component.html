@@ -1,16 +1,16 @@
+
 <!-- Top-level menu with groups, items, tooltips, matching lannodev. -->
 <!-- References: lannodev repo https://github.com/lannodev/angular-tailwind/blob/main/src/app/modules/layout/components/sidebar/sidebar-menu.component.html -->
-
-<div *ngFor="let menu of menuService.pagesMenu">
+<div *ngFor="let menu of menuService.pagesMenu()">
   <div *ngIf="menuService.showSideBar" class="mx-1 flex items-center justify-between py-3">
-
     <!-- we want this text to be white -->
     <small class="text-foreground text-xs font-semibold">
       {{ menu.group }}
     </small>
   </div>
   <ul class="flex flex-col">
-    <li *ngFor="let item of menu.items">
+    <li *ngFor="let item of menu.items; trackBy: trackByLabel">
+    <!-- <li *ngFor="let item of menu.items"> -->
       <div
         (click)="toggleMenu(item)"
         [ngClass]="{

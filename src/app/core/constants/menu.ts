@@ -1,68 +1,82 @@
-// src/app/core/constants/menu.ts
-// Updated paths to Heroicons outline SVGs matching lannodev.
- // References:
- // - Heroicons: https://heroicons.com/ (v2.1.5)
- // - lannodev repo: https://github.com/lannodev/angular-tailwind/blob/main/src/app/core/constants/menu.ts (example structure)
-
-// Updated with user-provided menu; Lucide icons.
+// Constant menu data for the application.
+// Based on routes and icons from preloader.
 // References:
-// - Lucide: https://lucide.dev/icons (v1.3.0)
-// - lannodev repo: https://github.com/lannodev/angular-tailwind/blob/main/src/app/core/constants/menu.ts (structure)
-
+// - Angular docs: https://angular.dev/guide/routing/lazy-loading (v20.1.0)
+// - Kept full paths for isActive matching; aligned with user menu.
 import { MenuItem } from '../models/menu.model';
-
 export const Menu = {
   pages: [
     {
       group: 'Main',
-      separator: false,
       items: [
-        { icon: '/assets/icons/lucide/home.svg', label: 'Home', route: '/home' },
-        { icon: '/assets/icons/lucide/user.svg', label: 'Profile', route: '/profile' },
+        { label: 'Home', icon: '/assets/icons/lucide/home.svg', route: '/main-layout/home' },
+      ],
+    },
+    {
+      group: 'Profile',
+      items: [
+        { label: 'Profile', icon: '/assets/icons/lucide/user.svg', route: '/main-layout/profile' },
+      ],
+    },
+    {
+      group: 'Messages',
+      items: [
         {
-          icon: '/assets/icons/lucide/mail.svg',
           label: 'Messages',
+          icon: '/assets/icons/lucide/mail.svg',
+          route: null,
           children: [
-            { icon: '/assets/icons/lucide/inbox.svg', label: 'Incoming', route: '/messages/incoming' },
-            { icon: '/assets/icons/lucide/send.svg', label: 'Outgoing', route: '/messages/outgoing' }
-          ]
+            { label: 'Incoming', route: '/main-layout/messages/incoming' },
+            { label: 'Outgoing', route: '/main-layout/messages/outgoing' },
+          ],
         },
+      ],
+    },
+    {
+      group: 'Contacts',
+      items: [
         {
-          icon: '/assets/icons/lucide/users.svg',
           label: 'Contacts',
+          icon: '/assets/icons/lucide/users.svg',
+          route: null,
           children: [
-            { icon: '/assets/icons/lucide/user-plus.svg', label: 'New', route: '/contacts/new' },
-            { icon: '/assets/icons/lucide/star.svg', label: 'Favorites', route: '/contacts/favorites' },
-            { icon: '/assets/icons/lucide/activity.svg', label: 'Online', route: '/contacts/online' }
-          ]
-        }
-      ]
+            { label: 'New', route: '/main-layout/contacts/new' },
+            { label: 'Favorites', route: '/main-layout/contacts/favorites' },
+            { label: 'Online', route: '/main-layout/contacts/online' },
+          ],
+        },
+      ],
+    },
+    {
+      group: 'Timesheet',
+      items: [
+        {
+          label: 'Timesheet',
+          icon: '/assets/icons/lucide/clock.svg',
+          route: null,
+          children: [
+            { label: 'Submitted', route: '/main-layout/timesheet/submitted' },
+            { label: 'In Progress', route: '/main-layout/timesheet/inprogress' },
+            { label: 'Approved', route: '/main-layout/timesheet/approved' },
+          ],
+        },
+      ],
     },
     {
       group: 'Productivity',
       separator: true,
       items: [
-        {
-          icon: '/assets/icons/lucide/clock.svg',
-          label: 'Timesheet',
-          children: [
-            { icon: '/assets/icons/lucide/file-check.svg', label: 'Submitted', route: '/timesheet/submitted' },
-            { icon: '/assets/icons/lucide/loader.svg', label: 'In Progress', route: '/timesheet/inprogress' },
-            { icon: '/assets/icons/lucide/check.svg', label: 'Approved', route: '/timesheet/approved' }
-          ]
-        },
-        { icon: '/assets/icons/lucide/calendar.svg', label: 'Calendar', route: '/calendar' },
-        { icon: '/assets/icons/lucide/bar-chart.svg', label: 'Analytics', route: '/analytics' },
-        { icon: '/assets/icons/lucide/calendar-days.svg', label: 'Schedule', route: '/schedule' }
-      ]
+        { label: 'Calendar', icon: '/assets/icons/lucide/calendar.svg', route: '/main-layout/calendar' },
+        { label: 'Analytics', icon: '/assets/icons/lucide/bar-chart.svg', route: '/main-layout/analytics' },
+        { label: 'Schedule', icon: '/assets/icons/lucide/calendar-days.svg', route: '/main-layout/schedule' },
+      ],
     },
     {
       group: 'Account',
-      separator: true,
       items: [
-        { icon: '/assets/icons/lucide/settings.svg', label: 'Settings', route: '/settings' },
-        { icon: '/assets/icons/lucide/log-out.svg', label: 'Logout', route: '/logout' }
-      ]
-    }
-  ] as MenuItem[]
+        { label: 'Settings', icon: '/assets/icons/lucide/settings.svg', route: '/main-layout/settings' },
+        { label: 'Logout', icon: '/assets/icons/lucide/log-out.svg', route: '/logout' },
+      ],
+    },
+  ] as MenuItem[],
 };

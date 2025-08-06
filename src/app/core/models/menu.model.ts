@@ -1,20 +1,20 @@
-// src/app/core/models/menu.model.ts
-// Interfaces for menu data structure, enabling type safety and recursion for submenus.
-// Based on repo's models for hierarchical navigation.
+// Menu models for sidebar navigation.
+// References:
+// - TypeScript interfaces for menu structure.
+// - Changed label to required for type safety in trackBy and templates (fixes TS2322).
+
+export interface SubMenuItem {
+  label: string;  // Made required to avoid undefined errors
+  route: string | null;
+  icon?: string;
+  children?: SubMenuItem[];
+  active?: boolean;
+  expanded?: boolean;
+}
 
 export interface MenuItem {
   group: string;
   separator?: boolean;
-  selected?: boolean;
+  items: SubMenuItem[];
   active?: boolean;
-  items: Array<SubMenuItem>;
-}
-
-export interface SubMenuItem {
-  icon?: string;
-  label?: string;
-  route?: string | null;
-  expanded?: boolean;
-  active?: boolean;
-  children?: Array<SubMenuItem>;
 }

@@ -18,9 +18,10 @@ import { SidebarSubmenuComponent } from '../sidebar-submenu/sidebar-submenu.comp
   templateUrl: './sidebar-menu.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
+
 export class SidebarMenuComponent {
   constructor(public menuService: MenuService) {}
-
+  trackByLabel(index: number, item: { label: string }) { return item.label; }
   public toggleMenu(subMenu: SubMenuItem) {
     this.menuService.toggleMenu(subMenu);
   }
