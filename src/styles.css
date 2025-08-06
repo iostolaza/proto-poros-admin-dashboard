@@ -105,6 +105,10 @@
   }
 
 /* Amplify overrides with standard CSS (no @apply for !important) */
+
+  [data-amplify-theme] {
+    --amplify-colors-brand-primary: var(--foreground);
+  }
   .amplify-authenticator {
     background-color: var(--card) !important;
     border-radius: 0.5rem !important;

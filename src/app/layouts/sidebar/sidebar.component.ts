@@ -1,8 +1,9 @@
 // Standalone sidebar wrapper, adapted from lannodev.
 // Uses OnPush, dynamic width.
 // References:
-// - Angular docs: https://angular.dev/guide/standalone-components (v20.1.0)
+// - Angular docs: https://angular.dev/guide/standalone-components (v20)
 // - lannodev repo: https://github.com/lannodev/angular-tailwind/blob/main/src/app/modules/layout/components/sidebar/sidebar.component.ts (structure)
+// - StackOverflow: https://stackoverflow.com/questions/41551444/implementing-a-collapsible-sidebar-in-angular2 (toggle best practices)
 
 import { NgClass, NgIf } from '@angular/common';
 import { ChangeDetectionStrategy, Component } from '@angular/core';

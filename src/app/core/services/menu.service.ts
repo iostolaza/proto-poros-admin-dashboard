@@ -2,8 +2,9 @@
 // Signals for reactivity, collapse logic.
 // References:
 // - lannodev repo: https://github.com/lannodev/angular-tailwind/blob/main/src/app/modules/layout/services/menu.service.ts
-// - Angular docs: https://angular.dev/guide/signals (v20.1.0)
-// Full service with logout
+// - Angular docs: https://angular.dev/guide/signals (v20)
+// - Full service with logout; uses aws-amplify/auth ^6.15.4 for signOut
+// - Reddit: https://www.reddit.com/r/angular/comments/owg1qu/collapsible_sidebar_with_angular_animations/ (signals for state)
 
 import { Injectable, OnDestroy, signal, computed } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
@@ -30,11 +31,11 @@ export class MenuService implements OnDestroy {
           menu.items.forEach((subMenu) => {
             const active = this.isActive(subMenu.route);
             subMenu.active = active;
+            subMenu.expanded = active;
             if (active) activeGroup = true;
             if (subMenu.children) {
-              this.expand(subMenu.children, active);
+              this.expand(subMenu.children);
             }
-            subMenu.expanded = active;
           });
           menu.active = activeGroup;
         });
@@ -58,6 +59,7 @@ export class MenuService implements OnDestroy {
   }
 
   public toggleMenu(menu: SubMenuItem) {
+    this.showSideBar = true;
     const updatedMenu = this._pagesMenu().map((menuGroup) => ({
       ...menuGroup,
       items: menuGroup.items.map((item) => ({
@@ -72,12 +74,10 @@ export class MenuService implements OnDestroy {
     submenu.expanded = !submenu.expanded;
   }
 
-  private expand(items: Array<SubMenuItem>, parentActive: boolean) {
+  private expand(items: Array<SubMenuItem>) {
     items.forEach((item) => {
-      const active = this.isActive(item.route);
-      item.active = active;
-      item.expanded = active; // Self only
-      if (item.children) this.expand(item.children, active);
+      item.expanded = this.isActive(item.route);
+      if (item.children) this.expand(item.children);
     });
   }
 

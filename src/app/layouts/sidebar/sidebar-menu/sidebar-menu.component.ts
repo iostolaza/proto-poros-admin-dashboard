@@ -1,7 +1,8 @@
 // Top-level menu, matching lannodev.
 // Standalone, OnPush, calls service toggle.
 // References:
-// - lannodev repo: https://github.com/lannodev/angular-tailwind/blob/main/src/app/modules/layout/components/sidebar/sidebar-menu.component.ts
+// - lannodev repo: https://github.com/lannodev/angular-tailwind/blob/main/src/app/modules/layout/components/sidebar/sidebar-menu/sidebar-menu.component.ts
+// - Angular docs: https://angular.dev/guide/components/change-detection (OnPush for perf)
 
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { CommonModule, NgClass, NgFor, NgIf, NgTemplateOutlet } from '@angular/common';
@@ -18,10 +19,11 @@ import { SidebarSubmenuComponent } from '../sidebar-submenu/sidebar-submenu.comp
   templateUrl: './sidebar-menu.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-
 export class SidebarMenuComponent {
   constructor(public menuService: MenuService) {}
+
   trackByLabel(index: number, item: { label: string }) { return item.label; }
+
   public toggleMenu(subMenu: SubMenuItem) {
     this.menuService.toggleMenu(subMenu);
   }

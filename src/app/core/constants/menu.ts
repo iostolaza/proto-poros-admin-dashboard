@@ -1,63 +1,45 @@
 // Constant menu data for the application.
 // Based on routes and icons from preloader.
 // References:
-// - Angular docs: https://angular.dev/guide/routing/lazy-loading (v20.1.0)
-// - Kept full paths for isActive matching; aligned with user menu.
+// - Angular docs: https://angular.dev/guide/routing/lazy-loading (v20)
+// - lannodev repo: https://github.com/lannodev/angular-tailwind/blob/main/src/app/core/constants/menu.ts
+// - Kept full paths for isActive matching; aligned with user menu; heroicons/outline for icons.
+
 import { MenuItem } from '../models/menu.model';
+
 export const Menu = {
   pages: [
     {
       group: 'Main',
-      items: [
-        { label: 'Home', icon: '/assets/icons/lucide/home.svg', route: '/main-layout/home' },
-      ],
-    },
-    {
-      group: 'Profile',
-      items: [
-        { label: 'Profile', icon: '/assets/icons/lucide/user.svg', route: '/main-layout/profile' },
-      ],
-    },
-    {
-      group: 'Messages',
+      separator: false,
       items: [
         {
+          label: 'Home',
+          icon: 'assets/icons/heroicons/outline/chart-pie.svg',
+          route: '/main-layout/home',
+        },
+        {
+          label: 'Profile',
+          icon: 'assets/icons/heroicons/outline/user-circle.svg',
+          route: '/main-layout/profile',
+        },
+        {
           label: 'Messages',
-          icon: '/assets/icons/lucide/mail.svg',
+          icon: 'assets/icons/heroicons/outline/bell.svg',
           route: null,
           children: [
             { label: 'Incoming', route: '/main-layout/messages/incoming' },
             { label: 'Outgoing', route: '/main-layout/messages/outgoing' },
           ],
         },
-      ],
-    },
-    {
-      group: 'Contacts',
-      items: [
         {
           label: 'Contacts',
-          icon: '/assets/icons/lucide/users.svg',
+          icon: 'assets/icons/heroicons/outline/users.svg',
           route: null,
           children: [
+            { label: 'Online', route: '/main-layout/contacts/online' },
             { label: 'New', route: '/main-layout/contacts/new' },
             { label: 'Favorites', route: '/main-layout/contacts/favorites' },
-            { label: 'Online', route: '/main-layout/contacts/online' },
-          ],
-        },
-      ],
-    },
-    {
-      group: 'Timesheet',
-      items: [
-        {
-          label: 'Timesheet',
-          icon: '/assets/icons/lucide/clock.svg',
-          route: null,
-          children: [
-            { label: 'Submitted', route: '/main-layout/timesheet/submitted' },
-            { label: 'In Progress', route: '/main-layout/timesheet/inprogress' },
-            { label: 'Approved', route: '/main-layout/timesheet/approved' },
           ],
         },
       ],
@@ -66,16 +48,40 @@ export const Menu = {
       group: 'Productivity',
       separator: true,
       items: [
-        { label: 'Calendar', icon: '/assets/icons/lucide/calendar.svg', route: '/main-layout/calendar' },
-        { label: 'Analytics', icon: '/assets/icons/lucide/bar-chart.svg', route: '/main-layout/analytics' },
-        { label: 'Schedule', icon: '/assets/icons/lucide/calendar-days.svg', route: '/main-layout/schedule' },
+        {
+          label: 'Timesheet',
+          icon: 'assets/icons/heroicons/outline/folder.svg',
+          route: '/main-layout/timesheet',
+        },
+        {
+          label: 'Schedule',
+          icon: 'assets/icons/heroicons/outline/download.svg',
+          route: null,
+          children: [
+            { label: 'Calendar', route: '/main-layout/schedule/calendar' },
+          ],
+        },
+        {
+          label: 'Analytics',
+          icon: 'assets/icons/heroicons/outline/chart-pie.svg',
+          route: '/main-layout/analytics',
+        },
       ],
     },
     {
       group: 'Account',
+      separator: false,
       items: [
-        { label: 'Settings', icon: '/assets/icons/lucide/settings.svg', route: '/main-layout/settings' },
-        { label: 'Logout', icon: '/assets/icons/lucide/log-out.svg', route: '/logout' },
+        {
+          label: 'Settings',
+          icon: 'assets/icons/heroicons/outline/cog.svg',
+          route: '/main-layout/settings',
+        },
+        {
+          label: 'Logout',
+          icon: 'assets/icons/heroicons/outline/lock-closed.svg',
+          route: '/logout',
+        },
       ],
     },
   ] as MenuItem[],

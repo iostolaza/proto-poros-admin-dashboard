@@ -1,9 +1,10 @@
 // Recursive submenu, matching lannodev.
 // Standalone, OnPush.
 // References:
-// - lannodev repo: https://github.com/lannodev/angular-tailwind/blob/main/src/app/modules/layout/components/sidebar/sidebar-submenu.component.ts
-// - Angular docs: https://angular.dev/extended-diagnostics/NG8103 (NG8103 fix, v20.1.0)
+// - lannodev repo: https://github.com/lannodev/angular-tailwind/blob/main/src/app/modules/layout/components/sidebar/sidebar-submenu/sidebar-submenu.component.ts
+// - Angular docs: https://angular.dev/extended-diagnostics/NG8103 (NG8103 fix, v20)
 // - Fixed TS2739 by using non-null assertion ! for required input (Angular best practices: https://angular.dev/guide/components/inputs#required-inputs)
+// - Added collapse in toggle for scalability
 
 import { CommonModule, NgClass, NgFor, NgTemplateOutlet } from '@angular/common';
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
