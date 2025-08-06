@@ -1,12 +1,12 @@
-// src/app/layouts/sidebar/sidebar.component.ts
-// Standalone component for sidebar wrapper.
-// Injects MenuService for state; reads package.json for version.
-// Use OnPush for performance.
+// Standalone sidebar wrapper, adapted from lannodev.
+// Uses OnPush, dynamic width.
+// References:
+// - Angular docs: https://angular.dev/guide/standalone-components (v20.1.0)
+// - lannodev repo: https://github.com/lannodev/angular-tailwind/blob/main/src/app/modules/layout/components/sidebar/sidebar.component.ts (structure)
 
 import { NgClass, NgIf } from '@angular/common';
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { AngularSvgIconModule } from 'angular-svg-icon';
-import packageJson from '../../../../package.json'; // Adjust path if needed
 import { MenuService } from '../../core/services/menu.service';
 import { SidebarMenuComponent } from './sidebar-menu/sidebar-menu.component';
 
@@ -17,12 +17,8 @@ import { SidebarMenuComponent } from './sidebar-menu/sidebar-menu.component';
   templateUrl: './sidebar.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class SidebarComponent implements OnInit {
-  public appJson: any = packageJson;
-
+export class SidebarComponent {
   constructor(public menuService: MenuService) {}
-
-  ngOnInit(): void {}
 
   public toggleSidebar() {
     this.menuService.toggleSidebar();

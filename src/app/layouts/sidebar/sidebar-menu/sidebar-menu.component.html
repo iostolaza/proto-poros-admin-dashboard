@@ -1,17 +1,14 @@
-<!-- src/app/layouts/sidebar/sidebar-menu/sidebar-menu.component.html -->
-<!-- Renders top-level menu groups and items with icons, labels, tooltips, and submenus. -->
-<!-- Uses ngTemplateOutlet for parent/child distinction; Tailwind for hover/animations. -->
+<!-- Top-level menu with groups, items, tooltips, matching lannodev. -->
+<!-- References: lannodev repo https://github.com/lannodev/angular-tailwind/blob/main/src/app/modules/layout/components/sidebar/sidebar-menu.component.html -->
 
 <div *ngFor="let menu of menuService.pagesMenu">
   <div *ngIf="menuService.showSideBar" class="mx-1 flex items-center justify-between py-3">
-    <small [ngClass]="{ hidden: !menuService.showSideBar }" class="text-muted-foreground/50 text-xs font-semibold">
+    <small class="text-muted-foreground/50 text-xs font-semibold">
       {{ menu.group }}
     </small>
   </div>
   <ul class="flex flex-col">
-    <!-- List items -->
     <li *ngFor="let item of menu.items">
-      <!-- Menu List -->
       <div
         (click)="toggleMenu(item)"
         [ngClass]="{
@@ -20,67 +17,53 @@
         }"
         class="text-muted-foreground hover:text-foreground group relative flex grow items-center gap-4 rounded-lg px-2"
       >
-        <!-- Icon -->
         <div [ngClass]="item.active && !menuService.showSideBar ? 'text-primary' : 'text-muted-foreground/50'">
-          <svg-icon src="{{ item.icon }}" [svgClass]="'h-5 w-5'"></svg-icon>
+          <svg-icon [src]="item.icon" [svgClass]="'h-5 w-5'"></svg-icon>
         </div>
-        <!-- Condition -->
         <ng-container
           [ngTemplateOutlet]="item.children ? childMenu : parentMenu"
           [ngTemplateOutletContext]="{ item: item }"
         ></ng-container>
-        <!-- Workaround:: Enable routerLink -->
         <ng-template #parentMenu let-item="item">
-          <div
-            routerLink="{{ item.route }}"
-            class="text-muted-foreground hover:text-primary flex h-[36px] cursor-pointer items-center justify-start rounded-sm"
+          <a
+            [routerLink]="item.route"
+            routerLinkActive="text-primary"
+            class="text-muted-foreground hover:text-primary flex h-9 cursor-pointer items-center justify-start rounded-sm truncate text-xs font-semibold tracking-wide"
+            [ngClass]="{ hidden: !menuService.showSideBar }"
           >
-            <a
-              [ngClass]="{ hidden: !menuService.showSideBar }"
-              routerLinkActive="text-primary"
-              class="truncate text-xs font-semibold tracking-wide focus:outline-none"
-            >
-              {{ item.label }}
-            </a>
-          </div>
+            {{ item.label }}
+          </a>
         </ng-template>
-        <!-- Workaround:: Disable routerLink -->
         <ng-template #childMenu let-item="item">
-          <div class="flex h-9 grow cursor-pointer items-center justify-start rounded-sm">
-            <a
-              [ngClass]="{ hidden: !menuService.showSideBar }"
-              class="text-muted-foreground group-hover:text-primary truncate text-xs font-semibold tracking-wide focus:outline-none"
-            >
-              {{ item.label }}
-            </a>
-          </div>
+          <span
+            class="text-muted-foreground group-hover:text-primary flex h-9 cursor-pointer items-center justify-start rounded-sm truncate text-xs font-semibold tracking-wide"
+            [ngClass]="{ hidden: !menuService.showSideBar }"
+          >
+            {{ item.label }}
+          </span>
         </ng-template>
-        <!-- Arrow Icon -->
         <button
           *ngIf="item.children"
           [ngClass]="{ hidden: !menuService.showSideBar }"
-          class="text-foreground/50 flex cursor-pointer items-center justify-end p-0 transition-all duration-500 ltr:right-0 rtl:left-0"
+          class="text-foreground/50 flex cursor-pointer items-center justify-end p-0 transition-all duration-500"
         >
-          @if (!item.expanded) {
-            <svg-icon src="assets/icons/heroicons/outline/plus.svg" svgClass="h-4 w-4"></svg-icon>
-          } @else {
-            <svg-icon src="assets/icons/heroicons/outline/minus.svg" svgClass="h-4 w-4"></svg-icon>
-          }
+          <svg-icon
+            [src]="!item.expanded ? '/assets/icons/lucide/plus.svg' : '/assets/icons/lucide/minus.svg'"
+            [svgClass]="'h-4 w-4'"
+          ></svg-icon>
         </button>
-        <!-- Tooltip -->
-        <div class="z-1 fixed h-[36px]" *ngIf="!menuService.showSideBar">
+        <div *ngIf="!menuService.showSideBar" class="z-10 fixed h-9">
           <span
-            class="z-1 bg-foreground text-background absolute w-auto min-w-max translate-y-[2px] scale-0 rounded-md p-2 text-xs font-bold shadow-md transition-all duration-200 group-hover:scale-100 ltr:origin-left ltr:translate-x-10 rtl:origin-right rtl:-translate-x-10"
+            class="bg-foreground text-background absolute w-auto min-w-max translate-y-1 scale-0 rounded-md p-2 text-xs font-bold shadow-md transition-all duration-200 group-hover:scale-100 ltr:origin-left ltr:translate-x-10 rtl:origin-right rtl:-translate-x-10"
           >
             {{ item.label }}
           </span>
         </div>
       </div>
-      <!-- Submenu items -->
       <app-sidebar-submenu [submenu]="item"></app-sidebar-submenu>
     </li>
   </ul>
-  <div class="py-3" *ngIf="menu.separator">
+  <div *ngIf="menu.separator" class="py-3">
     <hr class="border-border border-dashed" />
   </div>
 </div>

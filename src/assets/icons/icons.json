@@ -1,0 +1,28 @@
+{
+  "icons": [
+    { "name": "lucide-home", "path": "/assets/icons/lucide/home.svg" },
+    { "name": "lucide-user", "path": "/assets/icons/lucide/user.svg" },
+    { "name": "lucide-mail", "path": "/assets/icons/lucide/mail.svg" },
+    { "name": "lucide-inbox", "path": "/assets/icons/lucide/inbox.svg" },
+    { "name": "lucide-send", "path": "/assets/icons/lucide/send.svg" },
+    { "name": "lucide-users", "path": "/assets/icons/lucide/users.svg" },
+    { "name": "lucide-user-plus", "path": "/assets/icons/lucide/user-plus.svg" },
+    { "name": "lucide-star", "path": "/assets/icons/lucide/star.svg" },
+    { "name": "lucide-activity", "path": "/assets/icons/lucide/activity.svg" },
+    { "name": "lucide-clock", "path": "/assets/icons/lucide/clock.svg" },
+    { "name": "lucide-file-check", "path": "/assets/icons/lucide/file-check.svg" },
+    { "name": "lucide-loader", "path": "/assets/icons/lucide/loader.svg" },
+    { "name": "lucide-check", "path": "/assets/icons/lucide/check.svg" },
+    { "name": "lucide-calendar", "path": "/assets/icons/lucide/calendar.svg" },
+    { "name": "lucide-bar-chart", "path": "/assets/icons/lucide/bar-chart.svg" },
+    { "name": "lucide-calendar-days", "path": "/assets/icons/lucide/calendar-days.svg" },
+    { "name": "lucide-settings", "path": "/assets/icons/lucide/settings.svg" },
+    { "name": "lucide-log-out", "path": "/assets/icons/lucide/log-out.svg" },
+    { "name": "lucide-chevrons-left", "path": "/assets/icons/lucide/chevrons-left.svg" },
+    { "name": "lucide-chevron-right", "path": "/assets/icons/lucide/chevron-right.svg" },
+    { "name": "lucide-plus", "path": "/assets/icons/lucide/plus.svg" },
+    { "name": "lucide-minus", "path": "/assets/icons/lucide/minus.svg" },
+    { "name": "logo", "path": "/assets/icons/logo.svg" },
+    { "name": "google-logo", "path": "/assets/icons/google-logo.svg" }
+  ]
+}

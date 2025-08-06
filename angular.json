@@ -28,7 +28,10 @@
             "styles": [
               "node_modules/@aws-amplify/ui-angular/theme.css",
               "src/styles.css"
-            ]
+            ],
+            "loader": {
+              ".svg": "text"
+            }
           },
           "configurations": {
             "production": {

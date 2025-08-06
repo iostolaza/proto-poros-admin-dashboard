@@ -1,9 +1,10 @@
-// src/app/layouts/sidebar/sidebar-menu/sidebar-menu.component.ts
-// Standalone component for top-level menu rendering.
-// Uses service for toggles; OnPush for perf.
+// Top-level menu, matching lannodev.
+// Standalone, OnPush, calls service toggle.
+// References:
+// - lannodev repo: https://github.com/lannodev/angular-tailwind/blob/main/src/app/modules/layout/components/sidebar/sidebar-menu.component.ts
 
-import { NgClass, NgFor, NgIf, NgTemplateOutlet } from '@angular/common';
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { CommonModule, NgClass, NgFor, NgIf, NgTemplateOutlet } from '@angular/common';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { AngularSvgIconModule } from 'angular-svg-icon';
 import { SubMenuItem } from '../../../core/models/menu.model';
@@ -13,25 +14,14 @@ import { SidebarSubmenuComponent } from '../sidebar-submenu/sidebar-submenu.comp
 @Component({
   selector: 'app-sidebar-menu',
   standalone: true,
-  imports: [
-    NgFor,
-    NgClass,
-    AngularSvgIconModule,
-    NgTemplateOutlet,
-    RouterLink,
-    RouterLinkActive,
-    NgIf,
-    SidebarSubmenuComponent,
-  ],
+  imports: [CommonModule, NgClass, NgFor, NgIf, NgTemplateOutlet, RouterLink, RouterLinkActive, AngularSvgIconModule, SidebarSubmenuComponent],
   templateUrl: './sidebar-menu.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class SidebarMenuComponent implements OnInit {
+export class SidebarMenuComponent {
   constructor(public menuService: MenuService) {}
 
   public toggleMenu(subMenu: SubMenuItem) {
     this.menuService.toggleMenu(subMenu);
   }
-
-  ngOnInit(): void {}
 }
