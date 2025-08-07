@@ -37,6 +37,9 @@
     margin: 0;
     background-color: var(--background);
   }
+  svg {
+  color: var(--card);
+}
 }
 
 @layer utilities {

@@ -1,27 +1,25 @@
-// Recursive submenu, matching lannodev.
-// Standalone, OnPush.
-// References:
-// - lannodev repo: https://github.com/lannodev/angular-tailwind/blob/main/src/app/modules/layout/components/sidebar/sidebar-submenu/sidebar-submenu.component.ts
-// - Angular docs: https://angular.dev/extended-diagnostics/NG8103 (NG8103 fix, v20)
-// - Fixed TS2739 by using non-null assertion ! for required input (Angular best practices: https://angular.dev/guide/components/inputs#required-inputs)
-// - Added collapse in toggle for scalability
-
-import { CommonModule, NgClass, NgFor, NgTemplateOutlet } from '@angular/common';
+import { CommonModule, NgClass, NgTemplateOutlet } from '@angular/common';
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { AngularSvgIconModule } from 'angular-svg-icon';
 import { SubMenuItem } from '../../../core/models/menu.model';
 import { MenuService } from '../../../core/services/menu.service';
+import { ICONS, getIconPath } from '../../../icons-registry'; // <-- adjust path
 
 @Component({
   selector: 'app-sidebar-submenu',
   standalone: true,
-  imports: [CommonModule, NgClass, NgFor, NgTemplateOutlet, RouterLinkActive, RouterLink, AngularSvgIconModule],
+  imports: [
+    CommonModule, NgClass, NgTemplateOutlet,
+    RouterLinkActive, RouterLink, AngularSvgIconModule
+  ],
   templateUrl: './sidebar-submenu.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SidebarSubmenuComponent {
   @Input() public submenu!: SubMenuItem;
+  ICONS = ICONS;
+  getIconPath = getIconPath;
 
   constructor(public menuService: MenuService) {}
 

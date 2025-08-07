@@ -1,30 +1,42 @@
-// Top-level menu, matching lannodev.
-// Standalone, OnPush, calls service toggle.
-// References:
-// - lannodev repo: https://github.com/lannodev/angular-tailwind/blob/main/src/app/modules/layout/components/sidebar/sidebar-menu/sidebar-menu.component.ts
-// - Angular docs: https://angular.dev/guide/components/change-detection (OnPush for perf)
-
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { CommonModule, NgClass, NgFor, NgIf, NgTemplateOutlet } from '@angular/common';
+import { CommonModule, NgClass, NgTemplateOutlet } from '@angular/common';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { AngularSvgIconModule } from 'angular-svg-icon';
 import { SubMenuItem } from '../../../core/models/menu.model';
 import { MenuService } from '../../../core/services/menu.service';
 import { SidebarSubmenuComponent } from '../sidebar-submenu/sidebar-submenu.component';
+import { ICONS, getIconPath, IconName } from '../../../icons-registry'; // Make sure IconName is imported!
 
 @Component({
   selector: 'app-sidebar-menu',
   standalone: true,
-  imports: [CommonModule, NgClass, NgFor, NgIf, NgTemplateOutlet, RouterLink, RouterLinkActive, AngularSvgIconModule, SidebarSubmenuComponent],
+  imports: [
+    CommonModule, NgClass, NgTemplateOutlet,
+    RouterLink, RouterLinkActive, AngularSvgIconModule,
+    SidebarSubmenuComponent
+  ],
   templateUrl: './sidebar-menu.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SidebarMenuComponent {
+  ICONS = ICONS;
+  getIconPath = getIconPath;
+
   constructor(public menuService: MenuService) {}
 
   trackByLabel(index: number, item: { label: string }) { return item.label; }
 
   public toggleMenu(subMenu: SubMenuItem) {
     this.menuService.toggleMenu(subMenu);
+  }
+
+  /**
+   * Type-safe icon getter: only allows IconName keys, else fallback to 'menu'
+   */
+  menuIcon(icon: string | undefined): string {
+    const fallback: IconName = 'menu';
+    return getIconPath(
+      (icon && Object.hasOwn(ICONS, icon) ? icon : fallback) as IconName
+    );
   }
 }

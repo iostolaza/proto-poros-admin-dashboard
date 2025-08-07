@@ -21,7 +21,9 @@ export const routes: Routes = [
     component: MainLayoutComponent,
     canActivate: [authGuard],
     children: [
-    
+      // added for testing. Remove after confirming
+      { path: 'reports', loadComponent: () => import('./app/test-icon/test-icon.component').then(m => m.TestIconComponent) },
+      
       { path: 'home', loadComponent: () => import('./app/features/home/home.component').then(m => m.Home) },
       { path: 'profile', loadComponent: () => import('./app/features/profile/profile.component').then(m => m.Profile) },
       { path: 'messages/incoming', loadComponent: () => import('./app/features/messages/messages.component').then(m => m.Messages) },
@@ -41,4 +43,3 @@ export const routes: Routes = [
   },
   { path: '**', redirectTo: 'sign-in' }
 ];
-

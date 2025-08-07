@@ -1,4 +1,3 @@
-// tsconfig.json (root config; update to enable JSON imports)
 {
   "compileOnSave": false,
   "compilerOptions": {
@@ -23,8 +22,8 @@
       "ES2022",
       "dom"
     ],
-    "resolveJsonModule": true,  // Added: Enables importing .json files as modules
-    "esModuleInterop": true     // Added: Allows default imports from JSON
+    "resolveJsonModule": true,
+    "esModuleInterop": true
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,

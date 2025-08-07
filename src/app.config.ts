@@ -20,6 +20,6 @@ export const appConfig: ApplicationConfig = {
     provideRouter(routes),
     provideAnimationsAsync(),
     provideHttpClient(),
-    provideAngularSvgIcon() // Default dynamic with HttpLoader
+    provideAngularSvgIcon() 
   ]
 };
